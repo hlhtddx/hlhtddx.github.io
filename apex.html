@@ -1,0 +1,2300 @@
+
+<html>
+<head>
+<title>Build Docs</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<style>
+.accordion,.simple{margin-left:1.5em;text-indent:-1.5em;margin-top:.25em}
+.collapsible{border-width:0 0 0 1;margin-left:.25em;padding-left:.25em;border-style:solid;
+  border-color:grey;display:none;}
+span.fixed{display: block; float: left; clear: left; width: 1em;}
+ul {
+	list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 30ch;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+</style>
+
+<script type="text/javascript">
+window.addEventListener('message', (e) => {
+  if (e != null && e.data != null && e.data.type === "SET_BASE" && e.data.base != null) {
+    const existingBase = document.querySelector('base');
+    if (existingBase != null) {
+      existingBase.parentElement.removeChild(existingBase);
+    }
+
+    const base = document.createElement('base');
+    base.setAttribute('href', e.data.base);
+    document.head.appendChild(base);
+  }
+});
+</script>
+
+</head>
+<body><ul>
+<li><h3>apex package</h3></li>
+<li><a href="apex.html#apex">apex</a></li>
+<li><a href="apex.html#apex_defaults">apex_defaults</a></li>
+<li><a href="apex.html#apex_key">apex_key</a></li>
+<li><a href="apex.html#apex_test">apex_test</a></li>
+<li><a href="apex.html#prebuilt_apex">prebuilt_apex</a></li>
+</ul>
+
+<div style="margin-left:30ch;padding:1px 16px;">
+
+	
+	<p>
+  <h2 id="apex">apex</h2>
+  
+<div class="breadcrumb">
+    
+				<a href=apex.html#apex.name>name</a>
+				,&nbsp;<a href=apex.html#apex.host_supported>host_supported</a>
+				,&nbsp;<a href=apex.html#apex.device_supported>device_supported</a>
+				,&nbsp;<a href=apex.html#apex.androidManifest>androidManifest</a>
+				,&nbsp;<a href=apex.html#apex.apex_name>apex_name</a>
+				,&nbsp;<a href=apex.html#apex.binaries>binaries</a>
+				,&nbsp;<a href=apex.html#apex.certificate>certificate</a>
+				,&nbsp;<a href=apex.html#apex.compile_multilib>compile_multilib</a>
+				,&nbsp;<a href=apex.html#apex.defaults>defaults</a>
+				,&nbsp;<a href=apex.html#apex.device_specific>device_specific</a>
+				,&nbsp;<a href=apex.html#apex.dist>dist</a>
+				,&nbsp;<a href=apex.html#apex.enabled>enabled</a>
+				,&nbsp;<a href=apex.html#apex.file_contexts>file_contexts</a>
+				,&nbsp;<a href=apex.html#apex.ignore_system_library_special_case>ignore_system_library_special_case</a>
+				,&nbsp;<a href=apex.html#apex.init_rc>init_rc</a>
+				,&nbsp;<a href=apex.html#apex.installable>installable</a>
+				,&nbsp;<a href=apex.html#apex.java_libs>java_libs</a>
+				,&nbsp;<a href=apex.html#apex.key>key</a>
+				,&nbsp;<a href=apex.html#apex.manifest>manifest</a>
+				,&nbsp;<a href=apex.html#apex.multilib>multilib</a>
+				,&nbsp;<a href=apex.html#apex.native_shared_libs>native_shared_libs</a>
+				,&nbsp;<a href=apex.html#apex.notice>notice</a>
+				,&nbsp;<a href=apex.html#apex.owner>owner</a>
+				,&nbsp;<a href=apex.html#apex.payload_type>payload_type</a>
+				,&nbsp;<a href=apex.html#apex.prebuilts>prebuilts</a>
+				,&nbsp;<a href=apex.html#apex.product_services_specific>product_services_specific</a>
+				,&nbsp;<a href=apex.html#apex.product_specific>product_specific</a>
+				,&nbsp;<a href=apex.html#apex.product_variables.arc>product_variables.arc</a>
+				,&nbsp;<a href=apex.html#apex.product_variables.binder32bit>product_variables.binder32bit</a>
+				,&nbsp;<a href=apex.html#apex.product_variables.debuggable>product_variables.debuggable</a>
+				,&nbsp;<a href=apex.html#apex.product_variables.eng>product_variables.eng</a>
+				,&nbsp;<a href=apex.html#apex.product_variables.malloc_not_svelte>product_variables.malloc_not_svelte</a>
+				,&nbsp;<a href=apex.html#apex.product_variables.platform_sdk_version>product_variables.platform_sdk_version</a>
+				,&nbsp;<a href=apex.html#apex.product_variables.product_is_iot>product_variables.product_is_iot</a>
+				,&nbsp;<a href=apex.html#apex.product_variables.safestack>product_variables.safestack</a>
+				,&nbsp;<a href=apex.html#apex.product_variables.uml>product_variables.uml</a>
+				,&nbsp;<a href=apex.html#apex.product_variables.unbundled_build>product_variables.unbundled_build</a>
+				,&nbsp;<a href=apex.html#apex.proprietary>proprietary</a>
+				,&nbsp;<a href=apex.html#apex.recovery>recovery</a>
+				,&nbsp;<a href=apex.html#apex.required>required</a>
+				,&nbsp;<a href=apex.html#apex.soc_specific>soc_specific</a>
+				,&nbsp;<a href=apex.html#apex.target.android>target.android</a>
+				,&nbsp;<a href=apex.html#apex.target.host>target.host</a>
+				,&nbsp;<a href=apex.html#apex.use_vendor>use_vendor</a>
+				,&nbsp;<a href=apex.html#apex.vendor>vendor</a>
+				,&nbsp;<a href=apex.html#apex.vintf_fragments>vintf_fragments</a></div>
+    <div class="simple" id="apex.name">
+        <span class="fixed">&nbsp;</span><b>name </b>
+        <i>string</i>, The name of the module.  Must be unique across all modules.
+
+</div>
+    <div class="simple" id="apex.host_supported">
+        <span class="fixed">&nbsp;</span><b>host_supported </b>
+        <i>bool</i>, If set to true, build a variant of the module for the host.  Defaults to false.
+
+</div>
+    <div class="simple" id="apex.device_supported">
+        <span class="fixed">&nbsp;</span><b>device_supported </b>
+        <i>bool</i>, If set to true, build a variant of the module for the device.  Defaults to true.
+
+</div>
+    <div class="simple" id="apex.androidManifest">
+        <span class="fixed">&nbsp;</span><b>androidManifest </b>
+        <i>string</i>, AndroidManifest.xml file used for the zip container of this APEX bundle.
+If unspecified, a default one is automatically generated.
+
+</div>
+    <div class="simple" id="apex.apex_name">
+        <span class="fixed">&nbsp;</span><b>apex_name </b>
+        <i>string</i>, Canonical name of the APEX bundle in the manifest file.
+If unspecified, defaults to the value of name
+
+</div>
+    <div class="simple" id="apex.binaries">
+        <span class="fixed">&nbsp;</span><b>binaries </b>
+        <i>list of strings</i>, List of native executables that are embedded inside this APEX bundle
+
+</div>
+    <div class="simple" id="apex.certificate">
+        <span class="fixed">&nbsp;</span><b>certificate </b>
+        <i>string</i>, The name of a certificate in the default certificate directory, blank to use the default product certificate,
+or an android_app_certificate module name in the form &#34;:module&#34;.
+
+</div>
+    <div class="simple" id="apex.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>, control whether this module compiles for 32-bit, 64-bit, or both.  Possible values
+are &#34;32&#34; (compile for 32-bit only), &#34;64&#34; (compile for 64-bit only), &#34;both&#34; (compile for both
+architectures), or &#34;first&#34; (compile for 64-bit on a 64-bit platform, and 32-bit on a 32-bit
+platform
+
+</div>
+    <div class="simple" id="apex.defaults">
+        <span class="fixed">&nbsp;</span><b>defaults </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex.device_specific">
+        <span class="fixed">&nbsp;</span><b>device_specific </b>
+        <i>bool</i>, whether this module is specific to a device, not only for SoC, but also for off-chip
+peripherals. When set to true, it is installed into /odm (or /vendor/odm if odm partition
+does not exist, or /system/vendor/odm if both odm and vendor partitions do not exist).
+This implies `soc_specific:true`.
+
+</div>
+    <div class="accordion"  id="apex.dist">
+        <span class="fixed">&#x2295</span><b>dist</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex.targets">
+        <span class="fixed">&nbsp;</span><b>targets </b>
+        <i>list of strings</i>, copy the output of this module to the $DIST_DIR when `dist` is specified on the
+command line and  any of these targets are also on the command line, or otherwise
+built
+
+</div>
+    <div class="simple" id="apex.dest">
+        <span class="fixed">&nbsp;</span><b>dest </b>
+        <i>string</i>, The name of the output artifact. This defaults to the basename of the output of
+the module.
+
+</div>
+    <div class="simple" id="apex.dir">
+        <span class="fixed">&nbsp;</span><b>dir </b>
+        <i>string</i>, The directory within the dist directory to store the artifact. Defaults to the
+top level directory (&#34;&#34;).
+
+</div>
+    <div class="simple" id="apex.suffix">
+        <span class="fixed">&nbsp;</span><b>suffix </b>
+        <i>string</i>, A suffix to add to the artifact file name (before any extension).
+
+</div></div>
+    <div class="simple" id="apex.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>, emit build rules for this module
+
+</div>
+    <div class="simple" id="apex.file_contexts">
+        <span class="fixed">&nbsp;</span><b>file_contexts </b>
+        <i>string</i>, Determines the file contexts file for setting security context to each file in this APEX bundle.
+Specifically, when this is set to &lt;value&gt;, /system/sepolicy/apex/&lt;value&gt;_file_contexts file is
+used.
+Default: &lt;name_of_this_module&gt;
+
+</div>
+    <div class="simple" id="apex.ignore_system_library_special_case">
+        <span class="fixed">&nbsp;</span><b>ignore_system_library_special_case </b>
+        <i>bool</i>, For telling the apex to ignore special handling for system libraries such as bionic. Default is false.
+
+</div>
+    <div class="simple" id="apex.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>, init.rc files to be installed if this module is installed
+
+</div>
+    <div class="simple" id="apex.installable">
+        <span class="fixed">&nbsp;</span><b>installable </b>
+        <i>bool</i>, Whether this APEX is installable to one of the partitions. Default: true.
+
+</div>
+    <div class="simple" id="apex.java_libs">
+        <span class="fixed">&nbsp;</span><b>java_libs </b>
+        <i>list of strings</i>, List of java libraries that are embedded inside this APEX bundle
+
+</div>
+    <div class="simple" id="apex.key">
+        <span class="fixed">&nbsp;</span><b>key </b>
+        <i>string</i>, Name of the apex_key module that provides the private key to sign APEX
+
+</div>
+    <div class="simple" id="apex.manifest">
+        <span class="fixed">&nbsp;</span><b>manifest </b>
+        <i>string</i>, Json manifest file describing meta info of this APEX bundle. Default:
+&#34;apex_manifest.json&#34;
+
+</div>
+    <div class="simple" id="apex.multilib">
+        <span class="fixed">&nbsp;</span><b>multilib </b>
+        <i>apexMultilibProperties</i>
+</div>
+    <div class="simple" id="apex.native_shared_libs">
+        <span class="fixed">&nbsp;</span><b>native_shared_libs </b>
+        <i>list of strings</i>, List of native shared libs that are embedded inside this APEX bundle
+
+</div>
+    <div class="simple" id="apex.notice">
+        <span class="fixed">&nbsp;</span><b>notice </b>
+        <i>string</i>, relative path to a file to include in the list of notices for the device
+
+</div>
+    <div class="simple" id="apex.owner">
+        <span class="fixed">&nbsp;</span><b>owner </b>
+        <i>string</i>, vendor who owns this module
+
+</div>
+    <div class="simple" id="apex.payload_type">
+        <span class="fixed">&nbsp;</span><b>payload_type </b>
+        <i>string</i>, The type of APEX to build. Controls what the APEX payload is. Either
+&#39;image&#39;, &#39;zip&#39; or &#39;both&#39;. Default: &#39;image&#39;.
+
+</div>
+    <div class="simple" id="apex.prebuilts">
+        <span class="fixed">&nbsp;</span><b>prebuilts </b>
+        <i>list of strings</i>, List of prebuilt files that are embedded inside this APEX bundle
+
+</div>
+    <div class="simple" id="apex.product_services_specific">
+        <span class="fixed">&nbsp;</span><b>product_services_specific </b>
+        <i>bool</i>, whether this module provides services owned by the OS provider to the core platform. When set
+to true, it is installed into  /product_services (or /system/product_services if
+product_services partition does not exist).
+
+</div>
+    <div class="simple" id="apex.product_specific">
+        <span class="fixed">&nbsp;</span><b>product_specific </b>
+        <i>bool</i>, whether this module is specific to a software configuration of a product (e.g. country,
+network operator, etc). When set to true, it is installed into /product (or
+/system/product if product partition does not exist).
+
+</div>
+    <div class="accordion"  id="apex.product_variables.arc">
+        <span class="fixed">&#x2295</span><b>product_variables.arc</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex.include_dirs">
+        <span class="fixed">&nbsp;</span><b>include_dirs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex.product_variables.binder32bit">
+        <span class="fixed">&#x2295</span><b>product_variables.binder32bit</b>, product_variables.override_rs_driver, product_variables.treble_linker_namespaces, product_variables.enforce_vintf_manifest, product_variables.use_lmkd_stats_log</div>
+      <div class="collapsible">
+ 
+treble_linker_namespaces is true when the system/vendor linker namespace separation is
+enabled.
+
+enforce_vintf_manifest is true when a device is required to have a vintf manifest.
+
+
+
+        
+    <div class="simple" id="apex.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex.product_variables.debuggable">
+        <span class="fixed">&#x2295</span><b>product_variables.debuggable</b></div>
+      <div class="collapsible">debuggable is true for eng and userdebug builds, and can be used to turn on additional
+debugging features that don&#39;t significantly impact runtime behavior.  userdebug builds
+are used for dogfooding and performance testing, and should be as similar to user builds
+as possible.
+
+ 
+        
+    <div class="simple" id="apex.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex.product_variables.eng">
+        <span class="fixed">&#x2295</span><b>product_variables.eng</b></div>
+      <div class="collapsible">eng is true for -eng builds, and can be used to turn on additionaly heavyweight debugging
+features.
+
+ 
+        
+    <div class="simple" id="apex.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="accordion"  id="apex.lto">
+        <span class="fixed">&#x2295</span><b>lto</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex.never">
+        <span class="fixed">&nbsp;</span><b>never </b>
+        <i>bool</i>
+</div></div>
+    <div class="accordion"  id="apex.sanitize">
+        <span class="fixed">&#x2295</span><b>sanitize</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex.address">
+        <span class="fixed">&nbsp;</span><b>address </b>
+        <i>bool</i>
+</div></div></div>
+    <div class="accordion"  id="apex.product_variables.malloc_not_svelte">
+        <span class="fixed">&#x2295</span><b>product_variables.malloc_not_svelte</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex.product_variables.platform_sdk_version">
+        <span class="fixed">&#x2295</span><b>product_variables.platform_sdk_version</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex.asflags">
+        <span class="fixed">&nbsp;</span><b>asflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex.product_variables.product_is_iot">
+        <span class="fixed">&#x2295</span><b>product_variables.product_is_iot</b></div>
+      <div class="collapsible">Product_is_iot is true for Android Things devices.
+
+ 
+        
+    <div class="simple" id="apex.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div>
+    <div class="simple" id="apex.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex.product_variables.safestack">
+        <span class="fixed">&#x2295</span><b>product_variables.safestack</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex.product_variables.uml">
+        <span class="fixed">&#x2295</span><b>product_variables.uml</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex.product_variables.unbundled_build">
+        <span class="fixed">&#x2295</span><b>product_variables.unbundled_build</b>, product_variables.pdk</div>
+      <div class="collapsible">unbundled_build is a catch-all property to annotate modules that don&#39;t build in one or
+more unbundled branches, usually due to dependencies missing from the manifest.
+
+ 
+
+        
+    <div class="simple" id="apex.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div></div>
+    <div class="simple" id="apex.proprietary">
+        <span class="fixed">&nbsp;</span><b>proprietary </b>
+        <i>bool</i>, whether this is a proprietary vendor module, and should be installed into /vendor
+
+</div>
+    <div class="simple" id="apex.recovery">
+        <span class="fixed">&nbsp;</span><b>recovery </b>
+        <i>bool</i>, Whether this module is installed to recovery partition
+
+</div>
+    <div class="simple" id="apex.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>, names of other modules to install if this module is installed
+
+</div>
+    <div class="simple" id="apex.soc_specific">
+        <span class="fixed">&nbsp;</span><b>soc_specific </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+
+</div>
+    <div class="accordion"  id="apex.target.android">
+        <span class="fixed">&#x2295</span><b>target.android</b>, target.host, target.linux_bionic, target.linux_glibc</div>
+      <div class="collapsible">Multilib properties only for android.
+
+ Multilib properties only for host.
+
+Multilib properties only for host linux_bionic.
+
+Multilib properties only for host linux_glibc.
+
+
+        
+    <div class="simple" id="apex.multilib">
+        <span class="fixed">&nbsp;</span><b>multilib </b>
+        <i>apexMultilibProperties</i>
+</div></div>
+    <div class="accordion"  id="apex.target.host">
+        <span class="fixed">&#x2295</span><b>target.host</b>, target.android</div>
+      <div class="collapsible">
+ 
+
+        
+    <div class="simple" id="apex.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>
+</div></div>
+    <div class="simple" id="apex.use_vendor">
+        <span class="fixed">&nbsp;</span><b>use_vendor </b>
+        <i>bool</i>, For native libraries and binaries, use the vendor variant instead of the core (platform) variant.
+Default is false.
+
+</div>
+    <div class="simple" id="apex.vendor">
+        <span class="fixed">&nbsp;</span><b>vendor </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+Use `soc_specific` instead for better meaning.
+
+</div>
+    <div class="simple" id="apex.vintf_fragments">
+        <span class="fixed">&nbsp;</span><b>vintf_fragments </b>
+        <i>list of strings</i>, VINTF manifest fragments to be installed if this module is installed
+
+</div>
+	
+	<p>
+  <h2 id="apex_defaults">apex_defaults</h2>
+  
+<div class="breadcrumb">
+    
+				<a href=apex.html#apex_defaults.name>name</a>
+				,&nbsp;<a href=apex.html#apex_defaults.host_supported>host_supported</a>
+				,&nbsp;<a href=apex.html#apex_defaults.device_supported>device_supported</a>
+				,&nbsp;<a href=apex.html#apex_defaults.androidManifest>androidManifest</a>
+				,&nbsp;<a href=apex.html#apex_defaults.apex_name>apex_name</a>
+				,&nbsp;<a href=apex.html#apex_defaults.binaries>binaries</a>
+				,&nbsp;<a href=apex.html#apex_defaults.certificate>certificate</a>
+				,&nbsp;<a href=apex.html#apex_defaults.compile_multilib>compile_multilib</a>
+				,&nbsp;<a href=apex.html#apex_defaults.defaults>defaults</a>
+				,&nbsp;<a href=apex.html#apex_defaults.device_specific>device_specific</a>
+				,&nbsp;<a href=apex.html#apex_defaults.dist>dist</a>
+				,&nbsp;<a href=apex.html#apex_defaults.enabled>enabled</a>
+				,&nbsp;<a href=apex.html#apex_defaults.file_contexts>file_contexts</a>
+				,&nbsp;<a href=apex.html#apex_defaults.ignore_system_library_special_case>ignore_system_library_special_case</a>
+				,&nbsp;<a href=apex.html#apex_defaults.init_rc>init_rc</a>
+				,&nbsp;<a href=apex.html#apex_defaults.installable>installable</a>
+				,&nbsp;<a href=apex.html#apex_defaults.java_libs>java_libs</a>
+				,&nbsp;<a href=apex.html#apex_defaults.key>key</a>
+				,&nbsp;<a href=apex.html#apex_defaults.manifest>manifest</a>
+				,&nbsp;<a href=apex.html#apex_defaults.multilib>multilib</a>
+				,&nbsp;<a href=apex.html#apex_defaults.native_shared_libs>native_shared_libs</a>
+				,&nbsp;<a href=apex.html#apex_defaults.notice>notice</a>
+				,&nbsp;<a href=apex.html#apex_defaults.owner>owner</a>
+				,&nbsp;<a href=apex.html#apex_defaults.payload_type>payload_type</a>
+				,&nbsp;<a href=apex.html#apex_defaults.prebuilts>prebuilts</a>
+				,&nbsp;<a href=apex.html#apex_defaults.product_services_specific>product_services_specific</a>
+				,&nbsp;<a href=apex.html#apex_defaults.product_specific>product_specific</a>
+				,&nbsp;<a href=apex.html#apex_defaults.product_variables.arc>product_variables.arc</a>
+				,&nbsp;<a href=apex.html#apex_defaults.product_variables.binder32bit>product_variables.binder32bit</a>
+				,&nbsp;<a href=apex.html#apex_defaults.product_variables.debuggable>product_variables.debuggable</a>
+				,&nbsp;<a href=apex.html#apex_defaults.product_variables.eng>product_variables.eng</a>
+				,&nbsp;<a href=apex.html#apex_defaults.product_variables.malloc_not_svelte>product_variables.malloc_not_svelte</a>
+				,&nbsp;<a href=apex.html#apex_defaults.product_variables.platform_sdk_version>product_variables.platform_sdk_version</a>
+				,&nbsp;<a href=apex.html#apex_defaults.product_variables.product_is_iot>product_variables.product_is_iot</a>
+				,&nbsp;<a href=apex.html#apex_defaults.product_variables.safestack>product_variables.safestack</a>
+				,&nbsp;<a href=apex.html#apex_defaults.product_variables.uml>product_variables.uml</a>
+				,&nbsp;<a href=apex.html#apex_defaults.product_variables.unbundled_build>product_variables.unbundled_build</a>
+				,&nbsp;<a href=apex.html#apex_defaults.proprietary>proprietary</a>
+				,&nbsp;<a href=apex.html#apex_defaults.recovery>recovery</a>
+				,&nbsp;<a href=apex.html#apex_defaults.required>required</a>
+				,&nbsp;<a href=apex.html#apex_defaults.soc_specific>soc_specific</a>
+				,&nbsp;<a href=apex.html#apex_defaults.target.android>target.android</a>
+				,&nbsp;<a href=apex.html#apex_defaults.target.host>target.host</a>
+				,&nbsp;<a href=apex.html#apex_defaults.use_vendor>use_vendor</a>
+				,&nbsp;<a href=apex.html#apex_defaults.vendor>vendor</a>
+				,&nbsp;<a href=apex.html#apex_defaults.vintf_fragments>vintf_fragments</a></div>
+    <div class="simple" id="apex_defaults.name">
+        <span class="fixed">&nbsp;</span><b>name </b>
+        <i>string</i>, The name of the module.  Must be unique across all modules.
+
+</div>
+    <div class="simple" id="apex_defaults.host_supported">
+        <span class="fixed">&nbsp;</span><b>host_supported </b>
+        <i>bool</i>, If set to true, build a variant of the module for the host.  Defaults to false.
+
+</div>
+    <div class="simple" id="apex_defaults.device_supported">
+        <span class="fixed">&nbsp;</span><b>device_supported </b>
+        <i>bool</i>, If set to true, build a variant of the module for the device.  Defaults to true.
+
+</div>
+    <div class="simple" id="apex_defaults.androidManifest">
+        <span class="fixed">&nbsp;</span><b>androidManifest </b>
+        <i>string</i>, AndroidManifest.xml file used for the zip container of this APEX bundle.
+If unspecified, a default one is automatically generated.
+
+</div>
+    <div class="simple" id="apex_defaults.apex_name">
+        <span class="fixed">&nbsp;</span><b>apex_name </b>
+        <i>string</i>, Canonical name of the APEX bundle in the manifest file.
+If unspecified, defaults to the value of name
+
+</div>
+    <div class="simple" id="apex_defaults.binaries">
+        <span class="fixed">&nbsp;</span><b>binaries </b>
+        <i>list of strings</i>, List of native executables that are embedded inside this APEX bundle
+
+</div>
+    <div class="simple" id="apex_defaults.certificate">
+        <span class="fixed">&nbsp;</span><b>certificate </b>
+        <i>string</i>, The name of a certificate in the default certificate directory, blank to use the default product certificate,
+or an android_app_certificate module name in the form &#34;:module&#34;.
+
+</div>
+    <div class="simple" id="apex_defaults.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>, control whether this module compiles for 32-bit, 64-bit, or both.  Possible values
+are &#34;32&#34; (compile for 32-bit only), &#34;64&#34; (compile for 64-bit only), &#34;both&#34; (compile for both
+architectures), or &#34;first&#34; (compile for 64-bit on a 64-bit platform, and 32-bit on a 32-bit
+platform
+
+</div>
+    <div class="simple" id="apex_defaults.defaults">
+        <span class="fixed">&nbsp;</span><b>defaults </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_defaults.device_specific">
+        <span class="fixed">&nbsp;</span><b>device_specific </b>
+        <i>bool</i>, whether this module is specific to a device, not only for SoC, but also for off-chip
+peripherals. When set to true, it is installed into /odm (or /vendor/odm if odm partition
+does not exist, or /system/vendor/odm if both odm and vendor partitions do not exist).
+This implies `soc_specific:true`.
+
+</div>
+    <div class="accordion"  id="apex_defaults.dist">
+        <span class="fixed">&#x2295</span><b>dist</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex_defaults.targets">
+        <span class="fixed">&nbsp;</span><b>targets </b>
+        <i>list of strings</i>, copy the output of this module to the $DIST_DIR when `dist` is specified on the
+command line and  any of these targets are also on the command line, or otherwise
+built
+
+</div>
+    <div class="simple" id="apex_defaults.dest">
+        <span class="fixed">&nbsp;</span><b>dest </b>
+        <i>string</i>, The name of the output artifact. This defaults to the basename of the output of
+the module.
+
+</div>
+    <div class="simple" id="apex_defaults.dir">
+        <span class="fixed">&nbsp;</span><b>dir </b>
+        <i>string</i>, The directory within the dist directory to store the artifact. Defaults to the
+top level directory (&#34;&#34;).
+
+</div>
+    <div class="simple" id="apex_defaults.suffix">
+        <span class="fixed">&nbsp;</span><b>suffix </b>
+        <i>string</i>, A suffix to add to the artifact file name (before any extension).
+
+</div></div>
+    <div class="simple" id="apex_defaults.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>, emit build rules for this module
+
+</div>
+    <div class="simple" id="apex_defaults.file_contexts">
+        <span class="fixed">&nbsp;</span><b>file_contexts </b>
+        <i>string</i>, Determines the file contexts file for setting security context to each file in this APEX bundle.
+Specifically, when this is set to &lt;value&gt;, /system/sepolicy/apex/&lt;value&gt;_file_contexts file is
+used.
+Default: &lt;name_of_this_module&gt;
+
+</div>
+    <div class="simple" id="apex_defaults.ignore_system_library_special_case">
+        <span class="fixed">&nbsp;</span><b>ignore_system_library_special_case </b>
+        <i>bool</i>, For telling the apex to ignore special handling for system libraries such as bionic. Default is false.
+
+</div>
+    <div class="simple" id="apex_defaults.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>, init.rc files to be installed if this module is installed
+
+</div>
+    <div class="simple" id="apex_defaults.installable">
+        <span class="fixed">&nbsp;</span><b>installable </b>
+        <i>bool</i>, Whether this APEX is installable to one of the partitions. Default: true.
+
+</div>
+    <div class="simple" id="apex_defaults.java_libs">
+        <span class="fixed">&nbsp;</span><b>java_libs </b>
+        <i>list of strings</i>, List of java libraries that are embedded inside this APEX bundle
+
+</div>
+    <div class="simple" id="apex_defaults.key">
+        <span class="fixed">&nbsp;</span><b>key </b>
+        <i>string</i>, Name of the apex_key module that provides the private key to sign APEX
+
+</div>
+    <div class="simple" id="apex_defaults.manifest">
+        <span class="fixed">&nbsp;</span><b>manifest </b>
+        <i>string</i>, Json manifest file describing meta info of this APEX bundle. Default:
+&#34;apex_manifest.json&#34;
+
+</div>
+    <div class="simple" id="apex_defaults.multilib">
+        <span class="fixed">&nbsp;</span><b>multilib </b>
+        <i>apexMultilibProperties</i>
+</div>
+    <div class="simple" id="apex_defaults.native_shared_libs">
+        <span class="fixed">&nbsp;</span><b>native_shared_libs </b>
+        <i>list of strings</i>, List of native shared libs that are embedded inside this APEX bundle
+
+</div>
+    <div class="simple" id="apex_defaults.notice">
+        <span class="fixed">&nbsp;</span><b>notice </b>
+        <i>string</i>, relative path to a file to include in the list of notices for the device
+
+</div>
+    <div class="simple" id="apex_defaults.owner">
+        <span class="fixed">&nbsp;</span><b>owner </b>
+        <i>string</i>, vendor who owns this module
+
+</div>
+    <div class="simple" id="apex_defaults.payload_type">
+        <span class="fixed">&nbsp;</span><b>payload_type </b>
+        <i>string</i>, The type of APEX to build. Controls what the APEX payload is. Either
+&#39;image&#39;, &#39;zip&#39; or &#39;both&#39;. Default: &#39;image&#39;.
+
+</div>
+    <div class="simple" id="apex_defaults.prebuilts">
+        <span class="fixed">&nbsp;</span><b>prebuilts </b>
+        <i>list of strings</i>, List of prebuilt files that are embedded inside this APEX bundle
+
+</div>
+    <div class="simple" id="apex_defaults.product_services_specific">
+        <span class="fixed">&nbsp;</span><b>product_services_specific </b>
+        <i>bool</i>, whether this module provides services owned by the OS provider to the core platform. When set
+to true, it is installed into  /product_services (or /system/product_services if
+product_services partition does not exist).
+
+</div>
+    <div class="simple" id="apex_defaults.product_specific">
+        <span class="fixed">&nbsp;</span><b>product_specific </b>
+        <i>bool</i>, whether this module is specific to a software configuration of a product (e.g. country,
+network operator, etc). When set to true, it is installed into /product (or
+/system/product if product partition does not exist).
+
+</div>
+    <div class="accordion"  id="apex_defaults.product_variables.arc">
+        <span class="fixed">&#x2295</span><b>product_variables.arc</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex_defaults.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_defaults.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_defaults.include_dirs">
+        <span class="fixed">&nbsp;</span><b>include_dirs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_defaults.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_defaults.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_defaults.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex_defaults.product_variables.binder32bit">
+        <span class="fixed">&#x2295</span><b>product_variables.binder32bit</b>, product_variables.override_rs_driver, product_variables.treble_linker_namespaces, product_variables.enforce_vintf_manifest, product_variables.use_lmkd_stats_log</div>
+      <div class="collapsible">
+ 
+treble_linker_namespaces is true when the system/vendor linker namespace separation is
+enabled.
+
+enforce_vintf_manifest is true when a device is required to have a vintf manifest.
+
+
+
+        
+    <div class="simple" id="apex_defaults.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex_defaults.product_variables.debuggable">
+        <span class="fixed">&#x2295</span><b>product_variables.debuggable</b></div>
+      <div class="collapsible">debuggable is true for eng and userdebug builds, and can be used to turn on additional
+debugging features that don&#39;t significantly impact runtime behavior.  userdebug builds
+are used for dogfooding and performance testing, and should be as similar to user builds
+as possible.
+
+ 
+        
+    <div class="simple" id="apex_defaults.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_defaults.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_defaults.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_defaults.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex_defaults.product_variables.eng">
+        <span class="fixed">&#x2295</span><b>product_variables.eng</b></div>
+      <div class="collapsible">eng is true for -eng builds, and can be used to turn on additionaly heavyweight debugging
+features.
+
+ 
+        
+    <div class="simple" id="apex_defaults.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_defaults.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="accordion"  id="apex_defaults.lto">
+        <span class="fixed">&#x2295</span><b>lto</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex_defaults.never">
+        <span class="fixed">&nbsp;</span><b>never </b>
+        <i>bool</i>
+</div></div>
+    <div class="accordion"  id="apex_defaults.sanitize">
+        <span class="fixed">&#x2295</span><b>sanitize</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex_defaults.address">
+        <span class="fixed">&nbsp;</span><b>address </b>
+        <i>bool</i>
+</div></div></div>
+    <div class="accordion"  id="apex_defaults.product_variables.malloc_not_svelte">
+        <span class="fixed">&#x2295</span><b>product_variables.malloc_not_svelte</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex_defaults.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_defaults.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex_defaults.product_variables.platform_sdk_version">
+        <span class="fixed">&#x2295</span><b>product_variables.platform_sdk_version</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex_defaults.asflags">
+        <span class="fixed">&nbsp;</span><b>asflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_defaults.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex_defaults.product_variables.product_is_iot">
+        <span class="fixed">&#x2295</span><b>product_variables.product_is_iot</b></div>
+      <div class="collapsible">Product_is_iot is true for Android Things devices.
+
+ 
+        
+    <div class="simple" id="apex_defaults.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_defaults.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div>
+    <div class="simple" id="apex_defaults.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_defaults.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_defaults.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_defaults.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_defaults.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex_defaults.product_variables.safestack">
+        <span class="fixed">&#x2295</span><b>product_variables.safestack</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex_defaults.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex_defaults.product_variables.uml">
+        <span class="fixed">&#x2295</span><b>product_variables.uml</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex_defaults.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex_defaults.product_variables.unbundled_build">
+        <span class="fixed">&#x2295</span><b>product_variables.unbundled_build</b>, product_variables.pdk</div>
+      <div class="collapsible">unbundled_build is a catch-all property to annotate modules that don&#39;t build in one or
+more unbundled branches, usually due to dependencies missing from the manifest.
+
+ 
+
+        
+    <div class="simple" id="apex_defaults.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div></div>
+    <div class="simple" id="apex_defaults.proprietary">
+        <span class="fixed">&nbsp;</span><b>proprietary </b>
+        <i>bool</i>, whether this is a proprietary vendor module, and should be installed into /vendor
+
+</div>
+    <div class="simple" id="apex_defaults.recovery">
+        <span class="fixed">&nbsp;</span><b>recovery </b>
+        <i>bool</i>, Whether this module is installed to recovery partition
+
+</div>
+    <div class="simple" id="apex_defaults.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>, names of other modules to install if this module is installed
+
+</div>
+    <div class="simple" id="apex_defaults.soc_specific">
+        <span class="fixed">&nbsp;</span><b>soc_specific </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+
+</div>
+    <div class="accordion"  id="apex_defaults.target.android">
+        <span class="fixed">&#x2295</span><b>target.android</b>, target.host, target.linux_bionic, target.linux_glibc</div>
+      <div class="collapsible">Multilib properties only for android.
+
+ Multilib properties only for host.
+
+Multilib properties only for host linux_bionic.
+
+Multilib properties only for host linux_glibc.
+
+
+        
+    <div class="simple" id="apex_defaults.multilib">
+        <span class="fixed">&nbsp;</span><b>multilib </b>
+        <i>apexMultilibProperties</i>
+</div></div>
+    <div class="accordion"  id="apex_defaults.target.host">
+        <span class="fixed">&#x2295</span><b>target.host</b>, target.android</div>
+      <div class="collapsible">
+ 
+
+        
+    <div class="simple" id="apex_defaults.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>
+</div></div>
+    <div class="simple" id="apex_defaults.use_vendor">
+        <span class="fixed">&nbsp;</span><b>use_vendor </b>
+        <i>bool</i>, For native libraries and binaries, use the vendor variant instead of the core (platform) variant.
+Default is false.
+
+</div>
+    <div class="simple" id="apex_defaults.vendor">
+        <span class="fixed">&nbsp;</span><b>vendor </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+Use `soc_specific` instead for better meaning.
+
+</div>
+    <div class="simple" id="apex_defaults.vintf_fragments">
+        <span class="fixed">&nbsp;</span><b>vintf_fragments </b>
+        <i>list of strings</i>, VINTF manifest fragments to be installed if this module is installed
+
+</div>
+	
+	<p>
+  <h2 id="apex_key">apex_key</h2>
+  
+<div class="breadcrumb">
+    
+				<a href=apex.html#apex_key.name>name</a>
+				,&nbsp;<a href=apex.html#apex_key.compile_multilib>compile_multilib</a>
+				,&nbsp;<a href=apex.html#apex_key.device_specific>device_specific</a>
+				,&nbsp;<a href=apex.html#apex_key.dist>dist</a>
+				,&nbsp;<a href=apex.html#apex_key.enabled>enabled</a>
+				,&nbsp;<a href=apex.html#apex_key.init_rc>init_rc</a>
+				,&nbsp;<a href=apex.html#apex_key.installable>installable</a>
+				,&nbsp;<a href=apex.html#apex_key.notice>notice</a>
+				,&nbsp;<a href=apex.html#apex_key.owner>owner</a>
+				,&nbsp;<a href=apex.html#apex_key.private_key>private_key</a>
+				,&nbsp;<a href=apex.html#apex_key.product_services_specific>product_services_specific</a>
+				,&nbsp;<a href=apex.html#apex_key.product_specific>product_specific</a>
+				,&nbsp;<a href=apex.html#apex_key.product_variables.arc>product_variables.arc</a>
+				,&nbsp;<a href=apex.html#apex_key.product_variables.binder32bit>product_variables.binder32bit</a>
+				,&nbsp;<a href=apex.html#apex_key.product_variables.debuggable>product_variables.debuggable</a>
+				,&nbsp;<a href=apex.html#apex_key.product_variables.eng>product_variables.eng</a>
+				,&nbsp;<a href=apex.html#apex_key.product_variables.malloc_not_svelte>product_variables.malloc_not_svelte</a>
+				,&nbsp;<a href=apex.html#apex_key.product_variables.platform_sdk_version>product_variables.platform_sdk_version</a>
+				,&nbsp;<a href=apex.html#apex_key.product_variables.product_is_iot>product_variables.product_is_iot</a>
+				,&nbsp;<a href=apex.html#apex_key.product_variables.safestack>product_variables.safestack</a>
+				,&nbsp;<a href=apex.html#apex_key.product_variables.uml>product_variables.uml</a>
+				,&nbsp;<a href=apex.html#apex_key.product_variables.unbundled_build>product_variables.unbundled_build</a>
+				,&nbsp;<a href=apex.html#apex_key.proprietary>proprietary</a>
+				,&nbsp;<a href=apex.html#apex_key.public_key>public_key</a>
+				,&nbsp;<a href=apex.html#apex_key.recovery>recovery</a>
+				,&nbsp;<a href=apex.html#apex_key.required>required</a>
+				,&nbsp;<a href=apex.html#apex_key.soc_specific>soc_specific</a>
+				,&nbsp;<a href=apex.html#apex_key.target.host>target.host</a>
+				,&nbsp;<a href=apex.html#apex_key.vendor>vendor</a>
+				,&nbsp;<a href=apex.html#apex_key.vintf_fragments>vintf_fragments</a></div>
+    <div class="simple" id="apex_key.name">
+        <span class="fixed">&nbsp;</span><b>name </b>
+        <i>string</i>, The name of the module.  Must be unique across all modules.
+
+</div>
+    <div class="simple" id="apex_key.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>, control whether this module compiles for 32-bit, 64-bit, or both.  Possible values
+are &#34;32&#34; (compile for 32-bit only), &#34;64&#34; (compile for 64-bit only), &#34;both&#34; (compile for both
+architectures), or &#34;first&#34; (compile for 64-bit on a 64-bit platform, and 32-bit on a 32-bit
+platform
+
+</div>
+    <div class="simple" id="apex_key.device_specific">
+        <span class="fixed">&nbsp;</span><b>device_specific </b>
+        <i>bool</i>, whether this module is specific to a device, not only for SoC, but also for off-chip
+peripherals. When set to true, it is installed into /odm (or /vendor/odm if odm partition
+does not exist, or /system/vendor/odm if both odm and vendor partitions do not exist).
+This implies `soc_specific:true`.
+
+</div>
+    <div class="accordion"  id="apex_key.dist">
+        <span class="fixed">&#x2295</span><b>dist</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex_key.targets">
+        <span class="fixed">&nbsp;</span><b>targets </b>
+        <i>list of strings</i>, copy the output of this module to the $DIST_DIR when `dist` is specified on the
+command line and  any of these targets are also on the command line, or otherwise
+built
+
+</div>
+    <div class="simple" id="apex_key.dest">
+        <span class="fixed">&nbsp;</span><b>dest </b>
+        <i>string</i>, The name of the output artifact. This defaults to the basename of the output of
+the module.
+
+</div>
+    <div class="simple" id="apex_key.dir">
+        <span class="fixed">&nbsp;</span><b>dir </b>
+        <i>string</i>, The directory within the dist directory to store the artifact. Defaults to the
+top level directory (&#34;&#34;).
+
+</div>
+    <div class="simple" id="apex_key.suffix">
+        <span class="fixed">&nbsp;</span><b>suffix </b>
+        <i>string</i>, A suffix to add to the artifact file name (before any extension).
+
+</div></div>
+    <div class="simple" id="apex_key.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>, emit build rules for this module
+
+</div>
+    <div class="simple" id="apex_key.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>, init.rc files to be installed if this module is installed
+
+</div>
+    <div class="simple" id="apex_key.installable">
+        <span class="fixed">&nbsp;</span><b>installable </b>
+        <i>bool</i>, Whether this key is installable to one of the partitions. Defualt: true.
+
+</div>
+    <div class="simple" id="apex_key.notice">
+        <span class="fixed">&nbsp;</span><b>notice </b>
+        <i>string</i>, relative path to a file to include in the list of notices for the device
+
+</div>
+    <div class="simple" id="apex_key.owner">
+        <span class="fixed">&nbsp;</span><b>owner </b>
+        <i>string</i>, vendor who owns this module
+
+</div>
+    <div class="simple" id="apex_key.private_key">
+        <span class="fixed">&nbsp;</span><b>private_key </b>
+        <i>string</i>, Path or module to the private key file in pem format. Used to sign APEXs.
+
+</div>
+    <div class="simple" id="apex_key.product_services_specific">
+        <span class="fixed">&nbsp;</span><b>product_services_specific </b>
+        <i>bool</i>, whether this module provides services owned by the OS provider to the core platform. When set
+to true, it is installed into  /product_services (or /system/product_services if
+product_services partition does not exist).
+
+</div>
+    <div class="simple" id="apex_key.product_specific">
+        <span class="fixed">&nbsp;</span><b>product_specific </b>
+        <i>bool</i>, whether this module is specific to a software configuration of a product (e.g. country,
+network operator, etc). When set to true, it is installed into /product (or
+/system/product if product partition does not exist).
+
+</div>
+    <div class="accordion"  id="apex_key.product_variables.arc">
+        <span class="fixed">&#x2295</span><b>product_variables.arc</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex_key.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_key.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_key.include_dirs">
+        <span class="fixed">&nbsp;</span><b>include_dirs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_key.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_key.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_key.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex_key.product_variables.binder32bit">
+        <span class="fixed">&#x2295</span><b>product_variables.binder32bit</b>, product_variables.override_rs_driver, product_variables.treble_linker_namespaces, product_variables.enforce_vintf_manifest, product_variables.use_lmkd_stats_log</div>
+      <div class="collapsible">
+ 
+treble_linker_namespaces is true when the system/vendor linker namespace separation is
+enabled.
+
+enforce_vintf_manifest is true when a device is required to have a vintf manifest.
+
+
+
+        
+    <div class="simple" id="apex_key.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex_key.product_variables.debuggable">
+        <span class="fixed">&#x2295</span><b>product_variables.debuggable</b></div>
+      <div class="collapsible">debuggable is true for eng and userdebug builds, and can be used to turn on additional
+debugging features that don&#39;t significantly impact runtime behavior.  userdebug builds
+are used for dogfooding and performance testing, and should be as similar to user builds
+as possible.
+
+ 
+        
+    <div class="simple" id="apex_key.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_key.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_key.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_key.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex_key.product_variables.eng">
+        <span class="fixed">&#x2295</span><b>product_variables.eng</b></div>
+      <div class="collapsible">eng is true for -eng builds, and can be used to turn on additionaly heavyweight debugging
+features.
+
+ 
+        
+    <div class="simple" id="apex_key.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_key.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="accordion"  id="apex_key.lto">
+        <span class="fixed">&#x2295</span><b>lto</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex_key.never">
+        <span class="fixed">&nbsp;</span><b>never </b>
+        <i>bool</i>
+</div></div>
+    <div class="accordion"  id="apex_key.sanitize">
+        <span class="fixed">&#x2295</span><b>sanitize</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex_key.address">
+        <span class="fixed">&nbsp;</span><b>address </b>
+        <i>bool</i>
+</div></div></div>
+    <div class="accordion"  id="apex_key.product_variables.malloc_not_svelte">
+        <span class="fixed">&#x2295</span><b>product_variables.malloc_not_svelte</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex_key.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_key.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex_key.product_variables.platform_sdk_version">
+        <span class="fixed">&#x2295</span><b>product_variables.platform_sdk_version</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex_key.asflags">
+        <span class="fixed">&nbsp;</span><b>asflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_key.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex_key.product_variables.product_is_iot">
+        <span class="fixed">&#x2295</span><b>product_variables.product_is_iot</b></div>
+      <div class="collapsible">Product_is_iot is true for Android Things devices.
+
+ 
+        
+    <div class="simple" id="apex_key.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_key.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div>
+    <div class="simple" id="apex_key.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_key.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_key.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_key.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_key.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex_key.product_variables.safestack">
+        <span class="fixed">&#x2295</span><b>product_variables.safestack</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex_key.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex_key.product_variables.uml">
+        <span class="fixed">&#x2295</span><b>product_variables.uml</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex_key.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex_key.product_variables.unbundled_build">
+        <span class="fixed">&#x2295</span><b>product_variables.unbundled_build</b>, product_variables.pdk</div>
+      <div class="collapsible">unbundled_build is a catch-all property to annotate modules that don&#39;t build in one or
+more unbundled branches, usually due to dependencies missing from the manifest.
+
+ 
+
+        
+    <div class="simple" id="apex_key.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div></div>
+    <div class="simple" id="apex_key.proprietary">
+        <span class="fixed">&nbsp;</span><b>proprietary </b>
+        <i>bool</i>, whether this is a proprietary vendor module, and should be installed into /vendor
+
+</div>
+    <div class="simple" id="apex_key.public_key">
+        <span class="fixed">&nbsp;</span><b>public_key </b>
+        <i>string</i>, Path or module to the public key file in avbpubkey format. Installed to the device.
+Base name of the file is used as the ID for the key.
+
+</div>
+    <div class="simple" id="apex_key.recovery">
+        <span class="fixed">&nbsp;</span><b>recovery </b>
+        <i>bool</i>, Whether this module is installed to recovery partition
+
+</div>
+    <div class="simple" id="apex_key.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>, names of other modules to install if this module is installed
+
+</div>
+    <div class="simple" id="apex_key.soc_specific">
+        <span class="fixed">&nbsp;</span><b>soc_specific </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+
+</div>
+    <div class="accordion"  id="apex_key.target.host">
+        <span class="fixed">&#x2295</span><b>target.host</b>, target.android</div>
+      <div class="collapsible">
+ 
+
+        
+    <div class="simple" id="apex_key.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>
+</div></div>
+    <div class="simple" id="apex_key.vendor">
+        <span class="fixed">&nbsp;</span><b>vendor </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+Use `soc_specific` instead for better meaning.
+
+</div>
+    <div class="simple" id="apex_key.vintf_fragments">
+        <span class="fixed">&nbsp;</span><b>vintf_fragments </b>
+        <i>list of strings</i>, VINTF manifest fragments to be installed if this module is installed
+
+</div>
+	
+	<p>
+  <h2 id="apex_test">apex_test</h2>
+  
+<div class="breadcrumb">
+    
+				<a href=apex.html#apex_test.name>name</a>
+				,&nbsp;<a href=apex.html#apex_test.host_supported>host_supported</a>
+				,&nbsp;<a href=apex.html#apex_test.device_supported>device_supported</a>
+				,&nbsp;<a href=apex.html#apex_test.androidManifest>androidManifest</a>
+				,&nbsp;<a href=apex.html#apex_test.apex_name>apex_name</a>
+				,&nbsp;<a href=apex.html#apex_test.binaries>binaries</a>
+				,&nbsp;<a href=apex.html#apex_test.certificate>certificate</a>
+				,&nbsp;<a href=apex.html#apex_test.compile_multilib>compile_multilib</a>
+				,&nbsp;<a href=apex.html#apex_test.defaults>defaults</a>
+				,&nbsp;<a href=apex.html#apex_test.device_specific>device_specific</a>
+				,&nbsp;<a href=apex.html#apex_test.dist>dist</a>
+				,&nbsp;<a href=apex.html#apex_test.enabled>enabled</a>
+				,&nbsp;<a href=apex.html#apex_test.file_contexts>file_contexts</a>
+				,&nbsp;<a href=apex.html#apex_test.ignore_system_library_special_case>ignore_system_library_special_case</a>
+				,&nbsp;<a href=apex.html#apex_test.init_rc>init_rc</a>
+				,&nbsp;<a href=apex.html#apex_test.installable>installable</a>
+				,&nbsp;<a href=apex.html#apex_test.java_libs>java_libs</a>
+				,&nbsp;<a href=apex.html#apex_test.key>key</a>
+				,&nbsp;<a href=apex.html#apex_test.manifest>manifest</a>
+				,&nbsp;<a href=apex.html#apex_test.multilib>multilib</a>
+				,&nbsp;<a href=apex.html#apex_test.native_shared_libs>native_shared_libs</a>
+				,&nbsp;<a href=apex.html#apex_test.notice>notice</a>
+				,&nbsp;<a href=apex.html#apex_test.owner>owner</a>
+				,&nbsp;<a href=apex.html#apex_test.payload_type>payload_type</a>
+				,&nbsp;<a href=apex.html#apex_test.prebuilts>prebuilts</a>
+				,&nbsp;<a href=apex.html#apex_test.product_services_specific>product_services_specific</a>
+				,&nbsp;<a href=apex.html#apex_test.product_specific>product_specific</a>
+				,&nbsp;<a href=apex.html#apex_test.product_variables.arc>product_variables.arc</a>
+				,&nbsp;<a href=apex.html#apex_test.product_variables.binder32bit>product_variables.binder32bit</a>
+				,&nbsp;<a href=apex.html#apex_test.product_variables.debuggable>product_variables.debuggable</a>
+				,&nbsp;<a href=apex.html#apex_test.product_variables.eng>product_variables.eng</a>
+				,&nbsp;<a href=apex.html#apex_test.product_variables.malloc_not_svelte>product_variables.malloc_not_svelte</a>
+				,&nbsp;<a href=apex.html#apex_test.product_variables.platform_sdk_version>product_variables.platform_sdk_version</a>
+				,&nbsp;<a href=apex.html#apex_test.product_variables.product_is_iot>product_variables.product_is_iot</a>
+				,&nbsp;<a href=apex.html#apex_test.product_variables.safestack>product_variables.safestack</a>
+				,&nbsp;<a href=apex.html#apex_test.product_variables.uml>product_variables.uml</a>
+				,&nbsp;<a href=apex.html#apex_test.product_variables.unbundled_build>product_variables.unbundled_build</a>
+				,&nbsp;<a href=apex.html#apex_test.proprietary>proprietary</a>
+				,&nbsp;<a href=apex.html#apex_test.recovery>recovery</a>
+				,&nbsp;<a href=apex.html#apex_test.required>required</a>
+				,&nbsp;<a href=apex.html#apex_test.soc_specific>soc_specific</a>
+				,&nbsp;<a href=apex.html#apex_test.target.android>target.android</a>
+				,&nbsp;<a href=apex.html#apex_test.target.host>target.host</a>
+				,&nbsp;<a href=apex.html#apex_test.use_vendor>use_vendor</a>
+				,&nbsp;<a href=apex.html#apex_test.vendor>vendor</a>
+				,&nbsp;<a href=apex.html#apex_test.vintf_fragments>vintf_fragments</a></div>
+    <div class="simple" id="apex_test.name">
+        <span class="fixed">&nbsp;</span><b>name </b>
+        <i>string</i>, The name of the module.  Must be unique across all modules.
+
+</div>
+    <div class="simple" id="apex_test.host_supported">
+        <span class="fixed">&nbsp;</span><b>host_supported </b>
+        <i>bool</i>, If set to true, build a variant of the module for the host.  Defaults to false.
+
+</div>
+    <div class="simple" id="apex_test.device_supported">
+        <span class="fixed">&nbsp;</span><b>device_supported </b>
+        <i>bool</i>, If set to true, build a variant of the module for the device.  Defaults to true.
+
+</div>
+    <div class="simple" id="apex_test.androidManifest">
+        <span class="fixed">&nbsp;</span><b>androidManifest </b>
+        <i>string</i>, AndroidManifest.xml file used for the zip container of this APEX bundle.
+If unspecified, a default one is automatically generated.
+
+</div>
+    <div class="simple" id="apex_test.apex_name">
+        <span class="fixed">&nbsp;</span><b>apex_name </b>
+        <i>string</i>, Canonical name of the APEX bundle in the manifest file.
+If unspecified, defaults to the value of name
+
+</div>
+    <div class="simple" id="apex_test.binaries">
+        <span class="fixed">&nbsp;</span><b>binaries </b>
+        <i>list of strings</i>, List of native executables that are embedded inside this APEX bundle
+
+</div>
+    <div class="simple" id="apex_test.certificate">
+        <span class="fixed">&nbsp;</span><b>certificate </b>
+        <i>string</i>, The name of a certificate in the default certificate directory, blank to use the default product certificate,
+or an android_app_certificate module name in the form &#34;:module&#34;.
+
+</div>
+    <div class="simple" id="apex_test.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>, control whether this module compiles for 32-bit, 64-bit, or both.  Possible values
+are &#34;32&#34; (compile for 32-bit only), &#34;64&#34; (compile for 64-bit only), &#34;both&#34; (compile for both
+architectures), or &#34;first&#34; (compile for 64-bit on a 64-bit platform, and 32-bit on a 32-bit
+platform
+
+</div>
+    <div class="simple" id="apex_test.defaults">
+        <span class="fixed">&nbsp;</span><b>defaults </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_test.device_specific">
+        <span class="fixed">&nbsp;</span><b>device_specific </b>
+        <i>bool</i>, whether this module is specific to a device, not only for SoC, but also for off-chip
+peripherals. When set to true, it is installed into /odm (or /vendor/odm if odm partition
+does not exist, or /system/vendor/odm if both odm and vendor partitions do not exist).
+This implies `soc_specific:true`.
+
+</div>
+    <div class="accordion"  id="apex_test.dist">
+        <span class="fixed">&#x2295</span><b>dist</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex_test.targets">
+        <span class="fixed">&nbsp;</span><b>targets </b>
+        <i>list of strings</i>, copy the output of this module to the $DIST_DIR when `dist` is specified on the
+command line and  any of these targets are also on the command line, or otherwise
+built
+
+</div>
+    <div class="simple" id="apex_test.dest">
+        <span class="fixed">&nbsp;</span><b>dest </b>
+        <i>string</i>, The name of the output artifact. This defaults to the basename of the output of
+the module.
+
+</div>
+    <div class="simple" id="apex_test.dir">
+        <span class="fixed">&nbsp;</span><b>dir </b>
+        <i>string</i>, The directory within the dist directory to store the artifact. Defaults to the
+top level directory (&#34;&#34;).
+
+</div>
+    <div class="simple" id="apex_test.suffix">
+        <span class="fixed">&nbsp;</span><b>suffix </b>
+        <i>string</i>, A suffix to add to the artifact file name (before any extension).
+
+</div></div>
+    <div class="simple" id="apex_test.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>, emit build rules for this module
+
+</div>
+    <div class="simple" id="apex_test.file_contexts">
+        <span class="fixed">&nbsp;</span><b>file_contexts </b>
+        <i>string</i>, Determines the file contexts file for setting security context to each file in this APEX bundle.
+Specifically, when this is set to &lt;value&gt;, /system/sepolicy/apex/&lt;value&gt;_file_contexts file is
+used.
+Default: &lt;name_of_this_module&gt;
+
+</div>
+    <div class="simple" id="apex_test.ignore_system_library_special_case">
+        <span class="fixed">&nbsp;</span><b>ignore_system_library_special_case </b>
+        <i>bool</i>, For telling the apex to ignore special handling for system libraries such as bionic. Default is false.
+
+</div>
+    <div class="simple" id="apex_test.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>, init.rc files to be installed if this module is installed
+
+</div>
+    <div class="simple" id="apex_test.installable">
+        <span class="fixed">&nbsp;</span><b>installable </b>
+        <i>bool</i>, Whether this APEX is installable to one of the partitions. Default: true.
+
+</div>
+    <div class="simple" id="apex_test.java_libs">
+        <span class="fixed">&nbsp;</span><b>java_libs </b>
+        <i>list of strings</i>, List of java libraries that are embedded inside this APEX bundle
+
+</div>
+    <div class="simple" id="apex_test.key">
+        <span class="fixed">&nbsp;</span><b>key </b>
+        <i>string</i>, Name of the apex_key module that provides the private key to sign APEX
+
+</div>
+    <div class="simple" id="apex_test.manifest">
+        <span class="fixed">&nbsp;</span><b>manifest </b>
+        <i>string</i>, Json manifest file describing meta info of this APEX bundle. Default:
+&#34;apex_manifest.json&#34;
+
+</div>
+    <div class="simple" id="apex_test.multilib">
+        <span class="fixed">&nbsp;</span><b>multilib </b>
+        <i>apexMultilibProperties</i>
+</div>
+    <div class="simple" id="apex_test.native_shared_libs">
+        <span class="fixed">&nbsp;</span><b>native_shared_libs </b>
+        <i>list of strings</i>, List of native shared libs that are embedded inside this APEX bundle
+
+</div>
+    <div class="simple" id="apex_test.notice">
+        <span class="fixed">&nbsp;</span><b>notice </b>
+        <i>string</i>, relative path to a file to include in the list of notices for the device
+
+</div>
+    <div class="simple" id="apex_test.owner">
+        <span class="fixed">&nbsp;</span><b>owner </b>
+        <i>string</i>, vendor who owns this module
+
+</div>
+    <div class="simple" id="apex_test.payload_type">
+        <span class="fixed">&nbsp;</span><b>payload_type </b>
+        <i>string</i>, The type of APEX to build. Controls what the APEX payload is. Either
+&#39;image&#39;, &#39;zip&#39; or &#39;both&#39;. Default: &#39;image&#39;.
+
+</div>
+    <div class="simple" id="apex_test.prebuilts">
+        <span class="fixed">&nbsp;</span><b>prebuilts </b>
+        <i>list of strings</i>, List of prebuilt files that are embedded inside this APEX bundle
+
+</div>
+    <div class="simple" id="apex_test.product_services_specific">
+        <span class="fixed">&nbsp;</span><b>product_services_specific </b>
+        <i>bool</i>, whether this module provides services owned by the OS provider to the core platform. When set
+to true, it is installed into  /product_services (or /system/product_services if
+product_services partition does not exist).
+
+</div>
+    <div class="simple" id="apex_test.product_specific">
+        <span class="fixed">&nbsp;</span><b>product_specific </b>
+        <i>bool</i>, whether this module is specific to a software configuration of a product (e.g. country,
+network operator, etc). When set to true, it is installed into /product (or
+/system/product if product partition does not exist).
+
+</div>
+    <div class="accordion"  id="apex_test.product_variables.arc">
+        <span class="fixed">&#x2295</span><b>product_variables.arc</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex_test.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_test.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_test.include_dirs">
+        <span class="fixed">&nbsp;</span><b>include_dirs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_test.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_test.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_test.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex_test.product_variables.binder32bit">
+        <span class="fixed">&#x2295</span><b>product_variables.binder32bit</b>, product_variables.override_rs_driver, product_variables.treble_linker_namespaces, product_variables.enforce_vintf_manifest, product_variables.use_lmkd_stats_log</div>
+      <div class="collapsible">
+ 
+treble_linker_namespaces is true when the system/vendor linker namespace separation is
+enabled.
+
+enforce_vintf_manifest is true when a device is required to have a vintf manifest.
+
+
+
+        
+    <div class="simple" id="apex_test.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex_test.product_variables.debuggable">
+        <span class="fixed">&#x2295</span><b>product_variables.debuggable</b></div>
+      <div class="collapsible">debuggable is true for eng and userdebug builds, and can be used to turn on additional
+debugging features that don&#39;t significantly impact runtime behavior.  userdebug builds
+are used for dogfooding and performance testing, and should be as similar to user builds
+as possible.
+
+ 
+        
+    <div class="simple" id="apex_test.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_test.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_test.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_test.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex_test.product_variables.eng">
+        <span class="fixed">&#x2295</span><b>product_variables.eng</b></div>
+      <div class="collapsible">eng is true for -eng builds, and can be used to turn on additionaly heavyweight debugging
+features.
+
+ 
+        
+    <div class="simple" id="apex_test.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_test.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="accordion"  id="apex_test.lto">
+        <span class="fixed">&#x2295</span><b>lto</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex_test.never">
+        <span class="fixed">&nbsp;</span><b>never </b>
+        <i>bool</i>
+</div></div>
+    <div class="accordion"  id="apex_test.sanitize">
+        <span class="fixed">&#x2295</span><b>sanitize</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex_test.address">
+        <span class="fixed">&nbsp;</span><b>address </b>
+        <i>bool</i>
+</div></div></div>
+    <div class="accordion"  id="apex_test.product_variables.malloc_not_svelte">
+        <span class="fixed">&#x2295</span><b>product_variables.malloc_not_svelte</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex_test.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_test.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex_test.product_variables.platform_sdk_version">
+        <span class="fixed">&#x2295</span><b>product_variables.platform_sdk_version</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex_test.asflags">
+        <span class="fixed">&nbsp;</span><b>asflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_test.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex_test.product_variables.product_is_iot">
+        <span class="fixed">&#x2295</span><b>product_variables.product_is_iot</b></div>
+      <div class="collapsible">Product_is_iot is true for Android Things devices.
+
+ 
+        
+    <div class="simple" id="apex_test.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_test.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div>
+    <div class="simple" id="apex_test.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_test.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_test.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_test.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="apex_test.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex_test.product_variables.safestack">
+        <span class="fixed">&#x2295</span><b>product_variables.safestack</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex_test.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex_test.product_variables.uml">
+        <span class="fixed">&#x2295</span><b>product_variables.uml</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="apex_test.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="apex_test.product_variables.unbundled_build">
+        <span class="fixed">&#x2295</span><b>product_variables.unbundled_build</b>, product_variables.pdk</div>
+      <div class="collapsible">unbundled_build is a catch-all property to annotate modules that don&#39;t build in one or
+more unbundled branches, usually due to dependencies missing from the manifest.
+
+ 
+
+        
+    <div class="simple" id="apex_test.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div></div>
+    <div class="simple" id="apex_test.proprietary">
+        <span class="fixed">&nbsp;</span><b>proprietary </b>
+        <i>bool</i>, whether this is a proprietary vendor module, and should be installed into /vendor
+
+</div>
+    <div class="simple" id="apex_test.recovery">
+        <span class="fixed">&nbsp;</span><b>recovery </b>
+        <i>bool</i>, Whether this module is installed to recovery partition
+
+</div>
+    <div class="simple" id="apex_test.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>, names of other modules to install if this module is installed
+
+</div>
+    <div class="simple" id="apex_test.soc_specific">
+        <span class="fixed">&nbsp;</span><b>soc_specific </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+
+</div>
+    <div class="accordion"  id="apex_test.target.android">
+        <span class="fixed">&#x2295</span><b>target.android</b>, target.host, target.linux_bionic, target.linux_glibc</div>
+      <div class="collapsible">Multilib properties only for android.
+
+ Multilib properties only for host.
+
+Multilib properties only for host linux_bionic.
+
+Multilib properties only for host linux_glibc.
+
+
+        
+    <div class="simple" id="apex_test.multilib">
+        <span class="fixed">&nbsp;</span><b>multilib </b>
+        <i>apexMultilibProperties</i>
+</div></div>
+    <div class="accordion"  id="apex_test.target.host">
+        <span class="fixed">&#x2295</span><b>target.host</b>, target.android</div>
+      <div class="collapsible">
+ 
+
+        
+    <div class="simple" id="apex_test.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>
+</div></div>
+    <div class="simple" id="apex_test.use_vendor">
+        <span class="fixed">&nbsp;</span><b>use_vendor </b>
+        <i>bool</i>, For native libraries and binaries, use the vendor variant instead of the core (platform) variant.
+Default is false.
+
+</div>
+    <div class="simple" id="apex_test.vendor">
+        <span class="fixed">&nbsp;</span><b>vendor </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+Use `soc_specific` instead for better meaning.
+
+</div>
+    <div class="simple" id="apex_test.vintf_fragments">
+        <span class="fixed">&nbsp;</span><b>vintf_fragments </b>
+        <i>list of strings</i>, VINTF manifest fragments to be installed if this module is installed
+
+</div>
+	
+	<p>
+  <h2 id="prebuilt_apex">prebuilt_apex</h2>
+  prebuilt_apex imports an `.apex` file into the build graph as if it was built with apex.
+
+<div class="breadcrumb">
+    
+				<a href=apex.html#prebuilt_apex.name>name</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.src>src</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.arch.arm>arch.arm</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.compile_multilib>compile_multilib</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.device_specific>device_specific</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.dist>dist</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.enabled>enabled</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.filename>filename</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.init_rc>init_rc</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.installable>installable</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.notice>notice</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.owner>owner</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.prefer>prefer</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.product_services_specific>product_services_specific</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.product_specific>product_specific</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.product_variables.arc>product_variables.arc</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.product_variables.binder32bit>product_variables.binder32bit</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.product_variables.debuggable>product_variables.debuggable</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.product_variables.eng>product_variables.eng</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.product_variables.malloc_not_svelte>product_variables.malloc_not_svelte</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.product_variables.platform_sdk_version>product_variables.platform_sdk_version</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.product_variables.product_is_iot>product_variables.product_is_iot</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.product_variables.safestack>product_variables.safestack</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.product_variables.uml>product_variables.uml</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.product_variables.unbundled_build>product_variables.unbundled_build</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.proprietary>proprietary</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.recovery>recovery</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.required>required</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.soc_specific>soc_specific</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.target.host>target.host</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.vendor>vendor</a>
+				,&nbsp;<a href=apex.html#prebuilt_apex.vintf_fragments>vintf_fragments</a></div>
+    <div class="simple" id="prebuilt_apex.name">
+        <span class="fixed">&nbsp;</span><b>name </b>
+        <i>string</i>, The name of the module.  Must be unique across all modules.
+
+</div>
+    <div class="simple" id="prebuilt_apex.src">
+        <span class="fixed">&nbsp;</span><b>src </b>
+        <i>string</i>
+</div>
+    <div class="accordion"  id="prebuilt_apex.arch.arm">
+        <span class="fixed">&#x2295</span><b>arch.arm</b>, arch.arm64, arch.x86, arch.x86_64</div>
+      <div class="collapsible">
+ 
+
+
+
+        
+    <div class="simple" id="prebuilt_apex.src">
+        <span class="fixed">&nbsp;</span><b>src </b>
+        <i>string</i>
+</div></div>
+    <div class="simple" id="prebuilt_apex.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>, control whether this module compiles for 32-bit, 64-bit, or both.  Possible values
+are &#34;32&#34; (compile for 32-bit only), &#34;64&#34; (compile for 64-bit only), &#34;both&#34; (compile for both
+architectures), or &#34;first&#34; (compile for 64-bit on a 64-bit platform, and 32-bit on a 32-bit
+platform
+
+</div>
+    <div class="simple" id="prebuilt_apex.device_specific">
+        <span class="fixed">&nbsp;</span><b>device_specific </b>
+        <i>bool</i>, whether this module is specific to a device, not only for SoC, but also for off-chip
+peripherals. When set to true, it is installed into /odm (or /vendor/odm if odm partition
+does not exist, or /system/vendor/odm if both odm and vendor partitions do not exist).
+This implies `soc_specific:true`.
+
+</div>
+    <div class="accordion"  id="prebuilt_apex.dist">
+        <span class="fixed">&#x2295</span><b>dist</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="prebuilt_apex.targets">
+        <span class="fixed">&nbsp;</span><b>targets </b>
+        <i>list of strings</i>, copy the output of this module to the $DIST_DIR when `dist` is specified on the
+command line and  any of these targets are also on the command line, or otherwise
+built
+
+</div>
+    <div class="simple" id="prebuilt_apex.dest">
+        <span class="fixed">&nbsp;</span><b>dest </b>
+        <i>string</i>, The name of the output artifact. This defaults to the basename of the output of
+the module.
+
+</div>
+    <div class="simple" id="prebuilt_apex.dir">
+        <span class="fixed">&nbsp;</span><b>dir </b>
+        <i>string</i>, The directory within the dist directory to store the artifact. Defaults to the
+top level directory (&#34;&#34;).
+
+</div>
+    <div class="simple" id="prebuilt_apex.suffix">
+        <span class="fixed">&nbsp;</span><b>suffix </b>
+        <i>string</i>, A suffix to add to the artifact file name (before any extension).
+
+</div></div>
+    <div class="simple" id="prebuilt_apex.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>, emit build rules for this module
+
+</div>
+    <div class="simple" id="prebuilt_apex.filename">
+        <span class="fixed">&nbsp;</span><b>filename </b>
+        <i>string</i>, Optional name for the installed apex. If unspecified, name of the
+module is used as the file name
+
+</div>
+    <div class="simple" id="prebuilt_apex.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>, init.rc files to be installed if this module is installed
+
+</div>
+    <div class="simple" id="prebuilt_apex.installable">
+        <span class="fixed">&nbsp;</span><b>installable </b>
+        <i>bool</i>
+</div>
+    <div class="simple" id="prebuilt_apex.notice">
+        <span class="fixed">&nbsp;</span><b>notice </b>
+        <i>string</i>, relative path to a file to include in the list of notices for the device
+
+</div>
+    <div class="simple" id="prebuilt_apex.owner">
+        <span class="fixed">&nbsp;</span><b>owner </b>
+        <i>string</i>, vendor who owns this module
+
+</div>
+    <div class="simple" id="prebuilt_apex.prefer">
+        <span class="fixed">&nbsp;</span><b>prefer </b>
+        <i>bool</i>, When prefer is set to true the prebuilt will be used instead of any source module with
+a matching name.
+
+</div>
+    <div class="simple" id="prebuilt_apex.product_services_specific">
+        <span class="fixed">&nbsp;</span><b>product_services_specific </b>
+        <i>bool</i>, whether this module provides services owned by the OS provider to the core platform. When set
+to true, it is installed into  /product_services (or /system/product_services if
+product_services partition does not exist).
+
+</div>
+    <div class="simple" id="prebuilt_apex.product_specific">
+        <span class="fixed">&nbsp;</span><b>product_specific </b>
+        <i>bool</i>, whether this module is specific to a software configuration of a product (e.g. country,
+network operator, etc). When set to true, it is installed into /product (or
+/system/product if product partition does not exist).
+
+</div>
+    <div class="accordion"  id="prebuilt_apex.product_variables.arc">
+        <span class="fixed">&#x2295</span><b>product_variables.arc</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="prebuilt_apex.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="prebuilt_apex.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="prebuilt_apex.include_dirs">
+        <span class="fixed">&nbsp;</span><b>include_dirs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="prebuilt_apex.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="prebuilt_apex.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="prebuilt_apex.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="prebuilt_apex.product_variables.binder32bit">
+        <span class="fixed">&#x2295</span><b>product_variables.binder32bit</b>, product_variables.override_rs_driver, product_variables.treble_linker_namespaces, product_variables.enforce_vintf_manifest, product_variables.use_lmkd_stats_log</div>
+      <div class="collapsible">
+ 
+treble_linker_namespaces is true when the system/vendor linker namespace separation is
+enabled.
+
+enforce_vintf_manifest is true when a device is required to have a vintf manifest.
+
+
+
+        
+    <div class="simple" id="prebuilt_apex.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="prebuilt_apex.product_variables.debuggable">
+        <span class="fixed">&#x2295</span><b>product_variables.debuggable</b></div>
+      <div class="collapsible">debuggable is true for eng and userdebug builds, and can be used to turn on additional
+debugging features that don&#39;t significantly impact runtime behavior.  userdebug builds
+are used for dogfooding and performance testing, and should be as similar to user builds
+as possible.
+
+ 
+        
+    <div class="simple" id="prebuilt_apex.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="prebuilt_apex.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="prebuilt_apex.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="prebuilt_apex.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="prebuilt_apex.product_variables.eng">
+        <span class="fixed">&#x2295</span><b>product_variables.eng</b></div>
+      <div class="collapsible">eng is true for -eng builds, and can be used to turn on additionaly heavyweight debugging
+features.
+
+ 
+        
+    <div class="simple" id="prebuilt_apex.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="prebuilt_apex.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="accordion"  id="prebuilt_apex.lto">
+        <span class="fixed">&#x2295</span><b>lto</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="prebuilt_apex.never">
+        <span class="fixed">&nbsp;</span><b>never </b>
+        <i>bool</i>
+</div></div>
+    <div class="accordion"  id="prebuilt_apex.sanitize">
+        <span class="fixed">&#x2295</span><b>sanitize</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="prebuilt_apex.address">
+        <span class="fixed">&nbsp;</span><b>address </b>
+        <i>bool</i>
+</div></div></div>
+    <div class="accordion"  id="prebuilt_apex.product_variables.malloc_not_svelte">
+        <span class="fixed">&#x2295</span><b>product_variables.malloc_not_svelte</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="prebuilt_apex.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="prebuilt_apex.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="prebuilt_apex.product_variables.platform_sdk_version">
+        <span class="fixed">&#x2295</span><b>product_variables.platform_sdk_version</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="prebuilt_apex.asflags">
+        <span class="fixed">&nbsp;</span><b>asflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="prebuilt_apex.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="prebuilt_apex.product_variables.product_is_iot">
+        <span class="fixed">&#x2295</span><b>product_variables.product_is_iot</b></div>
+      <div class="collapsible">Product_is_iot is true for Android Things devices.
+
+ 
+        
+    <div class="simple" id="prebuilt_apex.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="prebuilt_apex.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div>
+    <div class="simple" id="prebuilt_apex.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="prebuilt_apex.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="prebuilt_apex.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="prebuilt_apex.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="prebuilt_apex.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="prebuilt_apex.product_variables.safestack">
+        <span class="fixed">&#x2295</span><b>product_variables.safestack</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="prebuilt_apex.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="prebuilt_apex.product_variables.uml">
+        <span class="fixed">&#x2295</span><b>product_variables.uml</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="prebuilt_apex.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="prebuilt_apex.product_variables.unbundled_build">
+        <span class="fixed">&#x2295</span><b>product_variables.unbundled_build</b>, product_variables.pdk</div>
+      <div class="collapsible">unbundled_build is a catch-all property to annotate modules that don&#39;t build in one or
+more unbundled branches, usually due to dependencies missing from the manifest.
+
+ 
+
+        
+    <div class="simple" id="prebuilt_apex.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div></div>
+    <div class="simple" id="prebuilt_apex.proprietary">
+        <span class="fixed">&nbsp;</span><b>proprietary </b>
+        <i>bool</i>, whether this is a proprietary vendor module, and should be installed into /vendor
+
+</div>
+    <div class="simple" id="prebuilt_apex.recovery">
+        <span class="fixed">&nbsp;</span><b>recovery </b>
+        <i>bool</i>, Whether this module is installed to recovery partition
+
+</div>
+    <div class="simple" id="prebuilt_apex.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>, names of other modules to install if this module is installed
+
+</div>
+    <div class="simple" id="prebuilt_apex.soc_specific">
+        <span class="fixed">&nbsp;</span><b>soc_specific </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+
+</div>
+    <div class="accordion"  id="prebuilt_apex.target.host">
+        <span class="fixed">&#x2295</span><b>target.host</b>, target.android</div>
+      <div class="collapsible">
+ 
+
+        
+    <div class="simple" id="prebuilt_apex.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>
+</div></div>
+    <div class="simple" id="prebuilt_apex.vendor">
+        <span class="fixed">&nbsp;</span><b>vendor </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+Use `soc_specific` instead for better meaning.
+
+</div>
+    <div class="simple" id="prebuilt_apex.vintf_fragments">
+        <span class="fixed">&nbsp;</span><b>vintf_fragments </b>
+        <i>list of strings</i>, VINTF manifest fragments to be installed if this module is installed
+
+</div></div>
+<script>
+  accordions = document.getElementsByClassName('accordion');
+  for (i=0; i < accordions.length; ++i) {
+    accordions[i].addEventListener("click", function() {
+      var panel = this.nextElementSibling;
+      var child = this.firstElementChild;
+      if (panel.style.display === "block") {
+          panel.style.display = "none";
+          child.textContent = '\u2295';
+      } else {
+          panel.style.display = "block";
+          child.textContent = '\u2296';
+      }
+    });
+  }
+</script>
+</body>

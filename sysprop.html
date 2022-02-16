@@ -1,0 +1,949 @@
+
+<html>
+<head>
+<title>Build Docs</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<style>
+.accordion,.simple{margin-left:1.5em;text-indent:-1.5em;margin-top:.25em}
+.collapsible{border-width:0 0 0 1;margin-left:.25em;padding-left:.25em;border-style:solid;
+  border-color:grey;display:none;}
+span.fixed{display: block; float: left; clear: left; width: 1em;}
+ul {
+	list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 30ch;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+</style>
+
+<script type="text/javascript">
+window.addEventListener('message', (e) => {
+  if (e != null && e.data != null && e.data.type === "SET_BASE" && e.data.base != null) {
+    const existingBase = document.querySelector('base');
+    if (existingBase != null) {
+      existingBase.parentElement.removeChild(existingBase);
+    }
+
+    const base = document.createElement('base');
+    base.setAttribute('href', e.data.base);
+    document.head.appendChild(base);
+  }
+});
+</script>
+
+</head>
+<body><ul>
+<li><h3>sysprop package</h3></li>
+<li><a href="sysprop.html#sysprop_library">sysprop_library</a></li>
+</ul>
+
+<div style="margin-left:30ch;padding:1px 16px;">
+
+	
+	<p>
+  <h2 id="sysprop_library">sysprop_library</h2>
+  
+<div class="breadcrumb">
+    
+				<a href=sysprop.html#sysprop_library.name>name</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.srcs>srcs</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.aidl>aidl</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.api_packages>api_packages</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.api_srcs>api_srcs</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.compile_dex>compile_dex</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.compile_multilib>compile_multilib</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.core_lib>core_lib</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.device_specific>device_specific</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.dex_preopt>dex_preopt</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.dist>dist</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.droiddoc_option_files>droiddoc_option_files</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.droiddoc_options>droiddoc_options</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.dxflags>dxflags</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.enabled>enabled</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.errorprone>errorprone</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.exclude_java_resource_dirs>exclude_java_resource_dirs</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.exclude_java_resources>exclude_java_resources</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.exclude_srcs>exclude_srcs</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.hidden_api_packages>hidden_api_packages</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.hostdex>hostdex</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.include_srcs>include_srcs</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.init_rc>init_rc</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.installable>installable</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.jacoco>jacoco</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.jarjar_rules>jarjar_rules</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.java_resource_dirs>java_resource_dirs</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.java_resources>java_resources</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.java_version>java_version</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.javac_shard_size>javac_shard_size</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.javacflags>javacflags</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.kotlincflags>kotlincflags</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.libs>libs</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.manifest>manifest</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.merge_annotations_dirs>merge_annotations_dirs</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.merge_inclusion_annotations_dirs>merge_inclusion_annotations_dirs</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.min_sdk_version>min_sdk_version</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.no_framework_libs>no_framework_libs</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.no_standard_libs>no_standard_libs</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.notice>notice</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.openjdk9>openjdk9</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.optimize>optimize</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.owner>owner</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.patch_module>patch_module</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.permitted_packages>permitted_packages</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.platform_apis>platform_apis</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.plugins>plugins</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.product_services_specific>product_services_specific</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.product_specific>product_specific</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.product_variables.arc>product_variables.arc</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.product_variables.binder32bit>product_variables.binder32bit</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.product_variables.debuggable>product_variables.debuggable</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.product_variables.eng>product_variables.eng</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.product_variables.malloc_not_svelte>product_variables.malloc_not_svelte</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.product_variables.platform_sdk_version>product_variables.platform_sdk_version</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.product_variables.product_is_iot>product_variables.product_is_iot</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.product_variables.safestack>product_variables.safestack</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.product_variables.uml>product_variables.uml</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.product_variables.unbundled_build>product_variables.unbundled_build</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.property_owner>property_owner</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.proprietary>proprietary</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.proto>proto</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.recovery>recovery</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.recovery_available>recovery_available</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.required>required</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.sdk_version>sdk_version</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.services>services</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.soc_specific>soc_specific</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.srcs_lib>srcs_lib</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.srcs_lib_whitelist_dirs>srcs_lib_whitelist_dirs</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.srcs_lib_whitelist_pkgs>srcs_lib_whitelist_pkgs</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.static_libs>static_libs</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.stub_only_libs>stub_only_libs</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.system_modules>system_modules</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.target.host>target.host</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.target.hostdex>target.hostdex</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.target_sdk_version>target_sdk_version</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.use_tools_jar>use_tools_jar</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.vendor>vendor</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.vendor_available>vendor_available</a>
+				,&nbsp;<a href=sysprop.html#sysprop_library.vintf_fragments>vintf_fragments</a></div>
+    <div class="simple" id="sysprop_library.name">
+        <span class="fixed">&nbsp;</span><b>name </b>
+        <i>string</i>, The name of the module.  Must be unique across all modules.
+
+</div>
+    <div class="simple" id="sysprop_library.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="accordion"  id="sysprop_library.aidl">
+        <span class="fixed">&#x2295</span><b>aidl</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="sysprop_library.include_dirs">
+        <span class="fixed">&nbsp;</span><b>include_dirs </b>
+        <i>list of strings</i>, Top level directories to pass to aidl tool
+
+</div>
+    <div class="simple" id="sysprop_library.local_include_dirs">
+        <span class="fixed">&nbsp;</span><b>local_include_dirs </b>
+        <i>list of strings</i>, Directories rooted at the Android.bp file to pass to aidl tool
+
+</div>
+    <div class="simple" id="sysprop_library.export_include_dirs">
+        <span class="fixed">&nbsp;</span><b>export_include_dirs </b>
+        <i>list of strings</i>, directories that should be added as include directories for any aidl sources of modules
+that depend on this module, as well as to aidl for this module.
+
+</div>
+    <div class="simple" id="sysprop_library.generate_traces">
+        <span class="fixed">&nbsp;</span><b>generate_traces </b>
+        <i>bool</i>, whether to generate traces (for systrace) for this interface
+
+</div>
+    <div class="simple" id="sysprop_library.generate_get_transaction_name">
+        <span class="fixed">&nbsp;</span><b>generate_get_transaction_name </b>
+        <i>bool</i>, whether to generate Binder#GetTransaction name method.
+
+</div></div>
+    <div class="simple" id="sysprop_library.api_packages">
+        <span class="fixed">&nbsp;</span><b>api_packages </b>
+        <i>list of strings</i>, list of package names that will be documented and publicized as API
+
+</div>
+    <div class="simple" id="sysprop_library.api_srcs">
+        <span class="fixed">&nbsp;</span><b>api_srcs </b>
+        <i>list of strings</i>, list of optional source files that are part of API but not part of runtime library.
+
+</div>
+    <div class="simple" id="sysprop_library.compile_dex">
+        <span class="fixed">&nbsp;</span><b>compile_dex </b>
+        <i>bool</i>, If set to true, compile dex regardless of installable.  Defaults to false.
+
+</div>
+    <div class="simple" id="sysprop_library.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>, control whether this module compiles for 32-bit, 64-bit, or both.  Possible values
+are &#34;32&#34; (compile for 32-bit only), &#34;64&#34; (compile for 64-bit only), &#34;both&#34; (compile for both
+architectures), or &#34;first&#34; (compile for 64-bit on a 64-bit platform, and 32-bit on a 32-bit
+platform
+
+</div>
+    <div class="simple" id="sysprop_library.core_lib">
+        <span class="fixed">&nbsp;</span><b>core_lib </b>
+        <i>bool</i>, If set to true, the path of dist files is apistubs/core. Defaults to false.
+
+</div>
+    <div class="simple" id="sysprop_library.device_specific">
+        <span class="fixed">&nbsp;</span><b>device_specific </b>
+        <i>bool</i>, whether this module is specific to a device, not only for SoC, but also for off-chip
+peripherals. When set to true, it is installed into /odm (or /vendor/odm if odm partition
+does not exist, or /system/vendor/odm if both odm and vendor partitions do not exist).
+This implies `soc_specific:true`.
+
+</div>
+    <div class="accordion"  id="sysprop_library.dex_preopt">
+        <span class="fixed">&#x2295</span><b>dex_preopt</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="sysprop_library.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>, If false, prevent dexpreopting and stripping the dex file from the final jar.  Defaults to
+true.
+
+</div>
+    <div class="simple" id="sysprop_library.no_stripping">
+        <span class="fixed">&nbsp;</span><b>no_stripping </b>
+        <i>bool</i>, If true, never strip the dex files from the final jar when dexpreopting.  Defaults to false.
+
+</div>
+    <div class="simple" id="sysprop_library.app_image">
+        <span class="fixed">&nbsp;</span><b>app_image </b>
+        <i>bool</i>, If true, generate an app image (.art file) for this module.
+
+</div>
+    <div class="simple" id="sysprop_library.profile_guided">
+        <span class="fixed">&nbsp;</span><b>profile_guided </b>
+        <i>bool</i>, If true, use a checked-in profile to guide optimization.  Defaults to false unless
+a matching profile is set or a profile is found in PRODUCT_DEX_PREOPT_PROFILE_DIR
+that matches the name of this module, in which case it is defaulted to true.
+
+</div>
+    <div class="simple" id="sysprop_library.profile">
+        <span class="fixed">&nbsp;</span><b>profile </b>
+        <i>string</i>, If set, provides the path to profile relative to the Android.bp file.  If not set,
+defaults to searching for a file that matches the name of this module in the default
+profile location set by PRODUCT_DEX_PREOPT_PROFILE_DIR, or empty if not found.
+
+</div></div>
+    <div class="accordion"  id="sysprop_library.dist">
+        <span class="fixed">&#x2295</span><b>dist</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="sysprop_library.targets">
+        <span class="fixed">&nbsp;</span><b>targets </b>
+        <i>list of strings</i>, copy the output of this module to the $DIST_DIR when `dist` is specified on the
+command line and  any of these targets are also on the command line, or otherwise
+built
+
+</div>
+    <div class="simple" id="sysprop_library.dest">
+        <span class="fixed">&nbsp;</span><b>dest </b>
+        <i>string</i>, The name of the output artifact. This defaults to the basename of the output of
+the module.
+
+</div>
+    <div class="simple" id="sysprop_library.dir">
+        <span class="fixed">&nbsp;</span><b>dir </b>
+        <i>string</i>, The directory within the dist directory to store the artifact. Defaults to the
+top level directory (&#34;&#34;).
+
+</div>
+    <div class="simple" id="sysprop_library.suffix">
+        <span class="fixed">&nbsp;</span><b>suffix </b>
+        <i>string</i>, A suffix to add to the artifact file name (before any extension).
+
+</div></div>
+    <div class="simple" id="sysprop_library.droiddoc_option_files">
+        <span class="fixed">&nbsp;</span><b>droiddoc_option_files </b>
+        <i>list of strings</i>, local files that are used within user customized droiddoc options.
+
+</div>
+    <div class="simple" id="sysprop_library.droiddoc_options">
+        <span class="fixed">&nbsp;</span><b>droiddoc_options </b>
+        <i>list of strings</i>, additional droiddoc options
+Available variables for substitution:
+
+<pre>
+
+ $(location &lt;label&gt;): the path to the droiddoc_option_files with name &lt;label&gt;
+
+</pre>
+</div>
+    <div class="simple" id="sysprop_library.dxflags">
+        <span class="fixed">&nbsp;</span><b>dxflags </b>
+        <i>list of strings</i>, list of module-specific flags that will be used for dex compiles
+
+</div>
+    <div class="simple" id="sysprop_library.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>, emit build rules for this module
+
+</div>
+    <div class="accordion"  id="sysprop_library.errorprone">
+        <span class="fixed">&#x2295</span><b>errorprone</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="sysprop_library.javacflags">
+        <span class="fixed">&nbsp;</span><b>javacflags </b>
+        <i>list of strings</i>, List of javac flags that should only be used when running errorprone.
+
+</div></div>
+    <div class="simple" id="sysprop_library.exclude_java_resource_dirs">
+        <span class="fixed">&nbsp;</span><b>exclude_java_resource_dirs </b>
+        <i>list of strings</i>, list of directories that should be excluded from java_resource_dirs
+
+</div>
+    <div class="simple" id="sysprop_library.exclude_java_resources">
+        <span class="fixed">&nbsp;</span><b>exclude_java_resources </b>
+        <i>list of strings</i>, list of files that should be excluded from java_resources and java_resource_dirs
+
+</div>
+    <div class="simple" id="sysprop_library.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>, list of source files that should not be used to build the Java module.
+This is most useful in the arch/multilib variants to remove non-common files
+
+</div>
+    <div class="simple" id="sysprop_library.hidden_api_packages">
+        <span class="fixed">&nbsp;</span><b>hidden_api_packages </b>
+        <i>list of strings</i>, list of package names that must be hidden from the API
+
+</div>
+    <div class="simple" id="sysprop_library.hostdex">
+        <span class="fixed">&nbsp;</span><b>hostdex </b>
+        <i>bool</i>, If true, export a copy of the module as a -hostdex module for host testing.
+
+</div>
+    <div class="simple" id="sysprop_library.include_srcs">
+        <span class="fixed">&nbsp;</span><b>include_srcs </b>
+        <i>bool</i>, If set to true, include sources used to compile the module in to the final jar
+
+</div>
+    <div class="simple" id="sysprop_library.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>, init.rc files to be installed if this module is installed
+
+</div>
+    <div class="simple" id="sysprop_library.installable">
+        <span class="fixed">&nbsp;</span><b>installable </b>
+        <i>bool</i>, If set to true, allow this module to be dexed and installed on devices.  Has no
+effect on host modules, which are always considered installable.
+
+<i>Default: true</i></div>
+    <div class="accordion"  id="sysprop_library.jacoco">
+        <span class="fixed">&#x2295</span><b>jacoco</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="sysprop_library.include_filter">
+        <span class="fixed">&nbsp;</span><b>include_filter </b>
+        <i>list of strings</i>, List of classes to include for instrumentation with jacoco to collect coverage
+information at runtime when building with coverage enabled.  If unset defaults to all
+classes.
+Supports &#39;*&#39; as the last character of an entry in the list as a wildcard match.
+If preceded by &#39;.&#39; it matches all classes in the package and subpackages, otherwise
+it matches classes in the package that have the class name as a prefix.
+
+</div>
+    <div class="simple" id="sysprop_library.exclude_filter">
+        <span class="fixed">&nbsp;</span><b>exclude_filter </b>
+        <i>list of strings</i>, List of classes to exclude from instrumentation with jacoco to collect coverage
+information at runtime when building with coverage enabled.  Overrides classes selected
+by the include_filter property.
+Supports &#39;*&#39; as the last character of an entry in the list as a wildcard match.
+If preceded by &#39;.&#39; it matches all classes in the package and subpackages, otherwise
+it matches classes in the package that have the class name as a prefix.
+
+</div></div>
+    <div class="simple" id="sysprop_library.jarjar_rules">
+        <span class="fixed">&nbsp;</span><b>jarjar_rules </b>
+        <i>string</i>, if not blank, run jarjar using the specified rules file
+
+</div>
+    <div class="simple" id="sysprop_library.java_resource_dirs">
+        <span class="fixed">&nbsp;</span><b>java_resource_dirs </b>
+        <i>list of strings</i>, list of directories containing Java resources
+
+</div>
+    <div class="simple" id="sysprop_library.java_resources">
+        <span class="fixed">&nbsp;</span><b>java_resources </b>
+        <i>list of strings</i>, list of files to use as Java resources
+
+</div>
+    <div class="simple" id="sysprop_library.java_version">
+        <span class="fixed">&nbsp;</span><b>java_version </b>
+        <i>string</i>, If not blank, set the java version passed to javac as -source and -target
+
+</div>
+    <div class="simple" id="sysprop_library.javac_shard_size">
+        <span class="fixed">&nbsp;</span><b>javac_shard_size </b>
+        <i>int64</i>, The number of Java source entries each Javac instance can process
+
+</div>
+    <div class="simple" id="sysprop_library.javacflags">
+        <span class="fixed">&nbsp;</span><b>javacflags </b>
+        <i>list of strings</i>, list of module-specific flags that will be used for javac compiles
+
+</div>
+    <div class="simple" id="sysprop_library.kotlincflags">
+        <span class="fixed">&nbsp;</span><b>kotlincflags </b>
+        <i>list of strings</i>, list of module-specific flags that will be used for kotlinc compiles
+
+</div>
+    <div class="simple" id="sysprop_library.libs">
+        <span class="fixed">&nbsp;</span><b>libs </b>
+        <i>list of strings</i>, list of of java libraries that will be in the classpath
+
+</div>
+    <div class="simple" id="sysprop_library.manifest">
+        <span class="fixed">&nbsp;</span><b>manifest </b>
+        <i>string</i>, manifest file to be included in resulting jar
+
+</div>
+    <div class="simple" id="sysprop_library.merge_annotations_dirs">
+        <span class="fixed">&nbsp;</span><b>merge_annotations_dirs </b>
+        <i>list of strings</i>, a list of top-level directories containing files to merge qualifier annotations
+(i.e. those intended to be included in the stubs written) from.
+
+</div>
+    <div class="simple" id="sysprop_library.merge_inclusion_annotations_dirs">
+        <span class="fixed">&nbsp;</span><b>merge_inclusion_annotations_dirs </b>
+        <i>list of strings</i>, a list of top-level directories containing Java stub files to merge show/hide annotations from.
+
+</div>
+    <div class="simple" id="sysprop_library.min_sdk_version">
+        <span class="fixed">&nbsp;</span><b>min_sdk_version </b>
+        <i>string</i>, if not blank, set the minimum version of the sdk that the compiled artifacts will run against.
+Defaults to sdk_version if not set.
+
+</div>
+    <div class="simple" id="sysprop_library.no_framework_libs">
+        <span class="fixed">&nbsp;</span><b>no_framework_libs </b>
+        <i>bool</i>, don&#39;t build against the framework libraries (ext, and framework for device targets)
+
+</div>
+    <div class="simple" id="sysprop_library.no_standard_libs">
+        <span class="fixed">&nbsp;</span><b>no_standard_libs </b>
+        <i>bool</i>, don&#39;t build against the default libraries (bootclasspath, ext, and framework for device
+targets)
+
+</div>
+    <div class="simple" id="sysprop_library.notice">
+        <span class="fixed">&nbsp;</span><b>notice </b>
+        <i>string</i>, relative path to a file to include in the list of notices for the device
+
+</div>
+    <div class="accordion"  id="sysprop_library.openjdk9">
+        <span class="fixed">&#x2295</span><b>openjdk9</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="sysprop_library.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>, List of source files that should only be used when passing -source 1.9
+
+</div>
+    <div class="simple" id="sysprop_library.javacflags">
+        <span class="fixed">&nbsp;</span><b>javacflags </b>
+        <i>list of strings</i>, List of javac flags that should only be used when passing -source 1.9
+
+</div></div>
+    <div class="accordion"  id="sysprop_library.optimize">
+        <span class="fixed">&#x2295</span><b>optimize</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="sysprop_library.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>, If false, disable all optimization.  Defaults to true for android_app and android_test
+modules, false for java_library and java_test modules.
+
+</div>
+    <div class="simple" id="sysprop_library.enabledByDefault">
+        <span class="fixed">&nbsp;</span><b>enabledByDefault </b>
+        <i>bool</i>, True if the module containing this has it set by default.
+
+</div>
+    <div class="simple" id="sysprop_library.shrink">
+        <span class="fixed">&nbsp;</span><b>shrink </b>
+        <i>bool</i>, If true, optimize for size by removing unused code.  Defaults to true for apps,
+false for libraries and tests.
+
+</div>
+    <div class="simple" id="sysprop_library.optimize">
+        <span class="fixed">&nbsp;</span><b>optimize </b>
+        <i>bool</i>, If true, optimize bytecode.  Defaults to false.
+
+</div>
+    <div class="simple" id="sysprop_library.obfuscate">
+        <span class="fixed">&nbsp;</span><b>obfuscate </b>
+        <i>bool</i>, If true, obfuscate bytecode.  Defaults to false.
+
+</div>
+    <div class="simple" id="sysprop_library.no_aapt_flags">
+        <span class="fixed">&nbsp;</span><b>no_aapt_flags </b>
+        <i>bool</i>, If true, do not use the flag files generated by aapt that automatically keep
+classes referenced by the app manifest.  Defaults to false.
+
+</div>
+    <div class="simple" id="sysprop_library.proguard_flags">
+        <span class="fixed">&nbsp;</span><b>proguard_flags </b>
+        <i>list of strings</i>, Flags to pass to proguard.
+
+</div>
+    <div class="simple" id="sysprop_library.proguard_flags_files">
+        <span class="fixed">&nbsp;</span><b>proguard_flags_files </b>
+        <i>list of strings</i>, Specifies the locations of files containing proguard flags.
+
+</div></div>
+    <div class="simple" id="sysprop_library.owner">
+        <span class="fixed">&nbsp;</span><b>owner </b>
+        <i>string</i>, vendor who owns this module
+
+</div>
+    <div class="simple" id="sysprop_library.patch_module">
+        <span class="fixed">&nbsp;</span><b>patch_module </b>
+        <i>string</i>, When compiling language level 9+ .java code in packages that are part of
+a system module, patch_module names the module that your sources and
+dependencies should be patched into. The Android runtime currently
+doesn&#39;t implement the JEP 261 module system so this option is only
+supported at compile time. It should only be needed to compile tests in
+packages that exist in libcore and which are inconvenient to move
+elsewhere.
+
+</div>
+    <div class="simple" id="sysprop_library.permitted_packages">
+        <span class="fixed">&nbsp;</span><b>permitted_packages </b>
+        <i>list of strings</i>, If not empty, classes are restricted to the specified packages and their sub-packages.
+This restriction is checked after applying jarjar rules and including static libs.
+
+</div>
+    <div class="simple" id="sysprop_library.platform_apis">
+        <span class="fixed">&nbsp;</span><b>platform_apis </b>
+        <i>bool</i>, if true, compile against the platform APIs instead of an SDK.
+
+</div>
+    <div class="simple" id="sysprop_library.plugins">
+        <span class="fixed">&nbsp;</span><b>plugins </b>
+        <i>list of strings</i>, List of modules to use as annotation processors
+
+</div>
+    <div class="simple" id="sysprop_library.product_services_specific">
+        <span class="fixed">&nbsp;</span><b>product_services_specific </b>
+        <i>bool</i>, whether this module provides services owned by the OS provider to the core platform. When set
+to true, it is installed into  /product_services (or /system/product_services if
+product_services partition does not exist).
+
+</div>
+    <div class="simple" id="sysprop_library.product_specific">
+        <span class="fixed">&nbsp;</span><b>product_specific </b>
+        <i>bool</i>, whether this module is specific to a software configuration of a product (e.g. country,
+network operator, etc). When set to true, it is installed into /product (or
+/system/product if product partition does not exist).
+
+</div>
+    <div class="accordion"  id="sysprop_library.product_variables.arc">
+        <span class="fixed">&#x2295</span><b>product_variables.arc</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="sysprop_library.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="sysprop_library.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="sysprop_library.include_dirs">
+        <span class="fixed">&nbsp;</span><b>include_dirs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="sysprop_library.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="sysprop_library.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="sysprop_library.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="sysprop_library.product_variables.binder32bit">
+        <span class="fixed">&#x2295</span><b>product_variables.binder32bit</b>, product_variables.override_rs_driver, product_variables.treble_linker_namespaces, product_variables.enforce_vintf_manifest, product_variables.use_lmkd_stats_log</div>
+      <div class="collapsible">
+ 
+treble_linker_namespaces is true when the system/vendor linker namespace separation is
+enabled.
+
+enforce_vintf_manifest is true when a device is required to have a vintf manifest.
+
+
+
+        
+    <div class="simple" id="sysprop_library.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="sysprop_library.product_variables.debuggable">
+        <span class="fixed">&#x2295</span><b>product_variables.debuggable</b></div>
+      <div class="collapsible">debuggable is true for eng and userdebug builds, and can be used to turn on additional
+debugging features that don&#39;t significantly impact runtime behavior.  userdebug builds
+are used for dogfooding and performance testing, and should be as similar to user builds
+as possible.
+
+ 
+        
+    <div class="simple" id="sysprop_library.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="sysprop_library.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="sysprop_library.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="sysprop_library.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="sysprop_library.product_variables.eng">
+        <span class="fixed">&#x2295</span><b>product_variables.eng</b></div>
+      <div class="collapsible">eng is true for -eng builds, and can be used to turn on additionaly heavyweight debugging
+features.
+
+ 
+        
+    <div class="simple" id="sysprop_library.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="sysprop_library.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="accordion"  id="sysprop_library.lto">
+        <span class="fixed">&#x2295</span><b>lto</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="sysprop_library.never">
+        <span class="fixed">&nbsp;</span><b>never </b>
+        <i>bool</i>
+</div></div>
+    <div class="accordion"  id="sysprop_library.sanitize">
+        <span class="fixed">&#x2295</span><b>sanitize</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="sysprop_library.address">
+        <span class="fixed">&nbsp;</span><b>address </b>
+        <i>bool</i>
+</div></div></div>
+    <div class="accordion"  id="sysprop_library.product_variables.malloc_not_svelte">
+        <span class="fixed">&#x2295</span><b>product_variables.malloc_not_svelte</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="sysprop_library.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="sysprop_library.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="sysprop_library.product_variables.platform_sdk_version">
+        <span class="fixed">&#x2295</span><b>product_variables.platform_sdk_version</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="sysprop_library.asflags">
+        <span class="fixed">&nbsp;</span><b>asflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="sysprop_library.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="sysprop_library.product_variables.product_is_iot">
+        <span class="fixed">&#x2295</span><b>product_variables.product_is_iot</b></div>
+      <div class="collapsible">Product_is_iot is true for Android Things devices.
+
+ 
+        
+    <div class="simple" id="sysprop_library.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="sysprop_library.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div>
+    <div class="simple" id="sysprop_library.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="sysprop_library.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="sysprop_library.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="sysprop_library.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="sysprop_library.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="sysprop_library.product_variables.safestack">
+        <span class="fixed">&#x2295</span><b>product_variables.safestack</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="sysprop_library.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="sysprop_library.product_variables.uml">
+        <span class="fixed">&#x2295</span><b>product_variables.uml</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="sysprop_library.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="sysprop_library.product_variables.unbundled_build">
+        <span class="fixed">&#x2295</span><b>product_variables.unbundled_build</b>, product_variables.pdk</div>
+      <div class="collapsible">unbundled_build is a catch-all property to annotate modules that don&#39;t build in one or
+more unbundled branches, usually due to dependencies missing from the manifest.
+
+ 
+
+        
+    <div class="simple" id="sysprop_library.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div></div>
+    <div class="simple" id="sysprop_library.property_owner">
+        <span class="fixed">&nbsp;</span><b>property_owner </b>
+        <i>string</i>, Determine who owns this sysprop library. Possible values are
+&#34;Platform&#34;, &#34;Vendor&#34;, or &#34;Odm&#34;
+
+</div>
+    <div class="simple" id="sysprop_library.proprietary">
+        <span class="fixed">&nbsp;</span><b>proprietary </b>
+        <i>bool</i>, whether this is a proprietary vendor module, and should be installed into /vendor
+
+</div>
+    <div class="accordion"  id="sysprop_library.proto">
+        <span class="fixed">&#x2295</span><b>proto</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="sysprop_library.type">
+        <span class="fixed">&nbsp;</span><b>type </b>
+        <i>string</i>, Proto generator type.  C++: full or lite.  Java: micro, nano, stream, or lite.
+
+</div>
+    <div class="simple" id="sysprop_library.plugin">
+        <span class="fixed">&nbsp;</span><b>plugin </b>
+        <i>string</i>, Proto plugin to use as the generator.  Must be a cc_binary_host module.
+
+</div>
+    <div class="simple" id="sysprop_library.include_dirs">
+        <span class="fixed">&nbsp;</span><b>include_dirs </b>
+        <i>list of strings</i>, list of directories that will be added to the protoc include paths.
+
+</div>
+    <div class="simple" id="sysprop_library.local_include_dirs">
+        <span class="fixed">&nbsp;</span><b>local_include_dirs </b>
+        <i>list of strings</i>, list of directories relative to the bp file that will
+be added to the protoc include paths.
+
+</div>
+    <div class="simple" id="sysprop_library.canonical_path_from_root">
+        <span class="fixed">&nbsp;</span><b>canonical_path_from_root </b>
+        <i>bool</i>, whether to identify the proto files from the root of the
+source tree (the original method in Android, useful for
+android-specific protos), or relative from where they were
+specified (useful for external/third party protos).
+
+This defaults to true today, but is expected to default to
+false in the future.
+
+</div>
+    <div class="simple" id="sysprop_library.output_params">
+        <span class="fixed">&nbsp;</span><b>output_params </b>
+        <i>list of strings</i>, List of extra options that will be passed to the proto generator.
+
+</div></div>
+    <div class="simple" id="sysprop_library.recovery">
+        <span class="fixed">&nbsp;</span><b>recovery </b>
+        <i>bool</i>
+</div>
+    <div class="simple" id="sysprop_library.recovery_available">
+        <span class="fixed">&nbsp;</span><b>recovery_available </b>
+        <i>bool</i>
+</div>
+    <div class="simple" id="sysprop_library.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>, names of other modules to install if this module is installed
+
+</div>
+    <div class="simple" id="sysprop_library.sdk_version">
+        <span class="fixed">&nbsp;</span><b>sdk_version </b>
+        <i>string</i>, if not blank, set to the version of the sdk to compile against.  Defaults to compiling against the current
+sdk if platform_apis is not set.
+
+</div>
+    <div class="simple" id="sysprop_library.services">
+        <span class="fixed">&nbsp;</span><b>services </b>
+        <i>list of strings</i>, List of files to include in the META-INF/services folder of the resulting jar.
+
+</div>
+    <div class="simple" id="sysprop_library.soc_specific">
+        <span class="fixed">&nbsp;</span><b>soc_specific </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+
+</div>
+    <div class="simple" id="sysprop_library.srcs_lib">
+        <span class="fixed">&nbsp;</span><b>srcs_lib </b>
+        <i>string</i>, the java library (in classpath) for documentation that provides java srcs and srcjars.
+
+</div>
+    <div class="simple" id="sysprop_library.srcs_lib_whitelist_dirs">
+        <span class="fixed">&nbsp;</span><b>srcs_lib_whitelist_dirs </b>
+        <i>list of strings</i>, the base dirs under srcs_lib will be scanned for java srcs.
+
+</div>
+    <div class="simple" id="sysprop_library.srcs_lib_whitelist_pkgs">
+        <span class="fixed">&nbsp;</span><b>srcs_lib_whitelist_pkgs </b>
+        <i>list of strings</i>, the sub dirs under srcs_lib_whitelist_dirs will be scanned for java srcs.
+Defaults to &#34;android.annotation&#34;.
+
+</div>
+    <div class="simple" id="sysprop_library.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>, list of java libraries that will be compiled into the resulting jar
+
+</div>
+    <div class="simple" id="sysprop_library.stub_only_libs">
+        <span class="fixed">&nbsp;</span><b>stub_only_libs </b>
+        <i>list of strings</i>, List of Java libraries that will be in the classpath when building stubs
+
+</div>
+    <div class="simple" id="sysprop_library.system_modules">
+        <span class="fixed">&nbsp;</span><b>system_modules </b>
+        <i>string</i>, When targeting 1.9, override the modules to use with --system
+
+</div>
+    <div class="accordion"  id="sysprop_library.target.host">
+        <span class="fixed">&#x2295</span><b>target.host</b>, target.android</div>
+      <div class="collapsible">
+ 
+
+        
+    <div class="simple" id="sysprop_library.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>
+</div></div>
+    <div class="accordion"  id="sysprop_library.target.hostdex">
+        <span class="fixed">&#x2295</span><b>target.hostdex</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="sysprop_library.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>, Additional required dependencies to add to -hostdex modules.
+
+</div></div>
+    <div class="simple" id="sysprop_library.target_sdk_version">
+        <span class="fixed">&nbsp;</span><b>target_sdk_version </b>
+        <i>string</i>, if not blank, set the targetSdkVersion in the AndroidManifest.xml.
+Defaults to sdk_version if not set.
+
+</div>
+    <div class="simple" id="sysprop_library.use_tools_jar">
+        <span class="fixed">&nbsp;</span><b>use_tools_jar </b>
+        <i>bool</i>, Add host jdk tools.jar to bootclasspath
+
+</div>
+    <div class="simple" id="sysprop_library.vendor">
+        <span class="fixed">&nbsp;</span><b>vendor </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+Use `soc_specific` instead for better meaning.
+
+</div>
+    <div class="simple" id="sysprop_library.vendor_available">
+        <span class="fixed">&nbsp;</span><b>vendor_available </b>
+        <i>bool</i>
+</div>
+    <div class="simple" id="sysprop_library.vintf_fragments">
+        <span class="fixed">&nbsp;</span><b>vintf_fragments </b>
+        <i>list of strings</i>, VINTF manifest fragments to be installed if this module is installed
+
+</div></div>
+<script>
+  accordions = document.getElementsByClassName('accordion');
+  for (i=0; i < accordions.length; ++i) {
+    accordions[i].addEventListener("click", function() {
+      var panel = this.nextElementSibling;
+      var child = this.firstElementChild;
+      if (panel.style.display === "block") {
+          panel.style.display = "none";
+          child.textContent = '\u2295';
+      } else {
+          panel.style.display = "block";
+          child.textContent = '\u2296';
+      }
+    });
+  }
+</script>
+</body>

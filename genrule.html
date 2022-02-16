@@ -1,0 +1,1359 @@
+
+<html>
+<head>
+<title>Build Docs</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<style>
+.accordion,.simple{margin-left:1.5em;text-indent:-1.5em;margin-top:.25em}
+.collapsible{border-width:0 0 0 1;margin-left:.25em;padding-left:.25em;border-style:solid;
+  border-color:grey;display:none;}
+span.fixed{display: block; float: left; clear: left; width: 1em;}
+ul {
+	list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 30ch;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+</style>
+
+<script type="text/javascript">
+window.addEventListener('message', (e) => {
+  if (e != null && e.data != null && e.data.type === "SET_BASE" && e.data.base != null) {
+    const existingBase = document.querySelector('base');
+    if (existingBase != null) {
+      existingBase.parentElement.removeChild(existingBase);
+    }
+
+    const base = document.createElement('base');
+    base.setAttribute('href', e.data.base);
+    document.head.appendChild(base);
+  }
+});
+</script>
+
+</head>
+<body><ul>
+<li><h3>genrule package</h3></li>
+<li><a href="genrule.html#genrule">genrule</a></li>
+<li><a href="genrule.html#genrule_defaults">genrule_defaults</a></li>
+<li><a href="genrule.html#gensrcs">gensrcs</a></li>
+</ul>
+
+<div style="margin-left:30ch;padding:1px 16px;">
+
+	
+	<p>
+  <h2 id="genrule">genrule</h2>
+  
+<div class="breadcrumb">
+    
+				<a href=genrule.html#genrule.name>name</a>
+				,&nbsp;<a href=genrule.html#genrule.srcs>srcs</a>
+				,&nbsp;<a href=genrule.html#genrule.cmd>cmd</a>
+				,&nbsp;<a href=genrule.html#genrule.compile_multilib>compile_multilib</a>
+				,&nbsp;<a href=genrule.html#genrule.defaults>defaults</a>
+				,&nbsp;<a href=genrule.html#genrule.depfile>depfile</a>
+				,&nbsp;<a href=genrule.html#genrule.device_specific>device_specific</a>
+				,&nbsp;<a href=genrule.html#genrule.dist>dist</a>
+				,&nbsp;<a href=genrule.html#genrule.enabled>enabled</a>
+				,&nbsp;<a href=genrule.html#genrule.exclude_srcs>exclude_srcs</a>
+				,&nbsp;<a href=genrule.html#genrule.export_include_dirs>export_include_dirs</a>
+				,&nbsp;<a href=genrule.html#genrule.init_rc>init_rc</a>
+				,&nbsp;<a href=genrule.html#genrule.notice>notice</a>
+				,&nbsp;<a href=genrule.html#genrule.out>out</a>
+				,&nbsp;<a href=genrule.html#genrule.owner>owner</a>
+				,&nbsp;<a href=genrule.html#genrule.product_services_specific>product_services_specific</a>
+				,&nbsp;<a href=genrule.html#genrule.product_specific>product_specific</a>
+				,&nbsp;<a href=genrule.html#genrule.product_variables.arc>product_variables.arc</a>
+				,&nbsp;<a href=genrule.html#genrule.product_variables.binder32bit>product_variables.binder32bit</a>
+				,&nbsp;<a href=genrule.html#genrule.product_variables.debuggable>product_variables.debuggable</a>
+				,&nbsp;<a href=genrule.html#genrule.product_variables.eng>product_variables.eng</a>
+				,&nbsp;<a href=genrule.html#genrule.product_variables.malloc_not_svelte>product_variables.malloc_not_svelte</a>
+				,&nbsp;<a href=genrule.html#genrule.product_variables.platform_sdk_version>product_variables.platform_sdk_version</a>
+				,&nbsp;<a href=genrule.html#genrule.product_variables.product_is_iot>product_variables.product_is_iot</a>
+				,&nbsp;<a href=genrule.html#genrule.product_variables.safestack>product_variables.safestack</a>
+				,&nbsp;<a href=genrule.html#genrule.product_variables.uml>product_variables.uml</a>
+				,&nbsp;<a href=genrule.html#genrule.product_variables.unbundled_build>product_variables.unbundled_build</a>
+				,&nbsp;<a href=genrule.html#genrule.proprietary>proprietary</a>
+				,&nbsp;<a href=genrule.html#genrule.recovery>recovery</a>
+				,&nbsp;<a href=genrule.html#genrule.required>required</a>
+				,&nbsp;<a href=genrule.html#genrule.soc_specific>soc_specific</a>
+				,&nbsp;<a href=genrule.html#genrule.target.host>target.host</a>
+				,&nbsp;<a href=genrule.html#genrule.tool_files>tool_files</a>
+				,&nbsp;<a href=genrule.html#genrule.tools>tools</a>
+				,&nbsp;<a href=genrule.html#genrule.vendor>vendor</a>
+				,&nbsp;<a href=genrule.html#genrule.vintf_fragments>vintf_fragments</a></div>
+    <div class="simple" id="genrule.name">
+        <span class="fixed">&nbsp;</span><b>name </b>
+        <i>string</i>, The name of the module.  Must be unique across all modules.
+
+</div>
+    <div class="simple" id="genrule.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>, list of input files
+
+</div>
+    <div class="simple" id="genrule.cmd">
+        <span class="fixed">&nbsp;</span><b>cmd </b>
+        <i>string</i>, The command to run on one or more input files. Cmd supports substitution of a few variables
+(the actual substitution is implemented in GenerateAndroidBuildActions below)
+
+Available variables for substitution:
+
+<pre>
+
+ $(location): the path to the first entry in tools or tool_files
+ $(location &lt;label&gt;): the path to the tool, tool_file, input or output with name &lt;label&gt;
+ $(in): one or more input files
+ $(out): a single output file
+ $(depfile): a file to which dependencies will be written, if the depfile property is set to true
+ $(genDir): the sandbox directory for this tool; contains $(out)
+ $$: a literal $
+
+</pre>
+All files used must be declared as inputs (to ensure proper up-to-date checks).
+Use &#34;$(in)&#34; directly in Cmd to ensure that all inputs used are declared.
+
+</div>
+    <div class="simple" id="genrule.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>, control whether this module compiles for 32-bit, 64-bit, or both.  Possible values
+are &#34;32&#34; (compile for 32-bit only), &#34;64&#34; (compile for 64-bit only), &#34;both&#34; (compile for both
+architectures), or &#34;first&#34; (compile for 64-bit on a 64-bit platform, and 32-bit on a 32-bit
+platform
+
+</div>
+    <div class="simple" id="genrule.defaults">
+        <span class="fixed">&nbsp;</span><b>defaults </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule.depfile">
+        <span class="fixed">&nbsp;</span><b>depfile </b>
+        <i>bool</i>, Enable reading a file containing dependencies in gcc format after the command completes
+
+</div>
+    <div class="simple" id="genrule.device_specific">
+        <span class="fixed">&nbsp;</span><b>device_specific </b>
+        <i>bool</i>, whether this module is specific to a device, not only for SoC, but also for off-chip
+peripherals. When set to true, it is installed into /odm (or /vendor/odm if odm partition
+does not exist, or /system/vendor/odm if both odm and vendor partitions do not exist).
+This implies `soc_specific:true`.
+
+</div>
+    <div class="accordion"  id="genrule.dist">
+        <span class="fixed">&#x2295</span><b>dist</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="genrule.targets">
+        <span class="fixed">&nbsp;</span><b>targets </b>
+        <i>list of strings</i>, copy the output of this module to the $DIST_DIR when `dist` is specified on the
+command line and  any of these targets are also on the command line, or otherwise
+built
+
+</div>
+    <div class="simple" id="genrule.dest">
+        <span class="fixed">&nbsp;</span><b>dest </b>
+        <i>string</i>, The name of the output artifact. This defaults to the basename of the output of
+the module.
+
+</div>
+    <div class="simple" id="genrule.dir">
+        <span class="fixed">&nbsp;</span><b>dir </b>
+        <i>string</i>, The directory within the dist directory to store the artifact. Defaults to the
+top level directory (&#34;&#34;).
+
+</div>
+    <div class="simple" id="genrule.suffix">
+        <span class="fixed">&nbsp;</span><b>suffix </b>
+        <i>string</i>, A suffix to add to the artifact file name (before any extension).
+
+</div></div>
+    <div class="simple" id="genrule.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>, emit build rules for this module
+
+</div>
+    <div class="simple" id="genrule.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>, input files to exclude
+
+</div>
+    <div class="simple" id="genrule.export_include_dirs">
+        <span class="fixed">&nbsp;</span><b>export_include_dirs </b>
+        <i>list of strings</i>, List of directories to export generated headers from
+
+</div>
+    <div class="simple" id="genrule.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>, init.rc files to be installed if this module is installed
+
+</div>
+    <div class="simple" id="genrule.notice">
+        <span class="fixed">&nbsp;</span><b>notice </b>
+        <i>string</i>, relative path to a file to include in the list of notices for the device
+
+</div>
+    <div class="simple" id="genrule.out">
+        <span class="fixed">&nbsp;</span><b>out </b>
+        <i>list of strings</i>, names of the output files that will be generated
+
+</div>
+    <div class="simple" id="genrule.owner">
+        <span class="fixed">&nbsp;</span><b>owner </b>
+        <i>string</i>, vendor who owns this module
+
+</div>
+    <div class="simple" id="genrule.product_services_specific">
+        <span class="fixed">&nbsp;</span><b>product_services_specific </b>
+        <i>bool</i>, whether this module provides services owned by the OS provider to the core platform. When set
+to true, it is installed into  /product_services (or /system/product_services if
+product_services partition does not exist).
+
+</div>
+    <div class="simple" id="genrule.product_specific">
+        <span class="fixed">&nbsp;</span><b>product_specific </b>
+        <i>bool</i>, whether this module is specific to a software configuration of a product (e.g. country,
+network operator, etc). When set to true, it is installed into /product (or
+/system/product if product partition does not exist).
+
+</div>
+    <div class="accordion"  id="genrule.product_variables.arc">
+        <span class="fixed">&#x2295</span><b>product_variables.arc</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="genrule.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule.include_dirs">
+        <span class="fixed">&nbsp;</span><b>include_dirs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="genrule.product_variables.binder32bit">
+        <span class="fixed">&#x2295</span><b>product_variables.binder32bit</b>, product_variables.override_rs_driver, product_variables.treble_linker_namespaces, product_variables.enforce_vintf_manifest, product_variables.use_lmkd_stats_log</div>
+      <div class="collapsible">
+ 
+treble_linker_namespaces is true when the system/vendor linker namespace separation is
+enabled.
+
+enforce_vintf_manifest is true when a device is required to have a vintf manifest.
+
+
+
+        
+    <div class="simple" id="genrule.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="genrule.product_variables.debuggable">
+        <span class="fixed">&#x2295</span><b>product_variables.debuggable</b></div>
+      <div class="collapsible">debuggable is true for eng and userdebug builds, and can be used to turn on additional
+debugging features that don&#39;t significantly impact runtime behavior.  userdebug builds
+are used for dogfooding and performance testing, and should be as similar to user builds
+as possible.
+
+ 
+        
+    <div class="simple" id="genrule.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="genrule.product_variables.eng">
+        <span class="fixed">&#x2295</span><b>product_variables.eng</b></div>
+      <div class="collapsible">eng is true for -eng builds, and can be used to turn on additionaly heavyweight debugging
+features.
+
+ 
+        
+    <div class="simple" id="genrule.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="accordion"  id="genrule.lto">
+        <span class="fixed">&#x2295</span><b>lto</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="genrule.never">
+        <span class="fixed">&nbsp;</span><b>never </b>
+        <i>bool</i>
+</div></div>
+    <div class="accordion"  id="genrule.sanitize">
+        <span class="fixed">&#x2295</span><b>sanitize</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="genrule.address">
+        <span class="fixed">&nbsp;</span><b>address </b>
+        <i>bool</i>
+</div></div></div>
+    <div class="accordion"  id="genrule.product_variables.malloc_not_svelte">
+        <span class="fixed">&#x2295</span><b>product_variables.malloc_not_svelte</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="genrule.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="genrule.product_variables.platform_sdk_version">
+        <span class="fixed">&#x2295</span><b>product_variables.platform_sdk_version</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="genrule.asflags">
+        <span class="fixed">&nbsp;</span><b>asflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="genrule.product_variables.product_is_iot">
+        <span class="fixed">&#x2295</span><b>product_variables.product_is_iot</b></div>
+      <div class="collapsible">Product_is_iot is true for Android Things devices.
+
+ 
+        
+    <div class="simple" id="genrule.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div>
+    <div class="simple" id="genrule.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="genrule.product_variables.safestack">
+        <span class="fixed">&#x2295</span><b>product_variables.safestack</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="genrule.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="genrule.product_variables.uml">
+        <span class="fixed">&#x2295</span><b>product_variables.uml</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="genrule.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="genrule.product_variables.unbundled_build">
+        <span class="fixed">&#x2295</span><b>product_variables.unbundled_build</b>, product_variables.pdk</div>
+      <div class="collapsible">unbundled_build is a catch-all property to annotate modules that don&#39;t build in one or
+more unbundled branches, usually due to dependencies missing from the manifest.
+
+ 
+
+        
+    <div class="simple" id="genrule.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div></div>
+    <div class="simple" id="genrule.proprietary">
+        <span class="fixed">&nbsp;</span><b>proprietary </b>
+        <i>bool</i>, whether this is a proprietary vendor module, and should be installed into /vendor
+
+</div>
+    <div class="simple" id="genrule.recovery">
+        <span class="fixed">&nbsp;</span><b>recovery </b>
+        <i>bool</i>, Whether this module is installed to recovery partition
+
+</div>
+    <div class="simple" id="genrule.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>, names of other modules to install if this module is installed
+
+</div>
+    <div class="simple" id="genrule.soc_specific">
+        <span class="fixed">&nbsp;</span><b>soc_specific </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+
+</div>
+    <div class="accordion"  id="genrule.target.host">
+        <span class="fixed">&#x2295</span><b>target.host</b>, target.android</div>
+      <div class="collapsible">
+ 
+
+        
+    <div class="simple" id="genrule.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>
+</div></div>
+    <div class="simple" id="genrule.tool_files">
+        <span class="fixed">&nbsp;</span><b>tool_files </b>
+        <i>list of strings</i>, Local file that is used as the tool
+
+</div>
+    <div class="simple" id="genrule.tools">
+        <span class="fixed">&nbsp;</span><b>tools </b>
+        <i>list of strings</i>, name of the modules (if any) that produces the host executable.   Leave empty for
+prebuilts or scripts that do not need a module to build them.
+
+</div>
+    <div class="simple" id="genrule.vendor">
+        <span class="fixed">&nbsp;</span><b>vendor </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+Use `soc_specific` instead for better meaning.
+
+</div>
+    <div class="simple" id="genrule.vintf_fragments">
+        <span class="fixed">&nbsp;</span><b>vintf_fragments </b>
+        <i>list of strings</i>, VINTF manifest fragments to be installed if this module is installed
+
+</div>
+	
+	<p>
+  <h2 id="genrule_defaults">genrule_defaults</h2>
+  
+<div class="breadcrumb">
+    
+				<a href=genrule.html#genrule_defaults.name>name</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.srcs>srcs</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.host_supported>host_supported</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.device_supported>device_supported</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.cmd>cmd</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.compile_multilib>compile_multilib</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.defaults>defaults</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.depfile>depfile</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.device_specific>device_specific</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.dist>dist</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.enabled>enabled</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.exclude_srcs>exclude_srcs</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.export_include_dirs>export_include_dirs</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.init_rc>init_rc</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.notice>notice</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.out>out</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.owner>owner</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.product_services_specific>product_services_specific</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.product_specific>product_specific</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.product_variables.arc>product_variables.arc</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.product_variables.binder32bit>product_variables.binder32bit</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.product_variables.debuggable>product_variables.debuggable</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.product_variables.eng>product_variables.eng</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.product_variables.malloc_not_svelte>product_variables.malloc_not_svelte</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.product_variables.platform_sdk_version>product_variables.platform_sdk_version</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.product_variables.product_is_iot>product_variables.product_is_iot</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.product_variables.safestack>product_variables.safestack</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.product_variables.uml>product_variables.uml</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.product_variables.unbundled_build>product_variables.unbundled_build</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.proprietary>proprietary</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.recovery>recovery</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.required>required</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.soc_specific>soc_specific</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.target.host>target.host</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.tool_files>tool_files</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.tools>tools</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.vendor>vendor</a>
+				,&nbsp;<a href=genrule.html#genrule_defaults.vintf_fragments>vintf_fragments</a></div>
+    <div class="simple" id="genrule_defaults.name">
+        <span class="fixed">&nbsp;</span><b>name </b>
+        <i>string</i>, The name of the module.  Must be unique across all modules.
+
+</div>
+    <div class="simple" id="genrule_defaults.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>, list of input files
+
+</div>
+    <div class="simple" id="genrule_defaults.host_supported">
+        <span class="fixed">&nbsp;</span><b>host_supported </b>
+        <i>bool</i>, If set to true, build a variant of the module for the host.  Defaults to false.
+
+</div>
+    <div class="simple" id="genrule_defaults.device_supported">
+        <span class="fixed">&nbsp;</span><b>device_supported </b>
+        <i>bool</i>, If set to true, build a variant of the module for the device.  Defaults to true.
+
+</div>
+    <div class="simple" id="genrule_defaults.cmd">
+        <span class="fixed">&nbsp;</span><b>cmd </b>
+        <i>string</i>, The command to run on one or more input files. Cmd supports substitution of a few variables
+(the actual substitution is implemented in GenerateAndroidBuildActions below)
+
+Available variables for substitution:
+
+<pre>
+
+ $(location): the path to the first entry in tools or tool_files
+ $(location &lt;label&gt;): the path to the tool, tool_file, input or output with name &lt;label&gt;
+ $(in): one or more input files
+ $(out): a single output file
+ $(depfile): a file to which dependencies will be written, if the depfile property is set to true
+ $(genDir): the sandbox directory for this tool; contains $(out)
+ $$: a literal $
+
+</pre>
+All files used must be declared as inputs (to ensure proper up-to-date checks).
+Use &#34;$(in)&#34; directly in Cmd to ensure that all inputs used are declared.
+
+</div>
+    <div class="simple" id="genrule_defaults.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>, control whether this module compiles for 32-bit, 64-bit, or both.  Possible values
+are &#34;32&#34; (compile for 32-bit only), &#34;64&#34; (compile for 64-bit only), &#34;both&#34; (compile for both
+architectures), or &#34;first&#34; (compile for 64-bit on a 64-bit platform, and 32-bit on a 32-bit
+platform
+
+</div>
+    <div class="simple" id="genrule_defaults.defaults">
+        <span class="fixed">&nbsp;</span><b>defaults </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule_defaults.depfile">
+        <span class="fixed">&nbsp;</span><b>depfile </b>
+        <i>bool</i>, Enable reading a file containing dependencies in gcc format after the command completes
+
+</div>
+    <div class="simple" id="genrule_defaults.device_specific">
+        <span class="fixed">&nbsp;</span><b>device_specific </b>
+        <i>bool</i>, whether this module is specific to a device, not only for SoC, but also for off-chip
+peripherals. When set to true, it is installed into /odm (or /vendor/odm if odm partition
+does not exist, or /system/vendor/odm if both odm and vendor partitions do not exist).
+This implies `soc_specific:true`.
+
+</div>
+    <div class="accordion"  id="genrule_defaults.dist">
+        <span class="fixed">&#x2295</span><b>dist</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="genrule_defaults.targets">
+        <span class="fixed">&nbsp;</span><b>targets </b>
+        <i>list of strings</i>, copy the output of this module to the $DIST_DIR when `dist` is specified on the
+command line and  any of these targets are also on the command line, or otherwise
+built
+
+</div>
+    <div class="simple" id="genrule_defaults.dest">
+        <span class="fixed">&nbsp;</span><b>dest </b>
+        <i>string</i>, The name of the output artifact. This defaults to the basename of the output of
+the module.
+
+</div>
+    <div class="simple" id="genrule_defaults.dir">
+        <span class="fixed">&nbsp;</span><b>dir </b>
+        <i>string</i>, The directory within the dist directory to store the artifact. Defaults to the
+top level directory (&#34;&#34;).
+
+</div>
+    <div class="simple" id="genrule_defaults.suffix">
+        <span class="fixed">&nbsp;</span><b>suffix </b>
+        <i>string</i>, A suffix to add to the artifact file name (before any extension).
+
+</div></div>
+    <div class="simple" id="genrule_defaults.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>, emit build rules for this module
+
+</div>
+    <div class="simple" id="genrule_defaults.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>, input files to exclude
+
+</div>
+    <div class="simple" id="genrule_defaults.export_include_dirs">
+        <span class="fixed">&nbsp;</span><b>export_include_dirs </b>
+        <i>list of strings</i>, List of directories to export generated headers from
+
+</div>
+    <div class="simple" id="genrule_defaults.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>, init.rc files to be installed if this module is installed
+
+</div>
+    <div class="simple" id="genrule_defaults.notice">
+        <span class="fixed">&nbsp;</span><b>notice </b>
+        <i>string</i>, relative path to a file to include in the list of notices for the device
+
+</div>
+    <div class="simple" id="genrule_defaults.out">
+        <span class="fixed">&nbsp;</span><b>out </b>
+        <i>list of strings</i>, names of the output files that will be generated
+
+</div>
+    <div class="simple" id="genrule_defaults.owner">
+        <span class="fixed">&nbsp;</span><b>owner </b>
+        <i>string</i>, vendor who owns this module
+
+</div>
+    <div class="simple" id="genrule_defaults.product_services_specific">
+        <span class="fixed">&nbsp;</span><b>product_services_specific </b>
+        <i>bool</i>, whether this module provides services owned by the OS provider to the core platform. When set
+to true, it is installed into  /product_services (or /system/product_services if
+product_services partition does not exist).
+
+</div>
+    <div class="simple" id="genrule_defaults.product_specific">
+        <span class="fixed">&nbsp;</span><b>product_specific </b>
+        <i>bool</i>, whether this module is specific to a software configuration of a product (e.g. country,
+network operator, etc). When set to true, it is installed into /product (or
+/system/product if product partition does not exist).
+
+</div>
+    <div class="accordion"  id="genrule_defaults.product_variables.arc">
+        <span class="fixed">&#x2295</span><b>product_variables.arc</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="genrule_defaults.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule_defaults.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule_defaults.include_dirs">
+        <span class="fixed">&nbsp;</span><b>include_dirs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule_defaults.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule_defaults.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule_defaults.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="genrule_defaults.product_variables.binder32bit">
+        <span class="fixed">&#x2295</span><b>product_variables.binder32bit</b>, product_variables.override_rs_driver, product_variables.treble_linker_namespaces, product_variables.enforce_vintf_manifest, product_variables.use_lmkd_stats_log</div>
+      <div class="collapsible">
+ 
+treble_linker_namespaces is true when the system/vendor linker namespace separation is
+enabled.
+
+enforce_vintf_manifest is true when a device is required to have a vintf manifest.
+
+
+
+        
+    <div class="simple" id="genrule_defaults.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="genrule_defaults.product_variables.debuggable">
+        <span class="fixed">&#x2295</span><b>product_variables.debuggable</b></div>
+      <div class="collapsible">debuggable is true for eng and userdebug builds, and can be used to turn on additional
+debugging features that don&#39;t significantly impact runtime behavior.  userdebug builds
+are used for dogfooding and performance testing, and should be as similar to user builds
+as possible.
+
+ 
+        
+    <div class="simple" id="genrule_defaults.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule_defaults.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule_defaults.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule_defaults.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="genrule_defaults.product_variables.eng">
+        <span class="fixed">&#x2295</span><b>product_variables.eng</b></div>
+      <div class="collapsible">eng is true for -eng builds, and can be used to turn on additionaly heavyweight debugging
+features.
+
+ 
+        
+    <div class="simple" id="genrule_defaults.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule_defaults.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="accordion"  id="genrule_defaults.lto">
+        <span class="fixed">&#x2295</span><b>lto</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="genrule_defaults.never">
+        <span class="fixed">&nbsp;</span><b>never </b>
+        <i>bool</i>
+</div></div>
+    <div class="accordion"  id="genrule_defaults.sanitize">
+        <span class="fixed">&#x2295</span><b>sanitize</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="genrule_defaults.address">
+        <span class="fixed">&nbsp;</span><b>address </b>
+        <i>bool</i>
+</div></div></div>
+    <div class="accordion"  id="genrule_defaults.product_variables.malloc_not_svelte">
+        <span class="fixed">&#x2295</span><b>product_variables.malloc_not_svelte</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="genrule_defaults.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule_defaults.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="genrule_defaults.product_variables.platform_sdk_version">
+        <span class="fixed">&#x2295</span><b>product_variables.platform_sdk_version</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="genrule_defaults.asflags">
+        <span class="fixed">&nbsp;</span><b>asflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule_defaults.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="genrule_defaults.product_variables.product_is_iot">
+        <span class="fixed">&#x2295</span><b>product_variables.product_is_iot</b></div>
+      <div class="collapsible">Product_is_iot is true for Android Things devices.
+
+ 
+        
+    <div class="simple" id="genrule_defaults.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule_defaults.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div>
+    <div class="simple" id="genrule_defaults.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule_defaults.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule_defaults.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule_defaults.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="genrule_defaults.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="genrule_defaults.product_variables.safestack">
+        <span class="fixed">&#x2295</span><b>product_variables.safestack</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="genrule_defaults.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="genrule_defaults.product_variables.uml">
+        <span class="fixed">&#x2295</span><b>product_variables.uml</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="genrule_defaults.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="genrule_defaults.product_variables.unbundled_build">
+        <span class="fixed">&#x2295</span><b>product_variables.unbundled_build</b>, product_variables.pdk</div>
+      <div class="collapsible">unbundled_build is a catch-all property to annotate modules that don&#39;t build in one or
+more unbundled branches, usually due to dependencies missing from the manifest.
+
+ 
+
+        
+    <div class="simple" id="genrule_defaults.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div></div>
+    <div class="simple" id="genrule_defaults.proprietary">
+        <span class="fixed">&nbsp;</span><b>proprietary </b>
+        <i>bool</i>, whether this is a proprietary vendor module, and should be installed into /vendor
+
+</div>
+    <div class="simple" id="genrule_defaults.recovery">
+        <span class="fixed">&nbsp;</span><b>recovery </b>
+        <i>bool</i>, Whether this module is installed to recovery partition
+
+</div>
+    <div class="simple" id="genrule_defaults.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>, names of other modules to install if this module is installed
+
+</div>
+    <div class="simple" id="genrule_defaults.soc_specific">
+        <span class="fixed">&nbsp;</span><b>soc_specific </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+
+</div>
+    <div class="accordion"  id="genrule_defaults.target.host">
+        <span class="fixed">&#x2295</span><b>target.host</b>, target.android</div>
+      <div class="collapsible">
+ 
+
+        
+    <div class="simple" id="genrule_defaults.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>
+</div></div>
+    <div class="simple" id="genrule_defaults.tool_files">
+        <span class="fixed">&nbsp;</span><b>tool_files </b>
+        <i>list of strings</i>, Local file that is used as the tool
+
+</div>
+    <div class="simple" id="genrule_defaults.tools">
+        <span class="fixed">&nbsp;</span><b>tools </b>
+        <i>list of strings</i>, name of the modules (if any) that produces the host executable.   Leave empty for
+prebuilts or scripts that do not need a module to build them.
+
+</div>
+    <div class="simple" id="genrule_defaults.vendor">
+        <span class="fixed">&nbsp;</span><b>vendor </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+Use `soc_specific` instead for better meaning.
+
+</div>
+    <div class="simple" id="genrule_defaults.vintf_fragments">
+        <span class="fixed">&nbsp;</span><b>vintf_fragments </b>
+        <i>list of strings</i>, VINTF manifest fragments to be installed if this module is installed
+
+</div>
+	
+	<p>
+  <h2 id="gensrcs">gensrcs</h2>
+  
+<div class="breadcrumb">
+    
+				<a href=genrule.html#gensrcs.name>name</a>
+				,&nbsp;<a href=genrule.html#gensrcs.srcs>srcs</a>
+				,&nbsp;<a href=genrule.html#gensrcs.cmd>cmd</a>
+				,&nbsp;<a href=genrule.html#gensrcs.compile_multilib>compile_multilib</a>
+				,&nbsp;<a href=genrule.html#gensrcs.depfile>depfile</a>
+				,&nbsp;<a href=genrule.html#gensrcs.device_specific>device_specific</a>
+				,&nbsp;<a href=genrule.html#gensrcs.dist>dist</a>
+				,&nbsp;<a href=genrule.html#gensrcs.enabled>enabled</a>
+				,&nbsp;<a href=genrule.html#gensrcs.exclude_srcs>exclude_srcs</a>
+				,&nbsp;<a href=genrule.html#gensrcs.export_include_dirs>export_include_dirs</a>
+				,&nbsp;<a href=genrule.html#gensrcs.init_rc>init_rc</a>
+				,&nbsp;<a href=genrule.html#gensrcs.notice>notice</a>
+				,&nbsp;<a href=genrule.html#gensrcs.output_extension>output_extension</a>
+				,&nbsp;<a href=genrule.html#gensrcs.owner>owner</a>
+				,&nbsp;<a href=genrule.html#gensrcs.product_services_specific>product_services_specific</a>
+				,&nbsp;<a href=genrule.html#gensrcs.product_specific>product_specific</a>
+				,&nbsp;<a href=genrule.html#gensrcs.product_variables.arc>product_variables.arc</a>
+				,&nbsp;<a href=genrule.html#gensrcs.product_variables.binder32bit>product_variables.binder32bit</a>
+				,&nbsp;<a href=genrule.html#gensrcs.product_variables.debuggable>product_variables.debuggable</a>
+				,&nbsp;<a href=genrule.html#gensrcs.product_variables.eng>product_variables.eng</a>
+				,&nbsp;<a href=genrule.html#gensrcs.product_variables.malloc_not_svelte>product_variables.malloc_not_svelte</a>
+				,&nbsp;<a href=genrule.html#gensrcs.product_variables.platform_sdk_version>product_variables.platform_sdk_version</a>
+				,&nbsp;<a href=genrule.html#gensrcs.product_variables.product_is_iot>product_variables.product_is_iot</a>
+				,&nbsp;<a href=genrule.html#gensrcs.product_variables.safestack>product_variables.safestack</a>
+				,&nbsp;<a href=genrule.html#gensrcs.product_variables.uml>product_variables.uml</a>
+				,&nbsp;<a href=genrule.html#gensrcs.product_variables.unbundled_build>product_variables.unbundled_build</a>
+				,&nbsp;<a href=genrule.html#gensrcs.proprietary>proprietary</a>
+				,&nbsp;<a href=genrule.html#gensrcs.recovery>recovery</a>
+				,&nbsp;<a href=genrule.html#gensrcs.required>required</a>
+				,&nbsp;<a href=genrule.html#gensrcs.soc_specific>soc_specific</a>
+				,&nbsp;<a href=genrule.html#gensrcs.target.host>target.host</a>
+				,&nbsp;<a href=genrule.html#gensrcs.tool_files>tool_files</a>
+				,&nbsp;<a href=genrule.html#gensrcs.tools>tools</a>
+				,&nbsp;<a href=genrule.html#gensrcs.vendor>vendor</a>
+				,&nbsp;<a href=genrule.html#gensrcs.vintf_fragments>vintf_fragments</a></div>
+    <div class="simple" id="gensrcs.name">
+        <span class="fixed">&nbsp;</span><b>name </b>
+        <i>string</i>, The name of the module.  Must be unique across all modules.
+
+</div>
+    <div class="simple" id="gensrcs.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>, list of input files
+
+</div>
+    <div class="simple" id="gensrcs.cmd">
+        <span class="fixed">&nbsp;</span><b>cmd </b>
+        <i>string</i>, The command to run on one or more input files. Cmd supports substitution of a few variables
+(the actual substitution is implemented in GenerateAndroidBuildActions below)
+
+Available variables for substitution:
+
+<pre>
+
+ $(location): the path to the first entry in tools or tool_files
+ $(location &lt;label&gt;): the path to the tool, tool_file, input or output with name &lt;label&gt;
+ $(in): one or more input files
+ $(out): a single output file
+ $(depfile): a file to which dependencies will be written, if the depfile property is set to true
+ $(genDir): the sandbox directory for this tool; contains $(out)
+ $$: a literal $
+
+</pre>
+All files used must be declared as inputs (to ensure proper up-to-date checks).
+Use &#34;$(in)&#34; directly in Cmd to ensure that all inputs used are declared.
+
+</div>
+    <div class="simple" id="gensrcs.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>, control whether this module compiles for 32-bit, 64-bit, or both.  Possible values
+are &#34;32&#34; (compile for 32-bit only), &#34;64&#34; (compile for 64-bit only), &#34;both&#34; (compile for both
+architectures), or &#34;first&#34; (compile for 64-bit on a 64-bit platform, and 32-bit on a 32-bit
+platform
+
+</div>
+    <div class="simple" id="gensrcs.depfile">
+        <span class="fixed">&nbsp;</span><b>depfile </b>
+        <i>bool</i>, Enable reading a file containing dependencies in gcc format after the command completes
+
+</div>
+    <div class="simple" id="gensrcs.device_specific">
+        <span class="fixed">&nbsp;</span><b>device_specific </b>
+        <i>bool</i>, whether this module is specific to a device, not only for SoC, but also for off-chip
+peripherals. When set to true, it is installed into /odm (or /vendor/odm if odm partition
+does not exist, or /system/vendor/odm if both odm and vendor partitions do not exist).
+This implies `soc_specific:true`.
+
+</div>
+    <div class="accordion"  id="gensrcs.dist">
+        <span class="fixed">&#x2295</span><b>dist</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="gensrcs.targets">
+        <span class="fixed">&nbsp;</span><b>targets </b>
+        <i>list of strings</i>, copy the output of this module to the $DIST_DIR when `dist` is specified on the
+command line and  any of these targets are also on the command line, or otherwise
+built
+
+</div>
+    <div class="simple" id="gensrcs.dest">
+        <span class="fixed">&nbsp;</span><b>dest </b>
+        <i>string</i>, The name of the output artifact. This defaults to the basename of the output of
+the module.
+
+</div>
+    <div class="simple" id="gensrcs.dir">
+        <span class="fixed">&nbsp;</span><b>dir </b>
+        <i>string</i>, The directory within the dist directory to store the artifact. Defaults to the
+top level directory (&#34;&#34;).
+
+</div>
+    <div class="simple" id="gensrcs.suffix">
+        <span class="fixed">&nbsp;</span><b>suffix </b>
+        <i>string</i>, A suffix to add to the artifact file name (before any extension).
+
+</div></div>
+    <div class="simple" id="gensrcs.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>, emit build rules for this module
+
+</div>
+    <div class="simple" id="gensrcs.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>, input files to exclude
+
+</div>
+    <div class="simple" id="gensrcs.export_include_dirs">
+        <span class="fixed">&nbsp;</span><b>export_include_dirs </b>
+        <i>list of strings</i>, List of directories to export generated headers from
+
+</div>
+    <div class="simple" id="gensrcs.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>, init.rc files to be installed if this module is installed
+
+</div>
+    <div class="simple" id="gensrcs.notice">
+        <span class="fixed">&nbsp;</span><b>notice </b>
+        <i>string</i>, relative path to a file to include in the list of notices for the device
+
+</div>
+    <div class="simple" id="gensrcs.output_extension">
+        <span class="fixed">&nbsp;</span><b>output_extension </b>
+        <i>string</i>, extension that will be substituted for each output file
+
+</div>
+    <div class="simple" id="gensrcs.owner">
+        <span class="fixed">&nbsp;</span><b>owner </b>
+        <i>string</i>, vendor who owns this module
+
+</div>
+    <div class="simple" id="gensrcs.product_services_specific">
+        <span class="fixed">&nbsp;</span><b>product_services_specific </b>
+        <i>bool</i>, whether this module provides services owned by the OS provider to the core platform. When set
+to true, it is installed into  /product_services (or /system/product_services if
+product_services partition does not exist).
+
+</div>
+    <div class="simple" id="gensrcs.product_specific">
+        <span class="fixed">&nbsp;</span><b>product_specific </b>
+        <i>bool</i>, whether this module is specific to a software configuration of a product (e.g. country,
+network operator, etc). When set to true, it is installed into /product (or
+/system/product if product partition does not exist).
+
+</div>
+    <div class="accordion"  id="gensrcs.product_variables.arc">
+        <span class="fixed">&#x2295</span><b>product_variables.arc</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="gensrcs.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="gensrcs.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="gensrcs.include_dirs">
+        <span class="fixed">&nbsp;</span><b>include_dirs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="gensrcs.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="gensrcs.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="gensrcs.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="gensrcs.product_variables.binder32bit">
+        <span class="fixed">&#x2295</span><b>product_variables.binder32bit</b>, product_variables.override_rs_driver, product_variables.treble_linker_namespaces, product_variables.enforce_vintf_manifest, product_variables.use_lmkd_stats_log</div>
+      <div class="collapsible">
+ 
+treble_linker_namespaces is true when the system/vendor linker namespace separation is
+enabled.
+
+enforce_vintf_manifest is true when a device is required to have a vintf manifest.
+
+
+
+        
+    <div class="simple" id="gensrcs.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="gensrcs.product_variables.debuggable">
+        <span class="fixed">&#x2295</span><b>product_variables.debuggable</b></div>
+      <div class="collapsible">debuggable is true for eng and userdebug builds, and can be used to turn on additional
+debugging features that don&#39;t significantly impact runtime behavior.  userdebug builds
+are used for dogfooding and performance testing, and should be as similar to user builds
+as possible.
+
+ 
+        
+    <div class="simple" id="gensrcs.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="gensrcs.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="gensrcs.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="gensrcs.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="gensrcs.product_variables.eng">
+        <span class="fixed">&#x2295</span><b>product_variables.eng</b></div>
+      <div class="collapsible">eng is true for -eng builds, and can be used to turn on additionaly heavyweight debugging
+features.
+
+ 
+        
+    <div class="simple" id="gensrcs.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="gensrcs.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="accordion"  id="gensrcs.lto">
+        <span class="fixed">&#x2295</span><b>lto</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="gensrcs.never">
+        <span class="fixed">&nbsp;</span><b>never </b>
+        <i>bool</i>
+</div></div>
+    <div class="accordion"  id="gensrcs.sanitize">
+        <span class="fixed">&#x2295</span><b>sanitize</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="gensrcs.address">
+        <span class="fixed">&nbsp;</span><b>address </b>
+        <i>bool</i>
+</div></div></div>
+    <div class="accordion"  id="gensrcs.product_variables.malloc_not_svelte">
+        <span class="fixed">&#x2295</span><b>product_variables.malloc_not_svelte</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="gensrcs.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="gensrcs.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="gensrcs.product_variables.platform_sdk_version">
+        <span class="fixed">&#x2295</span><b>product_variables.platform_sdk_version</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="gensrcs.asflags">
+        <span class="fixed">&nbsp;</span><b>asflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="gensrcs.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="gensrcs.product_variables.product_is_iot">
+        <span class="fixed">&#x2295</span><b>product_variables.product_is_iot</b></div>
+      <div class="collapsible">Product_is_iot is true for Android Things devices.
+
+ 
+        
+    <div class="simple" id="gensrcs.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="gensrcs.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div>
+    <div class="simple" id="gensrcs.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="gensrcs.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="gensrcs.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="gensrcs.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="gensrcs.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="gensrcs.product_variables.safestack">
+        <span class="fixed">&#x2295</span><b>product_variables.safestack</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="gensrcs.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="gensrcs.product_variables.uml">
+        <span class="fixed">&#x2295</span><b>product_variables.uml</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="gensrcs.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="gensrcs.product_variables.unbundled_build">
+        <span class="fixed">&#x2295</span><b>product_variables.unbundled_build</b>, product_variables.pdk</div>
+      <div class="collapsible">unbundled_build is a catch-all property to annotate modules that don&#39;t build in one or
+more unbundled branches, usually due to dependencies missing from the manifest.
+
+ 
+
+        
+    <div class="simple" id="gensrcs.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div></div>
+    <div class="simple" id="gensrcs.proprietary">
+        <span class="fixed">&nbsp;</span><b>proprietary </b>
+        <i>bool</i>, whether this is a proprietary vendor module, and should be installed into /vendor
+
+</div>
+    <div class="simple" id="gensrcs.recovery">
+        <span class="fixed">&nbsp;</span><b>recovery </b>
+        <i>bool</i>, Whether this module is installed to recovery partition
+
+</div>
+    <div class="simple" id="gensrcs.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>, names of other modules to install if this module is installed
+
+</div>
+    <div class="simple" id="gensrcs.soc_specific">
+        <span class="fixed">&nbsp;</span><b>soc_specific </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+
+</div>
+    <div class="accordion"  id="gensrcs.target.host">
+        <span class="fixed">&#x2295</span><b>target.host</b>, target.android</div>
+      <div class="collapsible">
+ 
+
+        
+    <div class="simple" id="gensrcs.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>
+</div></div>
+    <div class="simple" id="gensrcs.tool_files">
+        <span class="fixed">&nbsp;</span><b>tool_files </b>
+        <i>list of strings</i>, Local file that is used as the tool
+
+</div>
+    <div class="simple" id="gensrcs.tools">
+        <span class="fixed">&nbsp;</span><b>tools </b>
+        <i>list of strings</i>, name of the modules (if any) that produces the host executable.   Leave empty for
+prebuilts or scripts that do not need a module to build them.
+
+</div>
+    <div class="simple" id="gensrcs.vendor">
+        <span class="fixed">&nbsp;</span><b>vendor </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+Use `soc_specific` instead for better meaning.
+
+</div>
+    <div class="simple" id="gensrcs.vintf_fragments">
+        <span class="fixed">&nbsp;</span><b>vintf_fragments </b>
+        <i>list of strings</i>, VINTF manifest fragments to be installed if this module is installed
+
+</div></div>
+<script>
+  accordions = document.getElementsByClassName('accordion');
+  for (i=0; i < accordions.length; ++i) {
+    accordions[i].addEventListener("click", function() {
+      var panel = this.nextElementSibling;
+      var child = this.firstElementChild;
+      if (panel.style.display === "block") {
+          panel.style.display = "none";
+          child.textContent = '\u2295';
+      } else {
+          panel.style.display = "block";
+          child.textContent = '\u2296';
+      }
+    });
+  }
+</script>
+</body>

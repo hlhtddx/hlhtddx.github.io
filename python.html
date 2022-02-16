@@ -1,0 +1,2965 @@
+
+<html>
+<head>
+<title>Build Docs</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<style>
+.accordion,.simple{margin-left:1.5em;text-indent:-1.5em;margin-top:.25em}
+.collapsible{border-width:0 0 0 1;margin-left:.25em;padding-left:.25em;border-style:solid;
+  border-color:grey;display:none;}
+span.fixed{display: block; float: left; clear: left; width: 1em;}
+ul {
+	list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 30ch;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+</style>
+
+<script type="text/javascript">
+window.addEventListener('message', (e) => {
+  if (e != null && e.data != null && e.data.type === "SET_BASE" && e.data.base != null) {
+    const existingBase = document.querySelector('base');
+    if (existingBase != null) {
+      existingBase.parentElement.removeChild(existingBase);
+    }
+
+    const base = document.createElement('base');
+    base.setAttribute('href', e.data.base);
+    document.head.appendChild(base);
+  }
+});
+</script>
+
+</head>
+<body><ul>
+<li><h3>python package</h3></li>
+<li><a href="python.html#python_binary_host">python_binary_host</a></li>
+<li><a href="python.html#python_defaults">python_defaults</a></li>
+<li><a href="python.html#python_library">python_library</a></li>
+<li><a href="python.html#python_library_host">python_library_host</a></li>
+<li><a href="python.html#python_test">python_test</a></li>
+<li><a href="python.html#python_test_host">python_test_host</a></li>
+</ul>
+
+<div style="margin-left:30ch;padding:1px 16px;">
+
+	
+	<p>
+  <h2 id="python_binary_host">python_binary_host</h2>
+  
+<div class="breadcrumb">
+    
+				<a href=python.html#python_binary_host.name>name</a>
+				,&nbsp;<a href=python.html#python_binary_host.srcs>srcs</a>
+				,&nbsp;<a href=python.html#python_binary_host.autorun>autorun</a>
+				,&nbsp;<a href=python.html#python_binary_host.compile_multilib>compile_multilib</a>
+				,&nbsp;<a href=python.html#python_binary_host.data>data</a>
+				,&nbsp;<a href=python.html#python_binary_host.defaults>defaults</a>
+				,&nbsp;<a href=python.html#python_binary_host.device_specific>device_specific</a>
+				,&nbsp;<a href=python.html#python_binary_host.dist>dist</a>
+				,&nbsp;<a href=python.html#python_binary_host.enabled>enabled</a>
+				,&nbsp;<a href=python.html#python_binary_host.exclude_srcs>exclude_srcs</a>
+				,&nbsp;<a href=python.html#python_binary_host.init_rc>init_rc</a>
+				,&nbsp;<a href=python.html#python_binary_host.is_internal>is_internal</a>
+				,&nbsp;<a href=python.html#python_binary_host.libs>libs</a>
+				,&nbsp;<a href=python.html#python_binary_host.main>main</a>
+				,&nbsp;<a href=python.html#python_binary_host.notice>notice</a>
+				,&nbsp;<a href=python.html#python_binary_host.owner>owner</a>
+				,&nbsp;<a href=python.html#python_binary_host.pkg_path>pkg_path</a>
+				,&nbsp;<a href=python.html#python_binary_host.product_services_specific>product_services_specific</a>
+				,&nbsp;<a href=python.html#python_binary_host.product_specific>product_specific</a>
+				,&nbsp;<a href=python.html#python_binary_host.product_variables.arc>product_variables.arc</a>
+				,&nbsp;<a href=python.html#python_binary_host.product_variables.binder32bit>product_variables.binder32bit</a>
+				,&nbsp;<a href=python.html#python_binary_host.product_variables.debuggable>product_variables.debuggable</a>
+				,&nbsp;<a href=python.html#python_binary_host.product_variables.eng>product_variables.eng</a>
+				,&nbsp;<a href=python.html#python_binary_host.product_variables.malloc_not_svelte>product_variables.malloc_not_svelte</a>
+				,&nbsp;<a href=python.html#python_binary_host.product_variables.platform_sdk_version>product_variables.platform_sdk_version</a>
+				,&nbsp;<a href=python.html#python_binary_host.product_variables.product_is_iot>product_variables.product_is_iot</a>
+				,&nbsp;<a href=python.html#python_binary_host.product_variables.safestack>product_variables.safestack</a>
+				,&nbsp;<a href=python.html#python_binary_host.product_variables.uml>product_variables.uml</a>
+				,&nbsp;<a href=python.html#python_binary_host.product_variables.unbundled_build>product_variables.unbundled_build</a>
+				,&nbsp;<a href=python.html#python_binary_host.proprietary>proprietary</a>
+				,&nbsp;<a href=python.html#python_binary_host.proto>proto</a>
+				,&nbsp;<a href=python.html#python_binary_host.recovery>recovery</a>
+				,&nbsp;<a href=python.html#python_binary_host.required>required</a>
+				,&nbsp;<a href=python.html#python_binary_host.soc_specific>soc_specific</a>
+				,&nbsp;<a href=python.html#python_binary_host.stem>stem</a>
+				,&nbsp;<a href=python.html#python_binary_host.suffix>suffix</a>
+				,&nbsp;<a href=python.html#python_binary_host.target.host>target.host</a>
+				,&nbsp;<a href=python.html#python_binary_host.test_suites>test_suites</a>
+				,&nbsp;<a href=python.html#python_binary_host.vendor>vendor</a>
+				,&nbsp;<a href=python.html#python_binary_host.version>version</a>
+				,&nbsp;<a href=python.html#python_binary_host.vintf_fragments>vintf_fragments</a></div>
+    <div class="simple" id="python_binary_host.name">
+        <span class="fixed">&nbsp;</span><b>name </b>
+        <i>string</i>, The name of the module.  Must be unique across all modules.
+
+</div>
+    <div class="simple" id="python_binary_host.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>, list of source (.py) files compatible both with Python2 and Python3 used to compile the
+Python module.
+srcs may reference the outputs of other modules that produce source files like genrule
+or filegroup using the syntax &#34;:module&#34;.
+Srcs has to be non-empty.
+
+</div>
+    <div class="simple" id="python_binary_host.autorun">
+        <span class="fixed">&nbsp;</span><b>autorun </b>
+        <i>bool</i>, whether to use `main` when starting the executable. The default is true, when set to
+false it will act much like the normal `python` executable, but with the sources and
+libraries automatically included in the PYTHONPATH.
+
+</div>
+    <div class="simple" id="python_binary_host.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>, control whether this module compiles for 32-bit, 64-bit, or both.  Possible values
+are &#34;32&#34; (compile for 32-bit only), &#34;64&#34; (compile for 64-bit only), &#34;both&#34; (compile for both
+architectures), or &#34;first&#34; (compile for 64-bit on a 64-bit platform, and 32-bit on a 32-bit
+platform
+
+</div>
+    <div class="simple" id="python_binary_host.data">
+        <span class="fixed">&nbsp;</span><b>data </b>
+        <i>list of strings</i>, list of files or filegroup modules that provide data that should be installed alongside
+the test. the file extension can be arbitrary except for (.py).
+
+</div>
+    <div class="simple" id="python_binary_host.defaults">
+        <span class="fixed">&nbsp;</span><b>defaults </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_binary_host.device_specific">
+        <span class="fixed">&nbsp;</span><b>device_specific </b>
+        <i>bool</i>, whether this module is specific to a device, not only for SoC, but also for off-chip
+peripherals. When set to true, it is installed into /odm (or /vendor/odm if odm partition
+does not exist, or /system/vendor/odm if both odm and vendor partitions do not exist).
+This implies `soc_specific:true`.
+
+</div>
+    <div class="accordion"  id="python_binary_host.dist">
+        <span class="fixed">&#x2295</span><b>dist</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_binary_host.targets">
+        <span class="fixed">&nbsp;</span><b>targets </b>
+        <i>list of strings</i>, copy the output of this module to the $DIST_DIR when `dist` is specified on the
+command line and  any of these targets are also on the command line, or otherwise
+built
+
+</div>
+    <div class="simple" id="python_binary_host.dest">
+        <span class="fixed">&nbsp;</span><b>dest </b>
+        <i>string</i>, The name of the output artifact. This defaults to the basename of the output of
+the module.
+
+</div>
+    <div class="simple" id="python_binary_host.dir">
+        <span class="fixed">&nbsp;</span><b>dir </b>
+        <i>string</i>, The directory within the dist directory to store the artifact. Defaults to the
+top level directory (&#34;&#34;).
+
+</div>
+    <div class="simple" id="python_binary_host.suffix">
+        <span class="fixed">&nbsp;</span><b>suffix </b>
+        <i>string</i>, A suffix to add to the artifact file name (before any extension).
+
+</div></div>
+    <div class="simple" id="python_binary_host.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>, emit build rules for this module
+
+</div>
+    <div class="simple" id="python_binary_host.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>, list of source files that should not be used to build the C/C++ module.
+This is most useful in the arch/multilib variants to remove non-common files
+
+</div>
+    <div class="simple" id="python_binary_host.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>, init.rc files to be installed if this module is installed
+
+</div>
+    <div class="simple" id="python_binary_host.is_internal">
+        <span class="fixed">&nbsp;</span><b>is_internal </b>
+        <i>bool</i>, true, if the Python module is used internally, eg, Python std libs.
+
+</div>
+    <div class="simple" id="python_binary_host.libs">
+        <span class="fixed">&nbsp;</span><b>libs </b>
+        <i>list of strings</i>, list of the Python libraries compatible both with Python2 and Python3.
+
+</div>
+    <div class="simple" id="python_binary_host.main">
+        <span class="fixed">&nbsp;</span><b>main </b>
+        <i>string</i>, the name of the source file that is the main entry point of the program.
+this file must also be listed in srcs.
+If left unspecified, module name is used instead.
+If name doesn’t match any filename in srcs, main must be specified.
+
+</div>
+    <div class="simple" id="python_binary_host.notice">
+        <span class="fixed">&nbsp;</span><b>notice </b>
+        <i>string</i>, relative path to a file to include in the list of notices for the device
+
+</div>
+    <div class="simple" id="python_binary_host.owner">
+        <span class="fixed">&nbsp;</span><b>owner </b>
+        <i>string</i>, vendor who owns this module
+
+</div>
+    <div class="simple" id="python_binary_host.pkg_path">
+        <span class="fixed">&nbsp;</span><b>pkg_path </b>
+        <i>string</i>, the package path prefix within the output artifact at which to place the source/data
+files of the current module.
+eg. Pkg_path = &#34;a/b/c&#34;; Other packages can reference this module by using
+(from a.b.c import ...) statement.
+if left unspecified, all the source/data files path is unchanged within zip file.
+
+</div>
+    <div class="simple" id="python_binary_host.product_services_specific">
+        <span class="fixed">&nbsp;</span><b>product_services_specific </b>
+        <i>bool</i>, whether this module provides services owned by the OS provider to the core platform. When set
+to true, it is installed into  /product_services (or /system/product_services if
+product_services partition does not exist).
+
+</div>
+    <div class="simple" id="python_binary_host.product_specific">
+        <span class="fixed">&nbsp;</span><b>product_specific </b>
+        <i>bool</i>, whether this module is specific to a software configuration of a product (e.g. country,
+network operator, etc). When set to true, it is installed into /product (or
+/system/product if product partition does not exist).
+
+</div>
+    <div class="accordion"  id="python_binary_host.product_variables.arc">
+        <span class="fixed">&#x2295</span><b>product_variables.arc</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_binary_host.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_binary_host.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_binary_host.include_dirs">
+        <span class="fixed">&nbsp;</span><b>include_dirs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_binary_host.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_binary_host.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_binary_host.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_binary_host.product_variables.binder32bit">
+        <span class="fixed">&#x2295</span><b>product_variables.binder32bit</b>, product_variables.override_rs_driver, product_variables.treble_linker_namespaces, product_variables.enforce_vintf_manifest, product_variables.use_lmkd_stats_log</div>
+      <div class="collapsible">
+ 
+treble_linker_namespaces is true when the system/vendor linker namespace separation is
+enabled.
+
+enforce_vintf_manifest is true when a device is required to have a vintf manifest.
+
+
+
+        
+    <div class="simple" id="python_binary_host.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_binary_host.product_variables.debuggable">
+        <span class="fixed">&#x2295</span><b>product_variables.debuggable</b></div>
+      <div class="collapsible">debuggable is true for eng and userdebug builds, and can be used to turn on additional
+debugging features that don&#39;t significantly impact runtime behavior.  userdebug builds
+are used for dogfooding and performance testing, and should be as similar to user builds
+as possible.
+
+ 
+        
+    <div class="simple" id="python_binary_host.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_binary_host.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_binary_host.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_binary_host.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_binary_host.product_variables.eng">
+        <span class="fixed">&#x2295</span><b>product_variables.eng</b></div>
+      <div class="collapsible">eng is true for -eng builds, and can be used to turn on additionaly heavyweight debugging
+features.
+
+ 
+        
+    <div class="simple" id="python_binary_host.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_binary_host.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="accordion"  id="python_binary_host.lto">
+        <span class="fixed">&#x2295</span><b>lto</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_binary_host.never">
+        <span class="fixed">&nbsp;</span><b>never </b>
+        <i>bool</i>
+</div></div>
+    <div class="accordion"  id="python_binary_host.sanitize">
+        <span class="fixed">&#x2295</span><b>sanitize</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_binary_host.address">
+        <span class="fixed">&nbsp;</span><b>address </b>
+        <i>bool</i>
+</div></div></div>
+    <div class="accordion"  id="python_binary_host.product_variables.malloc_not_svelte">
+        <span class="fixed">&#x2295</span><b>product_variables.malloc_not_svelte</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_binary_host.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_binary_host.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_binary_host.product_variables.platform_sdk_version">
+        <span class="fixed">&#x2295</span><b>product_variables.platform_sdk_version</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_binary_host.asflags">
+        <span class="fixed">&nbsp;</span><b>asflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_binary_host.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_binary_host.product_variables.product_is_iot">
+        <span class="fixed">&#x2295</span><b>product_variables.product_is_iot</b></div>
+      <div class="collapsible">Product_is_iot is true for Android Things devices.
+
+ 
+        
+    <div class="simple" id="python_binary_host.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_binary_host.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div>
+    <div class="simple" id="python_binary_host.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_binary_host.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_binary_host.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_binary_host.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_binary_host.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_binary_host.product_variables.safestack">
+        <span class="fixed">&#x2295</span><b>product_variables.safestack</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_binary_host.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_binary_host.product_variables.uml">
+        <span class="fixed">&#x2295</span><b>product_variables.uml</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_binary_host.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_binary_host.product_variables.unbundled_build">
+        <span class="fixed">&#x2295</span><b>product_variables.unbundled_build</b>, product_variables.pdk</div>
+      <div class="collapsible">unbundled_build is a catch-all property to annotate modules that don&#39;t build in one or
+more unbundled branches, usually due to dependencies missing from the manifest.
+
+ 
+
+        
+    <div class="simple" id="python_binary_host.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div></div>
+    <div class="simple" id="python_binary_host.proprietary">
+        <span class="fixed">&nbsp;</span><b>proprietary </b>
+        <i>bool</i>, whether this is a proprietary vendor module, and should be installed into /vendor
+
+</div>
+    <div class="accordion"  id="python_binary_host.proto">
+        <span class="fixed">&#x2295</span><b>proto</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_binary_host.type">
+        <span class="fixed">&nbsp;</span><b>type </b>
+        <i>string</i>, Proto generator type.  C++: full or lite.  Java: micro, nano, stream, or lite.
+
+</div>
+    <div class="simple" id="python_binary_host.plugin">
+        <span class="fixed">&nbsp;</span><b>plugin </b>
+        <i>string</i>, Proto plugin to use as the generator.  Must be a cc_binary_host module.
+
+</div>
+    <div class="simple" id="python_binary_host.include_dirs">
+        <span class="fixed">&nbsp;</span><b>include_dirs </b>
+        <i>list of strings</i>, list of directories that will be added to the protoc include paths.
+
+</div>
+    <div class="simple" id="python_binary_host.local_include_dirs">
+        <span class="fixed">&nbsp;</span><b>local_include_dirs </b>
+        <i>list of strings</i>, list of directories relative to the bp file that will
+be added to the protoc include paths.
+
+</div>
+    <div class="simple" id="python_binary_host.canonical_path_from_root">
+        <span class="fixed">&nbsp;</span><b>canonical_path_from_root </b>
+        <i>bool</i>, whether to identify the proto files from the root of the
+source tree (the original method in Android, useful for
+android-specific protos), or relative from where they were
+specified (useful for external/third party protos).
+
+This defaults to true today, but is expected to default to
+false in the future.
+
+</div></div>
+    <div class="simple" id="python_binary_host.recovery">
+        <span class="fixed">&nbsp;</span><b>recovery </b>
+        <i>bool</i>, Whether this module is installed to recovery partition
+
+</div>
+    <div class="simple" id="python_binary_host.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>, names of other modules to install if this module is installed
+
+</div>
+    <div class="simple" id="python_binary_host.soc_specific">
+        <span class="fixed">&nbsp;</span><b>soc_specific </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+
+</div>
+    <div class="simple" id="python_binary_host.stem">
+        <span class="fixed">&nbsp;</span><b>stem </b>
+        <i>string</i>, set the name of the output binary.
+
+</div>
+    <div class="simple" id="python_binary_host.suffix">
+        <span class="fixed">&nbsp;</span><b>suffix </b>
+        <i>string</i>, append to the name of the output binary.
+
+</div>
+    <div class="accordion"  id="python_binary_host.target.host">
+        <span class="fixed">&#x2295</span><b>target.host</b>, target.android</div>
+      <div class="collapsible">
+ 
+
+        
+    <div class="simple" id="python_binary_host.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>
+</div></div>
+    <div class="simple" id="python_binary_host.test_suites">
+        <span class="fixed">&nbsp;</span><b>test_suites </b>
+        <i>list of strings</i>, list of compatibility suites (for example &#34;cts&#34;, &#34;vts&#34;) that the module should be
+installed into.
+
+</div>
+    <div class="simple" id="python_binary_host.vendor">
+        <span class="fixed">&nbsp;</span><b>vendor </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+Use `soc_specific` instead for better meaning.
+
+</div>
+    <div class="accordion"  id="python_binary_host.version">
+        <span class="fixed">&#x2295</span><b>version</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_binary_host.py2">
+        <span class="fixed">&nbsp;</span><b>py2 </b>
+        <i>VersionProperties</i>, all the &#34;srcs&#34; or Python dependencies that are to be used only for Python2.
+
+</div>
+    <div class="simple" id="python_binary_host.py3">
+        <span class="fixed">&nbsp;</span><b>py3 </b>
+        <i>VersionProperties</i>, all the &#34;srcs&#34; or Python dependencies that are to be used only for Python3.
+
+</div></div>
+    <div class="simple" id="python_binary_host.vintf_fragments">
+        <span class="fixed">&nbsp;</span><b>vintf_fragments </b>
+        <i>list of strings</i>, VINTF manifest fragments to be installed if this module is installed
+
+</div>
+	
+	<p>
+  <h2 id="python_defaults">python_defaults</h2>
+  
+<div class="breadcrumb">
+    
+				<a href=python.html#python_defaults.name>name</a>
+				,&nbsp;<a href=python.html#python_defaults.srcs>srcs</a>
+				,&nbsp;<a href=python.html#python_defaults.host_supported>host_supported</a>
+				,&nbsp;<a href=python.html#python_defaults.device_supported>device_supported</a>
+				,&nbsp;<a href=python.html#python_defaults.compile_multilib>compile_multilib</a>
+				,&nbsp;<a href=python.html#python_defaults.data>data</a>
+				,&nbsp;<a href=python.html#python_defaults.defaults>defaults</a>
+				,&nbsp;<a href=python.html#python_defaults.device_specific>device_specific</a>
+				,&nbsp;<a href=python.html#python_defaults.dist>dist</a>
+				,&nbsp;<a href=python.html#python_defaults.enabled>enabled</a>
+				,&nbsp;<a href=python.html#python_defaults.exclude_srcs>exclude_srcs</a>
+				,&nbsp;<a href=python.html#python_defaults.init_rc>init_rc</a>
+				,&nbsp;<a href=python.html#python_defaults.is_internal>is_internal</a>
+				,&nbsp;<a href=python.html#python_defaults.libs>libs</a>
+				,&nbsp;<a href=python.html#python_defaults.notice>notice</a>
+				,&nbsp;<a href=python.html#python_defaults.owner>owner</a>
+				,&nbsp;<a href=python.html#python_defaults.pkg_path>pkg_path</a>
+				,&nbsp;<a href=python.html#python_defaults.product_services_specific>product_services_specific</a>
+				,&nbsp;<a href=python.html#python_defaults.product_specific>product_specific</a>
+				,&nbsp;<a href=python.html#python_defaults.product_variables.arc>product_variables.arc</a>
+				,&nbsp;<a href=python.html#python_defaults.product_variables.binder32bit>product_variables.binder32bit</a>
+				,&nbsp;<a href=python.html#python_defaults.product_variables.debuggable>product_variables.debuggable</a>
+				,&nbsp;<a href=python.html#python_defaults.product_variables.eng>product_variables.eng</a>
+				,&nbsp;<a href=python.html#python_defaults.product_variables.malloc_not_svelte>product_variables.malloc_not_svelte</a>
+				,&nbsp;<a href=python.html#python_defaults.product_variables.platform_sdk_version>product_variables.platform_sdk_version</a>
+				,&nbsp;<a href=python.html#python_defaults.product_variables.product_is_iot>product_variables.product_is_iot</a>
+				,&nbsp;<a href=python.html#python_defaults.product_variables.safestack>product_variables.safestack</a>
+				,&nbsp;<a href=python.html#python_defaults.product_variables.uml>product_variables.uml</a>
+				,&nbsp;<a href=python.html#python_defaults.product_variables.unbundled_build>product_variables.unbundled_build</a>
+				,&nbsp;<a href=python.html#python_defaults.proprietary>proprietary</a>
+				,&nbsp;<a href=python.html#python_defaults.recovery>recovery</a>
+				,&nbsp;<a href=python.html#python_defaults.required>required</a>
+				,&nbsp;<a href=python.html#python_defaults.soc_specific>soc_specific</a>
+				,&nbsp;<a href=python.html#python_defaults.target.host>target.host</a>
+				,&nbsp;<a href=python.html#python_defaults.vendor>vendor</a>
+				,&nbsp;<a href=python.html#python_defaults.version>version</a>
+				,&nbsp;<a href=python.html#python_defaults.vintf_fragments>vintf_fragments</a></div>
+    <div class="simple" id="python_defaults.name">
+        <span class="fixed">&nbsp;</span><b>name </b>
+        <i>string</i>, The name of the module.  Must be unique across all modules.
+
+</div>
+    <div class="simple" id="python_defaults.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>, list of source (.py) files compatible both with Python2 and Python3 used to compile the
+Python module.
+srcs may reference the outputs of other modules that produce source files like genrule
+or filegroup using the syntax &#34;:module&#34;.
+Srcs has to be non-empty.
+
+</div>
+    <div class="simple" id="python_defaults.host_supported">
+        <span class="fixed">&nbsp;</span><b>host_supported </b>
+        <i>bool</i>, If set to true, build a variant of the module for the host.  Defaults to false.
+
+</div>
+    <div class="simple" id="python_defaults.device_supported">
+        <span class="fixed">&nbsp;</span><b>device_supported </b>
+        <i>bool</i>, If set to true, build a variant of the module for the device.  Defaults to true.
+
+</div>
+    <div class="simple" id="python_defaults.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>, control whether this module compiles for 32-bit, 64-bit, or both.  Possible values
+are &#34;32&#34; (compile for 32-bit only), &#34;64&#34; (compile for 64-bit only), &#34;both&#34; (compile for both
+architectures), or &#34;first&#34; (compile for 64-bit on a 64-bit platform, and 32-bit on a 32-bit
+platform
+
+</div>
+    <div class="simple" id="python_defaults.data">
+        <span class="fixed">&nbsp;</span><b>data </b>
+        <i>list of strings</i>, list of files or filegroup modules that provide data that should be installed alongside
+the test. the file extension can be arbitrary except for (.py).
+
+</div>
+    <div class="simple" id="python_defaults.defaults">
+        <span class="fixed">&nbsp;</span><b>defaults </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_defaults.device_specific">
+        <span class="fixed">&nbsp;</span><b>device_specific </b>
+        <i>bool</i>, whether this module is specific to a device, not only for SoC, but also for off-chip
+peripherals. When set to true, it is installed into /odm (or /vendor/odm if odm partition
+does not exist, or /system/vendor/odm if both odm and vendor partitions do not exist).
+This implies `soc_specific:true`.
+
+</div>
+    <div class="accordion"  id="python_defaults.dist">
+        <span class="fixed">&#x2295</span><b>dist</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_defaults.targets">
+        <span class="fixed">&nbsp;</span><b>targets </b>
+        <i>list of strings</i>, copy the output of this module to the $DIST_DIR when `dist` is specified on the
+command line and  any of these targets are also on the command line, or otherwise
+built
+
+</div>
+    <div class="simple" id="python_defaults.dest">
+        <span class="fixed">&nbsp;</span><b>dest </b>
+        <i>string</i>, The name of the output artifact. This defaults to the basename of the output of
+the module.
+
+</div>
+    <div class="simple" id="python_defaults.dir">
+        <span class="fixed">&nbsp;</span><b>dir </b>
+        <i>string</i>, The directory within the dist directory to store the artifact. Defaults to the
+top level directory (&#34;&#34;).
+
+</div>
+    <div class="simple" id="python_defaults.suffix">
+        <span class="fixed">&nbsp;</span><b>suffix </b>
+        <i>string</i>, A suffix to add to the artifact file name (before any extension).
+
+</div></div>
+    <div class="simple" id="python_defaults.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>, emit build rules for this module
+
+</div>
+    <div class="simple" id="python_defaults.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>, list of source files that should not be used to build the C/C++ module.
+This is most useful in the arch/multilib variants to remove non-common files
+
+</div>
+    <div class="simple" id="python_defaults.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>, init.rc files to be installed if this module is installed
+
+</div>
+    <div class="simple" id="python_defaults.is_internal">
+        <span class="fixed">&nbsp;</span><b>is_internal </b>
+        <i>bool</i>, true, if the Python module is used internally, eg, Python std libs.
+
+</div>
+    <div class="simple" id="python_defaults.libs">
+        <span class="fixed">&nbsp;</span><b>libs </b>
+        <i>list of strings</i>, list of the Python libraries compatible both with Python2 and Python3.
+
+</div>
+    <div class="simple" id="python_defaults.notice">
+        <span class="fixed">&nbsp;</span><b>notice </b>
+        <i>string</i>, relative path to a file to include in the list of notices for the device
+
+</div>
+    <div class="simple" id="python_defaults.owner">
+        <span class="fixed">&nbsp;</span><b>owner </b>
+        <i>string</i>, vendor who owns this module
+
+</div>
+    <div class="simple" id="python_defaults.pkg_path">
+        <span class="fixed">&nbsp;</span><b>pkg_path </b>
+        <i>string</i>, the package path prefix within the output artifact at which to place the source/data
+files of the current module.
+eg. Pkg_path = &#34;a/b/c&#34;; Other packages can reference this module by using
+(from a.b.c import ...) statement.
+if left unspecified, all the source/data files path is unchanged within zip file.
+
+</div>
+    <div class="simple" id="python_defaults.product_services_specific">
+        <span class="fixed">&nbsp;</span><b>product_services_specific </b>
+        <i>bool</i>, whether this module provides services owned by the OS provider to the core platform. When set
+to true, it is installed into  /product_services (or /system/product_services if
+product_services partition does not exist).
+
+</div>
+    <div class="simple" id="python_defaults.product_specific">
+        <span class="fixed">&nbsp;</span><b>product_specific </b>
+        <i>bool</i>, whether this module is specific to a software configuration of a product (e.g. country,
+network operator, etc). When set to true, it is installed into /product (or
+/system/product if product partition does not exist).
+
+</div>
+    <div class="accordion"  id="python_defaults.product_variables.arc">
+        <span class="fixed">&#x2295</span><b>product_variables.arc</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_defaults.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_defaults.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_defaults.include_dirs">
+        <span class="fixed">&nbsp;</span><b>include_dirs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_defaults.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_defaults.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_defaults.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_defaults.product_variables.binder32bit">
+        <span class="fixed">&#x2295</span><b>product_variables.binder32bit</b>, product_variables.override_rs_driver, product_variables.treble_linker_namespaces, product_variables.enforce_vintf_manifest, product_variables.use_lmkd_stats_log</div>
+      <div class="collapsible">
+ 
+treble_linker_namespaces is true when the system/vendor linker namespace separation is
+enabled.
+
+enforce_vintf_manifest is true when a device is required to have a vintf manifest.
+
+
+
+        
+    <div class="simple" id="python_defaults.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_defaults.product_variables.debuggable">
+        <span class="fixed">&#x2295</span><b>product_variables.debuggable</b></div>
+      <div class="collapsible">debuggable is true for eng and userdebug builds, and can be used to turn on additional
+debugging features that don&#39;t significantly impact runtime behavior.  userdebug builds
+are used for dogfooding and performance testing, and should be as similar to user builds
+as possible.
+
+ 
+        
+    <div class="simple" id="python_defaults.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_defaults.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_defaults.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_defaults.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_defaults.product_variables.eng">
+        <span class="fixed">&#x2295</span><b>product_variables.eng</b></div>
+      <div class="collapsible">eng is true for -eng builds, and can be used to turn on additionaly heavyweight debugging
+features.
+
+ 
+        
+    <div class="simple" id="python_defaults.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_defaults.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="accordion"  id="python_defaults.lto">
+        <span class="fixed">&#x2295</span><b>lto</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_defaults.never">
+        <span class="fixed">&nbsp;</span><b>never </b>
+        <i>bool</i>
+</div></div>
+    <div class="accordion"  id="python_defaults.sanitize">
+        <span class="fixed">&#x2295</span><b>sanitize</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_defaults.address">
+        <span class="fixed">&nbsp;</span><b>address </b>
+        <i>bool</i>
+</div></div></div>
+    <div class="accordion"  id="python_defaults.product_variables.malloc_not_svelte">
+        <span class="fixed">&#x2295</span><b>product_variables.malloc_not_svelte</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_defaults.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_defaults.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_defaults.product_variables.platform_sdk_version">
+        <span class="fixed">&#x2295</span><b>product_variables.platform_sdk_version</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_defaults.asflags">
+        <span class="fixed">&nbsp;</span><b>asflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_defaults.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_defaults.product_variables.product_is_iot">
+        <span class="fixed">&#x2295</span><b>product_variables.product_is_iot</b></div>
+      <div class="collapsible">Product_is_iot is true for Android Things devices.
+
+ 
+        
+    <div class="simple" id="python_defaults.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_defaults.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div>
+    <div class="simple" id="python_defaults.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_defaults.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_defaults.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_defaults.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_defaults.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_defaults.product_variables.safestack">
+        <span class="fixed">&#x2295</span><b>product_variables.safestack</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_defaults.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_defaults.product_variables.uml">
+        <span class="fixed">&#x2295</span><b>product_variables.uml</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_defaults.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_defaults.product_variables.unbundled_build">
+        <span class="fixed">&#x2295</span><b>product_variables.unbundled_build</b>, product_variables.pdk</div>
+      <div class="collapsible">unbundled_build is a catch-all property to annotate modules that don&#39;t build in one or
+more unbundled branches, usually due to dependencies missing from the manifest.
+
+ 
+
+        
+    <div class="simple" id="python_defaults.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div></div>
+    <div class="simple" id="python_defaults.proprietary">
+        <span class="fixed">&nbsp;</span><b>proprietary </b>
+        <i>bool</i>, whether this is a proprietary vendor module, and should be installed into /vendor
+
+</div>
+    <div class="simple" id="python_defaults.recovery">
+        <span class="fixed">&nbsp;</span><b>recovery </b>
+        <i>bool</i>, Whether this module is installed to recovery partition
+
+</div>
+    <div class="simple" id="python_defaults.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>, names of other modules to install if this module is installed
+
+</div>
+    <div class="simple" id="python_defaults.soc_specific">
+        <span class="fixed">&nbsp;</span><b>soc_specific </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+
+</div>
+    <div class="accordion"  id="python_defaults.target.host">
+        <span class="fixed">&#x2295</span><b>target.host</b>, target.android</div>
+      <div class="collapsible">
+ 
+
+        
+    <div class="simple" id="python_defaults.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>
+</div></div>
+    <div class="simple" id="python_defaults.vendor">
+        <span class="fixed">&nbsp;</span><b>vendor </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+Use `soc_specific` instead for better meaning.
+
+</div>
+    <div class="accordion"  id="python_defaults.version">
+        <span class="fixed">&#x2295</span><b>version</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_defaults.py2">
+        <span class="fixed">&nbsp;</span><b>py2 </b>
+        <i>VersionProperties</i>, all the &#34;srcs&#34; or Python dependencies that are to be used only for Python2.
+
+</div>
+    <div class="simple" id="python_defaults.py3">
+        <span class="fixed">&nbsp;</span><b>py3 </b>
+        <i>VersionProperties</i>, all the &#34;srcs&#34; or Python dependencies that are to be used only for Python3.
+
+</div></div>
+    <div class="simple" id="python_defaults.vintf_fragments">
+        <span class="fixed">&nbsp;</span><b>vintf_fragments </b>
+        <i>list of strings</i>, VINTF manifest fragments to be installed if this module is installed
+
+</div>
+	
+	<p>
+  <h2 id="python_library">python_library</h2>
+  
+<div class="breadcrumb">
+    
+				<a href=python.html#python_library.name>name</a>
+				,&nbsp;<a href=python.html#python_library.srcs>srcs</a>
+				,&nbsp;<a href=python.html#python_library.host_supported>host_supported</a>
+				,&nbsp;<a href=python.html#python_library.device_supported>device_supported</a>
+				,&nbsp;<a href=python.html#python_library.compile_multilib>compile_multilib</a>
+				,&nbsp;<a href=python.html#python_library.data>data</a>
+				,&nbsp;<a href=python.html#python_library.defaults>defaults</a>
+				,&nbsp;<a href=python.html#python_library.device_specific>device_specific</a>
+				,&nbsp;<a href=python.html#python_library.dist>dist</a>
+				,&nbsp;<a href=python.html#python_library.enabled>enabled</a>
+				,&nbsp;<a href=python.html#python_library.exclude_srcs>exclude_srcs</a>
+				,&nbsp;<a href=python.html#python_library.init_rc>init_rc</a>
+				,&nbsp;<a href=python.html#python_library.is_internal>is_internal</a>
+				,&nbsp;<a href=python.html#python_library.libs>libs</a>
+				,&nbsp;<a href=python.html#python_library.notice>notice</a>
+				,&nbsp;<a href=python.html#python_library.owner>owner</a>
+				,&nbsp;<a href=python.html#python_library.pkg_path>pkg_path</a>
+				,&nbsp;<a href=python.html#python_library.product_services_specific>product_services_specific</a>
+				,&nbsp;<a href=python.html#python_library.product_specific>product_specific</a>
+				,&nbsp;<a href=python.html#python_library.product_variables.arc>product_variables.arc</a>
+				,&nbsp;<a href=python.html#python_library.product_variables.binder32bit>product_variables.binder32bit</a>
+				,&nbsp;<a href=python.html#python_library.product_variables.debuggable>product_variables.debuggable</a>
+				,&nbsp;<a href=python.html#python_library.product_variables.eng>product_variables.eng</a>
+				,&nbsp;<a href=python.html#python_library.product_variables.malloc_not_svelte>product_variables.malloc_not_svelte</a>
+				,&nbsp;<a href=python.html#python_library.product_variables.platform_sdk_version>product_variables.platform_sdk_version</a>
+				,&nbsp;<a href=python.html#python_library.product_variables.product_is_iot>product_variables.product_is_iot</a>
+				,&nbsp;<a href=python.html#python_library.product_variables.safestack>product_variables.safestack</a>
+				,&nbsp;<a href=python.html#python_library.product_variables.uml>product_variables.uml</a>
+				,&nbsp;<a href=python.html#python_library.product_variables.unbundled_build>product_variables.unbundled_build</a>
+				,&nbsp;<a href=python.html#python_library.proprietary>proprietary</a>
+				,&nbsp;<a href=python.html#python_library.proto>proto</a>
+				,&nbsp;<a href=python.html#python_library.recovery>recovery</a>
+				,&nbsp;<a href=python.html#python_library.required>required</a>
+				,&nbsp;<a href=python.html#python_library.soc_specific>soc_specific</a>
+				,&nbsp;<a href=python.html#python_library.target.host>target.host</a>
+				,&nbsp;<a href=python.html#python_library.vendor>vendor</a>
+				,&nbsp;<a href=python.html#python_library.version>version</a>
+				,&nbsp;<a href=python.html#python_library.vintf_fragments>vintf_fragments</a></div>
+    <div class="simple" id="python_library.name">
+        <span class="fixed">&nbsp;</span><b>name </b>
+        <i>string</i>, The name of the module.  Must be unique across all modules.
+
+</div>
+    <div class="simple" id="python_library.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>, list of source (.py) files compatible both with Python2 and Python3 used to compile the
+Python module.
+srcs may reference the outputs of other modules that produce source files like genrule
+or filegroup using the syntax &#34;:module&#34;.
+Srcs has to be non-empty.
+
+</div>
+    <div class="simple" id="python_library.host_supported">
+        <span class="fixed">&nbsp;</span><b>host_supported </b>
+        <i>bool</i>, If set to true, build a variant of the module for the host.  Defaults to false.
+
+</div>
+    <div class="simple" id="python_library.device_supported">
+        <span class="fixed">&nbsp;</span><b>device_supported </b>
+        <i>bool</i>, If set to true, build a variant of the module for the device.  Defaults to true.
+
+</div>
+    <div class="simple" id="python_library.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>, control whether this module compiles for 32-bit, 64-bit, or both.  Possible values
+are &#34;32&#34; (compile for 32-bit only), &#34;64&#34; (compile for 64-bit only), &#34;both&#34; (compile for both
+architectures), or &#34;first&#34; (compile for 64-bit on a 64-bit platform, and 32-bit on a 32-bit
+platform
+
+</div>
+    <div class="simple" id="python_library.data">
+        <span class="fixed">&nbsp;</span><b>data </b>
+        <i>list of strings</i>, list of files or filegroup modules that provide data that should be installed alongside
+the test. the file extension can be arbitrary except for (.py).
+
+</div>
+    <div class="simple" id="python_library.defaults">
+        <span class="fixed">&nbsp;</span><b>defaults </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library.device_specific">
+        <span class="fixed">&nbsp;</span><b>device_specific </b>
+        <i>bool</i>, whether this module is specific to a device, not only for SoC, but also for off-chip
+peripherals. When set to true, it is installed into /odm (or /vendor/odm if odm partition
+does not exist, or /system/vendor/odm if both odm and vendor partitions do not exist).
+This implies `soc_specific:true`.
+
+</div>
+    <div class="accordion"  id="python_library.dist">
+        <span class="fixed">&#x2295</span><b>dist</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_library.targets">
+        <span class="fixed">&nbsp;</span><b>targets </b>
+        <i>list of strings</i>, copy the output of this module to the $DIST_DIR when `dist` is specified on the
+command line and  any of these targets are also on the command line, or otherwise
+built
+
+</div>
+    <div class="simple" id="python_library.dest">
+        <span class="fixed">&nbsp;</span><b>dest </b>
+        <i>string</i>, The name of the output artifact. This defaults to the basename of the output of
+the module.
+
+</div>
+    <div class="simple" id="python_library.dir">
+        <span class="fixed">&nbsp;</span><b>dir </b>
+        <i>string</i>, The directory within the dist directory to store the artifact. Defaults to the
+top level directory (&#34;&#34;).
+
+</div>
+    <div class="simple" id="python_library.suffix">
+        <span class="fixed">&nbsp;</span><b>suffix </b>
+        <i>string</i>, A suffix to add to the artifact file name (before any extension).
+
+</div></div>
+    <div class="simple" id="python_library.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>, emit build rules for this module
+
+</div>
+    <div class="simple" id="python_library.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>, list of source files that should not be used to build the C/C++ module.
+This is most useful in the arch/multilib variants to remove non-common files
+
+</div>
+    <div class="simple" id="python_library.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>, init.rc files to be installed if this module is installed
+
+</div>
+    <div class="simple" id="python_library.is_internal">
+        <span class="fixed">&nbsp;</span><b>is_internal </b>
+        <i>bool</i>, true, if the Python module is used internally, eg, Python std libs.
+
+</div>
+    <div class="simple" id="python_library.libs">
+        <span class="fixed">&nbsp;</span><b>libs </b>
+        <i>list of strings</i>, list of the Python libraries compatible both with Python2 and Python3.
+
+</div>
+    <div class="simple" id="python_library.notice">
+        <span class="fixed">&nbsp;</span><b>notice </b>
+        <i>string</i>, relative path to a file to include in the list of notices for the device
+
+</div>
+    <div class="simple" id="python_library.owner">
+        <span class="fixed">&nbsp;</span><b>owner </b>
+        <i>string</i>, vendor who owns this module
+
+</div>
+    <div class="simple" id="python_library.pkg_path">
+        <span class="fixed">&nbsp;</span><b>pkg_path </b>
+        <i>string</i>, the package path prefix within the output artifact at which to place the source/data
+files of the current module.
+eg. Pkg_path = &#34;a/b/c&#34;; Other packages can reference this module by using
+(from a.b.c import ...) statement.
+if left unspecified, all the source/data files path is unchanged within zip file.
+
+</div>
+    <div class="simple" id="python_library.product_services_specific">
+        <span class="fixed">&nbsp;</span><b>product_services_specific </b>
+        <i>bool</i>, whether this module provides services owned by the OS provider to the core platform. When set
+to true, it is installed into  /product_services (or /system/product_services if
+product_services partition does not exist).
+
+</div>
+    <div class="simple" id="python_library.product_specific">
+        <span class="fixed">&nbsp;</span><b>product_specific </b>
+        <i>bool</i>, whether this module is specific to a software configuration of a product (e.g. country,
+network operator, etc). When set to true, it is installed into /product (or
+/system/product if product partition does not exist).
+
+</div>
+    <div class="accordion"  id="python_library.product_variables.arc">
+        <span class="fixed">&#x2295</span><b>product_variables.arc</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_library.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library.include_dirs">
+        <span class="fixed">&nbsp;</span><b>include_dirs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_library.product_variables.binder32bit">
+        <span class="fixed">&#x2295</span><b>product_variables.binder32bit</b>, product_variables.override_rs_driver, product_variables.treble_linker_namespaces, product_variables.enforce_vintf_manifest, product_variables.use_lmkd_stats_log</div>
+      <div class="collapsible">
+ 
+treble_linker_namespaces is true when the system/vendor linker namespace separation is
+enabled.
+
+enforce_vintf_manifest is true when a device is required to have a vintf manifest.
+
+
+
+        
+    <div class="simple" id="python_library.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_library.product_variables.debuggable">
+        <span class="fixed">&#x2295</span><b>product_variables.debuggable</b></div>
+      <div class="collapsible">debuggable is true for eng and userdebug builds, and can be used to turn on additional
+debugging features that don&#39;t significantly impact runtime behavior.  userdebug builds
+are used for dogfooding and performance testing, and should be as similar to user builds
+as possible.
+
+ 
+        
+    <div class="simple" id="python_library.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_library.product_variables.eng">
+        <span class="fixed">&#x2295</span><b>product_variables.eng</b></div>
+      <div class="collapsible">eng is true for -eng builds, and can be used to turn on additionaly heavyweight debugging
+features.
+
+ 
+        
+    <div class="simple" id="python_library.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="accordion"  id="python_library.lto">
+        <span class="fixed">&#x2295</span><b>lto</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_library.never">
+        <span class="fixed">&nbsp;</span><b>never </b>
+        <i>bool</i>
+</div></div>
+    <div class="accordion"  id="python_library.sanitize">
+        <span class="fixed">&#x2295</span><b>sanitize</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_library.address">
+        <span class="fixed">&nbsp;</span><b>address </b>
+        <i>bool</i>
+</div></div></div>
+    <div class="accordion"  id="python_library.product_variables.malloc_not_svelte">
+        <span class="fixed">&#x2295</span><b>product_variables.malloc_not_svelte</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_library.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_library.product_variables.platform_sdk_version">
+        <span class="fixed">&#x2295</span><b>product_variables.platform_sdk_version</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_library.asflags">
+        <span class="fixed">&nbsp;</span><b>asflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_library.product_variables.product_is_iot">
+        <span class="fixed">&#x2295</span><b>product_variables.product_is_iot</b></div>
+      <div class="collapsible">Product_is_iot is true for Android Things devices.
+
+ 
+        
+    <div class="simple" id="python_library.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div>
+    <div class="simple" id="python_library.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_library.product_variables.safestack">
+        <span class="fixed">&#x2295</span><b>product_variables.safestack</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_library.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_library.product_variables.uml">
+        <span class="fixed">&#x2295</span><b>product_variables.uml</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_library.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_library.product_variables.unbundled_build">
+        <span class="fixed">&#x2295</span><b>product_variables.unbundled_build</b>, product_variables.pdk</div>
+      <div class="collapsible">unbundled_build is a catch-all property to annotate modules that don&#39;t build in one or
+more unbundled branches, usually due to dependencies missing from the manifest.
+
+ 
+
+        
+    <div class="simple" id="python_library.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div></div>
+    <div class="simple" id="python_library.proprietary">
+        <span class="fixed">&nbsp;</span><b>proprietary </b>
+        <i>bool</i>, whether this is a proprietary vendor module, and should be installed into /vendor
+
+</div>
+    <div class="accordion"  id="python_library.proto">
+        <span class="fixed">&#x2295</span><b>proto</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_library.type">
+        <span class="fixed">&nbsp;</span><b>type </b>
+        <i>string</i>, Proto generator type.  C++: full or lite.  Java: micro, nano, stream, or lite.
+
+</div>
+    <div class="simple" id="python_library.plugin">
+        <span class="fixed">&nbsp;</span><b>plugin </b>
+        <i>string</i>, Proto plugin to use as the generator.  Must be a cc_binary_host module.
+
+</div>
+    <div class="simple" id="python_library.include_dirs">
+        <span class="fixed">&nbsp;</span><b>include_dirs </b>
+        <i>list of strings</i>, list of directories that will be added to the protoc include paths.
+
+</div>
+    <div class="simple" id="python_library.local_include_dirs">
+        <span class="fixed">&nbsp;</span><b>local_include_dirs </b>
+        <i>list of strings</i>, list of directories relative to the bp file that will
+be added to the protoc include paths.
+
+</div>
+    <div class="simple" id="python_library.canonical_path_from_root">
+        <span class="fixed">&nbsp;</span><b>canonical_path_from_root </b>
+        <i>bool</i>, whether to identify the proto files from the root of the
+source tree (the original method in Android, useful for
+android-specific protos), or relative from where they were
+specified (useful for external/third party protos).
+
+This defaults to true today, but is expected to default to
+false in the future.
+
+</div></div>
+    <div class="simple" id="python_library.recovery">
+        <span class="fixed">&nbsp;</span><b>recovery </b>
+        <i>bool</i>, Whether this module is installed to recovery partition
+
+</div>
+    <div class="simple" id="python_library.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>, names of other modules to install if this module is installed
+
+</div>
+    <div class="simple" id="python_library.soc_specific">
+        <span class="fixed">&nbsp;</span><b>soc_specific </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+
+</div>
+    <div class="accordion"  id="python_library.target.host">
+        <span class="fixed">&#x2295</span><b>target.host</b>, target.android</div>
+      <div class="collapsible">
+ 
+
+        
+    <div class="simple" id="python_library.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>
+</div></div>
+    <div class="simple" id="python_library.vendor">
+        <span class="fixed">&nbsp;</span><b>vendor </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+Use `soc_specific` instead for better meaning.
+
+</div>
+    <div class="accordion"  id="python_library.version">
+        <span class="fixed">&#x2295</span><b>version</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_library.py2">
+        <span class="fixed">&nbsp;</span><b>py2 </b>
+        <i>VersionProperties</i>, all the &#34;srcs&#34; or Python dependencies that are to be used only for Python2.
+
+</div>
+    <div class="simple" id="python_library.py3">
+        <span class="fixed">&nbsp;</span><b>py3 </b>
+        <i>VersionProperties</i>, all the &#34;srcs&#34; or Python dependencies that are to be used only for Python3.
+
+</div></div>
+    <div class="simple" id="python_library.vintf_fragments">
+        <span class="fixed">&nbsp;</span><b>vintf_fragments </b>
+        <i>list of strings</i>, VINTF manifest fragments to be installed if this module is installed
+
+</div>
+	
+	<p>
+  <h2 id="python_library_host">python_library_host</h2>
+  
+<div class="breadcrumb">
+    
+				<a href=python.html#python_library_host.name>name</a>
+				,&nbsp;<a href=python.html#python_library_host.srcs>srcs</a>
+				,&nbsp;<a href=python.html#python_library_host.compile_multilib>compile_multilib</a>
+				,&nbsp;<a href=python.html#python_library_host.data>data</a>
+				,&nbsp;<a href=python.html#python_library_host.defaults>defaults</a>
+				,&nbsp;<a href=python.html#python_library_host.device_specific>device_specific</a>
+				,&nbsp;<a href=python.html#python_library_host.dist>dist</a>
+				,&nbsp;<a href=python.html#python_library_host.enabled>enabled</a>
+				,&nbsp;<a href=python.html#python_library_host.exclude_srcs>exclude_srcs</a>
+				,&nbsp;<a href=python.html#python_library_host.init_rc>init_rc</a>
+				,&nbsp;<a href=python.html#python_library_host.is_internal>is_internal</a>
+				,&nbsp;<a href=python.html#python_library_host.libs>libs</a>
+				,&nbsp;<a href=python.html#python_library_host.notice>notice</a>
+				,&nbsp;<a href=python.html#python_library_host.owner>owner</a>
+				,&nbsp;<a href=python.html#python_library_host.pkg_path>pkg_path</a>
+				,&nbsp;<a href=python.html#python_library_host.product_services_specific>product_services_specific</a>
+				,&nbsp;<a href=python.html#python_library_host.product_specific>product_specific</a>
+				,&nbsp;<a href=python.html#python_library_host.product_variables.arc>product_variables.arc</a>
+				,&nbsp;<a href=python.html#python_library_host.product_variables.binder32bit>product_variables.binder32bit</a>
+				,&nbsp;<a href=python.html#python_library_host.product_variables.debuggable>product_variables.debuggable</a>
+				,&nbsp;<a href=python.html#python_library_host.product_variables.eng>product_variables.eng</a>
+				,&nbsp;<a href=python.html#python_library_host.product_variables.malloc_not_svelte>product_variables.malloc_not_svelte</a>
+				,&nbsp;<a href=python.html#python_library_host.product_variables.platform_sdk_version>product_variables.platform_sdk_version</a>
+				,&nbsp;<a href=python.html#python_library_host.product_variables.product_is_iot>product_variables.product_is_iot</a>
+				,&nbsp;<a href=python.html#python_library_host.product_variables.safestack>product_variables.safestack</a>
+				,&nbsp;<a href=python.html#python_library_host.product_variables.uml>product_variables.uml</a>
+				,&nbsp;<a href=python.html#python_library_host.product_variables.unbundled_build>product_variables.unbundled_build</a>
+				,&nbsp;<a href=python.html#python_library_host.proprietary>proprietary</a>
+				,&nbsp;<a href=python.html#python_library_host.proto>proto</a>
+				,&nbsp;<a href=python.html#python_library_host.recovery>recovery</a>
+				,&nbsp;<a href=python.html#python_library_host.required>required</a>
+				,&nbsp;<a href=python.html#python_library_host.soc_specific>soc_specific</a>
+				,&nbsp;<a href=python.html#python_library_host.target.host>target.host</a>
+				,&nbsp;<a href=python.html#python_library_host.vendor>vendor</a>
+				,&nbsp;<a href=python.html#python_library_host.version>version</a>
+				,&nbsp;<a href=python.html#python_library_host.vintf_fragments>vintf_fragments</a></div>
+    <div class="simple" id="python_library_host.name">
+        <span class="fixed">&nbsp;</span><b>name </b>
+        <i>string</i>, The name of the module.  Must be unique across all modules.
+
+</div>
+    <div class="simple" id="python_library_host.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>, list of source (.py) files compatible both with Python2 and Python3 used to compile the
+Python module.
+srcs may reference the outputs of other modules that produce source files like genrule
+or filegroup using the syntax &#34;:module&#34;.
+Srcs has to be non-empty.
+
+</div>
+    <div class="simple" id="python_library_host.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>, control whether this module compiles for 32-bit, 64-bit, or both.  Possible values
+are &#34;32&#34; (compile for 32-bit only), &#34;64&#34; (compile for 64-bit only), &#34;both&#34; (compile for both
+architectures), or &#34;first&#34; (compile for 64-bit on a 64-bit platform, and 32-bit on a 32-bit
+platform
+
+</div>
+    <div class="simple" id="python_library_host.data">
+        <span class="fixed">&nbsp;</span><b>data </b>
+        <i>list of strings</i>, list of files or filegroup modules that provide data that should be installed alongside
+the test. the file extension can be arbitrary except for (.py).
+
+</div>
+    <div class="simple" id="python_library_host.defaults">
+        <span class="fixed">&nbsp;</span><b>defaults </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library_host.device_specific">
+        <span class="fixed">&nbsp;</span><b>device_specific </b>
+        <i>bool</i>, whether this module is specific to a device, not only for SoC, but also for off-chip
+peripherals. When set to true, it is installed into /odm (or /vendor/odm if odm partition
+does not exist, or /system/vendor/odm if both odm and vendor partitions do not exist).
+This implies `soc_specific:true`.
+
+</div>
+    <div class="accordion"  id="python_library_host.dist">
+        <span class="fixed">&#x2295</span><b>dist</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_library_host.targets">
+        <span class="fixed">&nbsp;</span><b>targets </b>
+        <i>list of strings</i>, copy the output of this module to the $DIST_DIR when `dist` is specified on the
+command line and  any of these targets are also on the command line, or otherwise
+built
+
+</div>
+    <div class="simple" id="python_library_host.dest">
+        <span class="fixed">&nbsp;</span><b>dest </b>
+        <i>string</i>, The name of the output artifact. This defaults to the basename of the output of
+the module.
+
+</div>
+    <div class="simple" id="python_library_host.dir">
+        <span class="fixed">&nbsp;</span><b>dir </b>
+        <i>string</i>, The directory within the dist directory to store the artifact. Defaults to the
+top level directory (&#34;&#34;).
+
+</div>
+    <div class="simple" id="python_library_host.suffix">
+        <span class="fixed">&nbsp;</span><b>suffix </b>
+        <i>string</i>, A suffix to add to the artifact file name (before any extension).
+
+</div></div>
+    <div class="simple" id="python_library_host.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>, emit build rules for this module
+
+</div>
+    <div class="simple" id="python_library_host.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>, list of source files that should not be used to build the C/C++ module.
+This is most useful in the arch/multilib variants to remove non-common files
+
+</div>
+    <div class="simple" id="python_library_host.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>, init.rc files to be installed if this module is installed
+
+</div>
+    <div class="simple" id="python_library_host.is_internal">
+        <span class="fixed">&nbsp;</span><b>is_internal </b>
+        <i>bool</i>, true, if the Python module is used internally, eg, Python std libs.
+
+</div>
+    <div class="simple" id="python_library_host.libs">
+        <span class="fixed">&nbsp;</span><b>libs </b>
+        <i>list of strings</i>, list of the Python libraries compatible both with Python2 and Python3.
+
+</div>
+    <div class="simple" id="python_library_host.notice">
+        <span class="fixed">&nbsp;</span><b>notice </b>
+        <i>string</i>, relative path to a file to include in the list of notices for the device
+
+</div>
+    <div class="simple" id="python_library_host.owner">
+        <span class="fixed">&nbsp;</span><b>owner </b>
+        <i>string</i>, vendor who owns this module
+
+</div>
+    <div class="simple" id="python_library_host.pkg_path">
+        <span class="fixed">&nbsp;</span><b>pkg_path </b>
+        <i>string</i>, the package path prefix within the output artifact at which to place the source/data
+files of the current module.
+eg. Pkg_path = &#34;a/b/c&#34;; Other packages can reference this module by using
+(from a.b.c import ...) statement.
+if left unspecified, all the source/data files path is unchanged within zip file.
+
+</div>
+    <div class="simple" id="python_library_host.product_services_specific">
+        <span class="fixed">&nbsp;</span><b>product_services_specific </b>
+        <i>bool</i>, whether this module provides services owned by the OS provider to the core platform. When set
+to true, it is installed into  /product_services (or /system/product_services if
+product_services partition does not exist).
+
+</div>
+    <div class="simple" id="python_library_host.product_specific">
+        <span class="fixed">&nbsp;</span><b>product_specific </b>
+        <i>bool</i>, whether this module is specific to a software configuration of a product (e.g. country,
+network operator, etc). When set to true, it is installed into /product (or
+/system/product if product partition does not exist).
+
+</div>
+    <div class="accordion"  id="python_library_host.product_variables.arc">
+        <span class="fixed">&#x2295</span><b>product_variables.arc</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_library_host.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library_host.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library_host.include_dirs">
+        <span class="fixed">&nbsp;</span><b>include_dirs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library_host.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library_host.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library_host.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_library_host.product_variables.binder32bit">
+        <span class="fixed">&#x2295</span><b>product_variables.binder32bit</b>, product_variables.override_rs_driver, product_variables.treble_linker_namespaces, product_variables.enforce_vintf_manifest, product_variables.use_lmkd_stats_log</div>
+      <div class="collapsible">
+ 
+treble_linker_namespaces is true when the system/vendor linker namespace separation is
+enabled.
+
+enforce_vintf_manifest is true when a device is required to have a vintf manifest.
+
+
+
+        
+    <div class="simple" id="python_library_host.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_library_host.product_variables.debuggable">
+        <span class="fixed">&#x2295</span><b>product_variables.debuggable</b></div>
+      <div class="collapsible">debuggable is true for eng and userdebug builds, and can be used to turn on additional
+debugging features that don&#39;t significantly impact runtime behavior.  userdebug builds
+are used for dogfooding and performance testing, and should be as similar to user builds
+as possible.
+
+ 
+        
+    <div class="simple" id="python_library_host.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library_host.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library_host.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library_host.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_library_host.product_variables.eng">
+        <span class="fixed">&#x2295</span><b>product_variables.eng</b></div>
+      <div class="collapsible">eng is true for -eng builds, and can be used to turn on additionaly heavyweight debugging
+features.
+
+ 
+        
+    <div class="simple" id="python_library_host.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library_host.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="accordion"  id="python_library_host.lto">
+        <span class="fixed">&#x2295</span><b>lto</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_library_host.never">
+        <span class="fixed">&nbsp;</span><b>never </b>
+        <i>bool</i>
+</div></div>
+    <div class="accordion"  id="python_library_host.sanitize">
+        <span class="fixed">&#x2295</span><b>sanitize</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_library_host.address">
+        <span class="fixed">&nbsp;</span><b>address </b>
+        <i>bool</i>
+</div></div></div>
+    <div class="accordion"  id="python_library_host.product_variables.malloc_not_svelte">
+        <span class="fixed">&#x2295</span><b>product_variables.malloc_not_svelte</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_library_host.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library_host.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_library_host.product_variables.platform_sdk_version">
+        <span class="fixed">&#x2295</span><b>product_variables.platform_sdk_version</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_library_host.asflags">
+        <span class="fixed">&nbsp;</span><b>asflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library_host.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_library_host.product_variables.product_is_iot">
+        <span class="fixed">&#x2295</span><b>product_variables.product_is_iot</b></div>
+      <div class="collapsible">Product_is_iot is true for Android Things devices.
+
+ 
+        
+    <div class="simple" id="python_library_host.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library_host.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div>
+    <div class="simple" id="python_library_host.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library_host.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library_host.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library_host.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_library_host.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_library_host.product_variables.safestack">
+        <span class="fixed">&#x2295</span><b>product_variables.safestack</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_library_host.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_library_host.product_variables.uml">
+        <span class="fixed">&#x2295</span><b>product_variables.uml</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_library_host.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_library_host.product_variables.unbundled_build">
+        <span class="fixed">&#x2295</span><b>product_variables.unbundled_build</b>, product_variables.pdk</div>
+      <div class="collapsible">unbundled_build is a catch-all property to annotate modules that don&#39;t build in one or
+more unbundled branches, usually due to dependencies missing from the manifest.
+
+ 
+
+        
+    <div class="simple" id="python_library_host.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div></div>
+    <div class="simple" id="python_library_host.proprietary">
+        <span class="fixed">&nbsp;</span><b>proprietary </b>
+        <i>bool</i>, whether this is a proprietary vendor module, and should be installed into /vendor
+
+</div>
+    <div class="accordion"  id="python_library_host.proto">
+        <span class="fixed">&#x2295</span><b>proto</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_library_host.type">
+        <span class="fixed">&nbsp;</span><b>type </b>
+        <i>string</i>, Proto generator type.  C++: full or lite.  Java: micro, nano, stream, or lite.
+
+</div>
+    <div class="simple" id="python_library_host.plugin">
+        <span class="fixed">&nbsp;</span><b>plugin </b>
+        <i>string</i>, Proto plugin to use as the generator.  Must be a cc_binary_host module.
+
+</div>
+    <div class="simple" id="python_library_host.include_dirs">
+        <span class="fixed">&nbsp;</span><b>include_dirs </b>
+        <i>list of strings</i>, list of directories that will be added to the protoc include paths.
+
+</div>
+    <div class="simple" id="python_library_host.local_include_dirs">
+        <span class="fixed">&nbsp;</span><b>local_include_dirs </b>
+        <i>list of strings</i>, list of directories relative to the bp file that will
+be added to the protoc include paths.
+
+</div>
+    <div class="simple" id="python_library_host.canonical_path_from_root">
+        <span class="fixed">&nbsp;</span><b>canonical_path_from_root </b>
+        <i>bool</i>, whether to identify the proto files from the root of the
+source tree (the original method in Android, useful for
+android-specific protos), or relative from where they were
+specified (useful for external/third party protos).
+
+This defaults to true today, but is expected to default to
+false in the future.
+
+</div></div>
+    <div class="simple" id="python_library_host.recovery">
+        <span class="fixed">&nbsp;</span><b>recovery </b>
+        <i>bool</i>, Whether this module is installed to recovery partition
+
+</div>
+    <div class="simple" id="python_library_host.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>, names of other modules to install if this module is installed
+
+</div>
+    <div class="simple" id="python_library_host.soc_specific">
+        <span class="fixed">&nbsp;</span><b>soc_specific </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+
+</div>
+    <div class="accordion"  id="python_library_host.target.host">
+        <span class="fixed">&#x2295</span><b>target.host</b>, target.android</div>
+      <div class="collapsible">
+ 
+
+        
+    <div class="simple" id="python_library_host.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>
+</div></div>
+    <div class="simple" id="python_library_host.vendor">
+        <span class="fixed">&nbsp;</span><b>vendor </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+Use `soc_specific` instead for better meaning.
+
+</div>
+    <div class="accordion"  id="python_library_host.version">
+        <span class="fixed">&#x2295</span><b>version</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_library_host.py2">
+        <span class="fixed">&nbsp;</span><b>py2 </b>
+        <i>VersionProperties</i>, all the &#34;srcs&#34; or Python dependencies that are to be used only for Python2.
+
+</div>
+    <div class="simple" id="python_library_host.py3">
+        <span class="fixed">&nbsp;</span><b>py3 </b>
+        <i>VersionProperties</i>, all the &#34;srcs&#34; or Python dependencies that are to be used only for Python3.
+
+</div></div>
+    <div class="simple" id="python_library_host.vintf_fragments">
+        <span class="fixed">&nbsp;</span><b>vintf_fragments </b>
+        <i>list of strings</i>, VINTF manifest fragments to be installed if this module is installed
+
+</div>
+	
+	<p>
+  <h2 id="python_test">python_test</h2>
+  
+<div class="breadcrumb">
+    
+				<a href=python.html#python_test.name>name</a>
+				,&nbsp;<a href=python.html#python_test.srcs>srcs</a>
+				,&nbsp;<a href=python.html#python_test.host_supported>host_supported</a>
+				,&nbsp;<a href=python.html#python_test.device_supported>device_supported</a>
+				,&nbsp;<a href=python.html#python_test.autorun>autorun</a>
+				,&nbsp;<a href=python.html#python_test.compile_multilib>compile_multilib</a>
+				,&nbsp;<a href=python.html#python_test.data>data</a>
+				,&nbsp;<a href=python.html#python_test.defaults>defaults</a>
+				,&nbsp;<a href=python.html#python_test.device_specific>device_specific</a>
+				,&nbsp;<a href=python.html#python_test.dist>dist</a>
+				,&nbsp;<a href=python.html#python_test.enabled>enabled</a>
+				,&nbsp;<a href=python.html#python_test.exclude_srcs>exclude_srcs</a>
+				,&nbsp;<a href=python.html#python_test.init_rc>init_rc</a>
+				,&nbsp;<a href=python.html#python_test.is_internal>is_internal</a>
+				,&nbsp;<a href=python.html#python_test.libs>libs</a>
+				,&nbsp;<a href=python.html#python_test.main>main</a>
+				,&nbsp;<a href=python.html#python_test.notice>notice</a>
+				,&nbsp;<a href=python.html#python_test.owner>owner</a>
+				,&nbsp;<a href=python.html#python_test.pkg_path>pkg_path</a>
+				,&nbsp;<a href=python.html#python_test.product_services_specific>product_services_specific</a>
+				,&nbsp;<a href=python.html#python_test.product_specific>product_specific</a>
+				,&nbsp;<a href=python.html#python_test.product_variables.arc>product_variables.arc</a>
+				,&nbsp;<a href=python.html#python_test.product_variables.binder32bit>product_variables.binder32bit</a>
+				,&nbsp;<a href=python.html#python_test.product_variables.debuggable>product_variables.debuggable</a>
+				,&nbsp;<a href=python.html#python_test.product_variables.eng>product_variables.eng</a>
+				,&nbsp;<a href=python.html#python_test.product_variables.malloc_not_svelte>product_variables.malloc_not_svelte</a>
+				,&nbsp;<a href=python.html#python_test.product_variables.platform_sdk_version>product_variables.platform_sdk_version</a>
+				,&nbsp;<a href=python.html#python_test.product_variables.product_is_iot>product_variables.product_is_iot</a>
+				,&nbsp;<a href=python.html#python_test.product_variables.safestack>product_variables.safestack</a>
+				,&nbsp;<a href=python.html#python_test.product_variables.uml>product_variables.uml</a>
+				,&nbsp;<a href=python.html#python_test.product_variables.unbundled_build>product_variables.unbundled_build</a>
+				,&nbsp;<a href=python.html#python_test.proprietary>proprietary</a>
+				,&nbsp;<a href=python.html#python_test.proto>proto</a>
+				,&nbsp;<a href=python.html#python_test.recovery>recovery</a>
+				,&nbsp;<a href=python.html#python_test.required>required</a>
+				,&nbsp;<a href=python.html#python_test.soc_specific>soc_specific</a>
+				,&nbsp;<a href=python.html#python_test.stem>stem</a>
+				,&nbsp;<a href=python.html#python_test.suffix>suffix</a>
+				,&nbsp;<a href=python.html#python_test.target.host>target.host</a>
+				,&nbsp;<a href=python.html#python_test.test_config>test_config</a>
+				,&nbsp;<a href=python.html#python_test.test_config_template>test_config_template</a>
+				,&nbsp;<a href=python.html#python_test.test_suites>test_suites</a>
+				,&nbsp;<a href=python.html#python_test.vendor>vendor</a>
+				,&nbsp;<a href=python.html#python_test.version>version</a>
+				,&nbsp;<a href=python.html#python_test.vintf_fragments>vintf_fragments</a></div>
+    <div class="simple" id="python_test.name">
+        <span class="fixed">&nbsp;</span><b>name </b>
+        <i>string</i>, The name of the module.  Must be unique across all modules.
+
+</div>
+    <div class="simple" id="python_test.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>, list of source (.py) files compatible both with Python2 and Python3 used to compile the
+Python module.
+srcs may reference the outputs of other modules that produce source files like genrule
+or filegroup using the syntax &#34;:module&#34;.
+Srcs has to be non-empty.
+
+</div>
+    <div class="simple" id="python_test.host_supported">
+        <span class="fixed">&nbsp;</span><b>host_supported </b>
+        <i>bool</i>, If set to true, build a variant of the module for the host.  Defaults to false.
+
+</div>
+    <div class="simple" id="python_test.device_supported">
+        <span class="fixed">&nbsp;</span><b>device_supported </b>
+        <i>bool</i>, If set to true, build a variant of the module for the device.  Defaults to true.
+
+</div>
+    <div class="simple" id="python_test.autorun">
+        <span class="fixed">&nbsp;</span><b>autorun </b>
+        <i>bool</i>, whether to use `main` when starting the executable. The default is true, when set to
+false it will act much like the normal `python` executable, but with the sources and
+libraries automatically included in the PYTHONPATH.
+
+</div>
+    <div class="simple" id="python_test.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>, control whether this module compiles for 32-bit, 64-bit, or both.  Possible values
+are &#34;32&#34; (compile for 32-bit only), &#34;64&#34; (compile for 64-bit only), &#34;both&#34; (compile for both
+architectures), or &#34;first&#34; (compile for 64-bit on a 64-bit platform, and 32-bit on a 32-bit
+platform
+
+</div>
+    <div class="simple" id="python_test.data">
+        <span class="fixed">&nbsp;</span><b>data </b>
+        <i>list of strings</i>, list of files or filegroup modules that provide data that should be installed alongside
+the test. the file extension can be arbitrary except for (.py).
+
+</div>
+    <div class="simple" id="python_test.defaults">
+        <span class="fixed">&nbsp;</span><b>defaults </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test.device_specific">
+        <span class="fixed">&nbsp;</span><b>device_specific </b>
+        <i>bool</i>, whether this module is specific to a device, not only for SoC, but also for off-chip
+peripherals. When set to true, it is installed into /odm (or /vendor/odm if odm partition
+does not exist, or /system/vendor/odm if both odm and vendor partitions do not exist).
+This implies `soc_specific:true`.
+
+</div>
+    <div class="accordion"  id="python_test.dist">
+        <span class="fixed">&#x2295</span><b>dist</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_test.targets">
+        <span class="fixed">&nbsp;</span><b>targets </b>
+        <i>list of strings</i>, copy the output of this module to the $DIST_DIR when `dist` is specified on the
+command line and  any of these targets are also on the command line, or otherwise
+built
+
+</div>
+    <div class="simple" id="python_test.dest">
+        <span class="fixed">&nbsp;</span><b>dest </b>
+        <i>string</i>, The name of the output artifact. This defaults to the basename of the output of
+the module.
+
+</div>
+    <div class="simple" id="python_test.dir">
+        <span class="fixed">&nbsp;</span><b>dir </b>
+        <i>string</i>, The directory within the dist directory to store the artifact. Defaults to the
+top level directory (&#34;&#34;).
+
+</div>
+    <div class="simple" id="python_test.suffix">
+        <span class="fixed">&nbsp;</span><b>suffix </b>
+        <i>string</i>, A suffix to add to the artifact file name (before any extension).
+
+</div></div>
+    <div class="simple" id="python_test.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>, emit build rules for this module
+
+</div>
+    <div class="simple" id="python_test.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>, list of source files that should not be used to build the C/C++ module.
+This is most useful in the arch/multilib variants to remove non-common files
+
+</div>
+    <div class="simple" id="python_test.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>, init.rc files to be installed if this module is installed
+
+</div>
+    <div class="simple" id="python_test.is_internal">
+        <span class="fixed">&nbsp;</span><b>is_internal </b>
+        <i>bool</i>, true, if the Python module is used internally, eg, Python std libs.
+
+</div>
+    <div class="simple" id="python_test.libs">
+        <span class="fixed">&nbsp;</span><b>libs </b>
+        <i>list of strings</i>, list of the Python libraries compatible both with Python2 and Python3.
+
+</div>
+    <div class="simple" id="python_test.main">
+        <span class="fixed">&nbsp;</span><b>main </b>
+        <i>string</i>, the name of the source file that is the main entry point of the program.
+this file must also be listed in srcs.
+If left unspecified, module name is used instead.
+If name doesn’t match any filename in srcs, main must be specified.
+
+</div>
+    <div class="simple" id="python_test.notice">
+        <span class="fixed">&nbsp;</span><b>notice </b>
+        <i>string</i>, relative path to a file to include in the list of notices for the device
+
+</div>
+    <div class="simple" id="python_test.owner">
+        <span class="fixed">&nbsp;</span><b>owner </b>
+        <i>string</i>, vendor who owns this module
+
+</div>
+    <div class="simple" id="python_test.pkg_path">
+        <span class="fixed">&nbsp;</span><b>pkg_path </b>
+        <i>string</i>, the package path prefix within the output artifact at which to place the source/data
+files of the current module.
+eg. Pkg_path = &#34;a/b/c&#34;; Other packages can reference this module by using
+(from a.b.c import ...) statement.
+if left unspecified, all the source/data files path is unchanged within zip file.
+
+</div>
+    <div class="simple" id="python_test.product_services_specific">
+        <span class="fixed">&nbsp;</span><b>product_services_specific </b>
+        <i>bool</i>, whether this module provides services owned by the OS provider to the core platform. When set
+to true, it is installed into  /product_services (or /system/product_services if
+product_services partition does not exist).
+
+</div>
+    <div class="simple" id="python_test.product_specific">
+        <span class="fixed">&nbsp;</span><b>product_specific </b>
+        <i>bool</i>, whether this module is specific to a software configuration of a product (e.g. country,
+network operator, etc). When set to true, it is installed into /product (or
+/system/product if product partition does not exist).
+
+</div>
+    <div class="accordion"  id="python_test.product_variables.arc">
+        <span class="fixed">&#x2295</span><b>product_variables.arc</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_test.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test.include_dirs">
+        <span class="fixed">&nbsp;</span><b>include_dirs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_test.product_variables.binder32bit">
+        <span class="fixed">&#x2295</span><b>product_variables.binder32bit</b>, product_variables.override_rs_driver, product_variables.treble_linker_namespaces, product_variables.enforce_vintf_manifest, product_variables.use_lmkd_stats_log</div>
+      <div class="collapsible">
+ 
+treble_linker_namespaces is true when the system/vendor linker namespace separation is
+enabled.
+
+enforce_vintf_manifest is true when a device is required to have a vintf manifest.
+
+
+
+        
+    <div class="simple" id="python_test.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_test.product_variables.debuggable">
+        <span class="fixed">&#x2295</span><b>product_variables.debuggable</b></div>
+      <div class="collapsible">debuggable is true for eng and userdebug builds, and can be used to turn on additional
+debugging features that don&#39;t significantly impact runtime behavior.  userdebug builds
+are used for dogfooding and performance testing, and should be as similar to user builds
+as possible.
+
+ 
+        
+    <div class="simple" id="python_test.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_test.product_variables.eng">
+        <span class="fixed">&#x2295</span><b>product_variables.eng</b></div>
+      <div class="collapsible">eng is true for -eng builds, and can be used to turn on additionaly heavyweight debugging
+features.
+
+ 
+        
+    <div class="simple" id="python_test.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="accordion"  id="python_test.lto">
+        <span class="fixed">&#x2295</span><b>lto</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_test.never">
+        <span class="fixed">&nbsp;</span><b>never </b>
+        <i>bool</i>
+</div></div>
+    <div class="accordion"  id="python_test.sanitize">
+        <span class="fixed">&#x2295</span><b>sanitize</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_test.address">
+        <span class="fixed">&nbsp;</span><b>address </b>
+        <i>bool</i>
+</div></div></div>
+    <div class="accordion"  id="python_test.product_variables.malloc_not_svelte">
+        <span class="fixed">&#x2295</span><b>product_variables.malloc_not_svelte</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_test.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_test.product_variables.platform_sdk_version">
+        <span class="fixed">&#x2295</span><b>product_variables.platform_sdk_version</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_test.asflags">
+        <span class="fixed">&nbsp;</span><b>asflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_test.product_variables.product_is_iot">
+        <span class="fixed">&#x2295</span><b>product_variables.product_is_iot</b></div>
+      <div class="collapsible">Product_is_iot is true for Android Things devices.
+
+ 
+        
+    <div class="simple" id="python_test.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div>
+    <div class="simple" id="python_test.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_test.product_variables.safestack">
+        <span class="fixed">&#x2295</span><b>product_variables.safestack</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_test.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_test.product_variables.uml">
+        <span class="fixed">&#x2295</span><b>product_variables.uml</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_test.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_test.product_variables.unbundled_build">
+        <span class="fixed">&#x2295</span><b>product_variables.unbundled_build</b>, product_variables.pdk</div>
+      <div class="collapsible">unbundled_build is a catch-all property to annotate modules that don&#39;t build in one or
+more unbundled branches, usually due to dependencies missing from the manifest.
+
+ 
+
+        
+    <div class="simple" id="python_test.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div></div>
+    <div class="simple" id="python_test.proprietary">
+        <span class="fixed">&nbsp;</span><b>proprietary </b>
+        <i>bool</i>, whether this is a proprietary vendor module, and should be installed into /vendor
+
+</div>
+    <div class="accordion"  id="python_test.proto">
+        <span class="fixed">&#x2295</span><b>proto</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_test.type">
+        <span class="fixed">&nbsp;</span><b>type </b>
+        <i>string</i>, Proto generator type.  C++: full or lite.  Java: micro, nano, stream, or lite.
+
+</div>
+    <div class="simple" id="python_test.plugin">
+        <span class="fixed">&nbsp;</span><b>plugin </b>
+        <i>string</i>, Proto plugin to use as the generator.  Must be a cc_binary_host module.
+
+</div>
+    <div class="simple" id="python_test.include_dirs">
+        <span class="fixed">&nbsp;</span><b>include_dirs </b>
+        <i>list of strings</i>, list of directories that will be added to the protoc include paths.
+
+</div>
+    <div class="simple" id="python_test.local_include_dirs">
+        <span class="fixed">&nbsp;</span><b>local_include_dirs </b>
+        <i>list of strings</i>, list of directories relative to the bp file that will
+be added to the protoc include paths.
+
+</div>
+    <div class="simple" id="python_test.canonical_path_from_root">
+        <span class="fixed">&nbsp;</span><b>canonical_path_from_root </b>
+        <i>bool</i>, whether to identify the proto files from the root of the
+source tree (the original method in Android, useful for
+android-specific protos), or relative from where they were
+specified (useful for external/third party protos).
+
+This defaults to true today, but is expected to default to
+false in the future.
+
+</div></div>
+    <div class="simple" id="python_test.recovery">
+        <span class="fixed">&nbsp;</span><b>recovery </b>
+        <i>bool</i>, Whether this module is installed to recovery partition
+
+</div>
+    <div class="simple" id="python_test.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>, names of other modules to install if this module is installed
+
+</div>
+    <div class="simple" id="python_test.soc_specific">
+        <span class="fixed">&nbsp;</span><b>soc_specific </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+
+</div>
+    <div class="simple" id="python_test.stem">
+        <span class="fixed">&nbsp;</span><b>stem </b>
+        <i>string</i>, set the name of the output binary.
+
+</div>
+    <div class="simple" id="python_test.suffix">
+        <span class="fixed">&nbsp;</span><b>suffix </b>
+        <i>string</i>, append to the name of the output binary.
+
+</div>
+    <div class="accordion"  id="python_test.target.host">
+        <span class="fixed">&#x2295</span><b>target.host</b>, target.android</div>
+      <div class="collapsible">
+ 
+
+        
+    <div class="simple" id="python_test.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>
+</div></div>
+    <div class="simple" id="python_test.test_config">
+        <span class="fixed">&nbsp;</span><b>test_config </b>
+        <i>string</i>, the name of the test configuration (for example &#34;AndroidTest.xml&#34;) that should be
+installed with the module.
+
+</div>
+    <div class="simple" id="python_test.test_config_template">
+        <span class="fixed">&nbsp;</span><b>test_config_template </b>
+        <i>string</i>, the name of the test configuration template (for example &#34;AndroidTestTemplate.xml&#34;) that
+should be installed with the module.
+
+</div>
+    <div class="simple" id="python_test.test_suites">
+        <span class="fixed">&nbsp;</span><b>test_suites </b>
+        <i>list of strings</i>, list of compatibility suites (for example &#34;cts&#34;, &#34;vts&#34;) that the module should be
+installed into.
+
+</div>
+    <div class="simple" id="python_test.vendor">
+        <span class="fixed">&nbsp;</span><b>vendor </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+Use `soc_specific` instead for better meaning.
+
+</div>
+    <div class="accordion"  id="python_test.version">
+        <span class="fixed">&#x2295</span><b>version</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_test.py2">
+        <span class="fixed">&nbsp;</span><b>py2 </b>
+        <i>VersionProperties</i>, all the &#34;srcs&#34; or Python dependencies that are to be used only for Python2.
+
+</div>
+    <div class="simple" id="python_test.py3">
+        <span class="fixed">&nbsp;</span><b>py3 </b>
+        <i>VersionProperties</i>, all the &#34;srcs&#34; or Python dependencies that are to be used only for Python3.
+
+</div></div>
+    <div class="simple" id="python_test.vintf_fragments">
+        <span class="fixed">&nbsp;</span><b>vintf_fragments </b>
+        <i>list of strings</i>, VINTF manifest fragments to be installed if this module is installed
+
+</div>
+	
+	<p>
+  <h2 id="python_test_host">python_test_host</h2>
+  
+<div class="breadcrumb">
+    
+				<a href=python.html#python_test_host.name>name</a>
+				,&nbsp;<a href=python.html#python_test_host.srcs>srcs</a>
+				,&nbsp;<a href=python.html#python_test_host.autorun>autorun</a>
+				,&nbsp;<a href=python.html#python_test_host.compile_multilib>compile_multilib</a>
+				,&nbsp;<a href=python.html#python_test_host.data>data</a>
+				,&nbsp;<a href=python.html#python_test_host.defaults>defaults</a>
+				,&nbsp;<a href=python.html#python_test_host.device_specific>device_specific</a>
+				,&nbsp;<a href=python.html#python_test_host.dist>dist</a>
+				,&nbsp;<a href=python.html#python_test_host.enabled>enabled</a>
+				,&nbsp;<a href=python.html#python_test_host.exclude_srcs>exclude_srcs</a>
+				,&nbsp;<a href=python.html#python_test_host.init_rc>init_rc</a>
+				,&nbsp;<a href=python.html#python_test_host.is_internal>is_internal</a>
+				,&nbsp;<a href=python.html#python_test_host.libs>libs</a>
+				,&nbsp;<a href=python.html#python_test_host.main>main</a>
+				,&nbsp;<a href=python.html#python_test_host.notice>notice</a>
+				,&nbsp;<a href=python.html#python_test_host.owner>owner</a>
+				,&nbsp;<a href=python.html#python_test_host.pkg_path>pkg_path</a>
+				,&nbsp;<a href=python.html#python_test_host.product_services_specific>product_services_specific</a>
+				,&nbsp;<a href=python.html#python_test_host.product_specific>product_specific</a>
+				,&nbsp;<a href=python.html#python_test_host.product_variables.arc>product_variables.arc</a>
+				,&nbsp;<a href=python.html#python_test_host.product_variables.binder32bit>product_variables.binder32bit</a>
+				,&nbsp;<a href=python.html#python_test_host.product_variables.debuggable>product_variables.debuggable</a>
+				,&nbsp;<a href=python.html#python_test_host.product_variables.eng>product_variables.eng</a>
+				,&nbsp;<a href=python.html#python_test_host.product_variables.malloc_not_svelte>product_variables.malloc_not_svelte</a>
+				,&nbsp;<a href=python.html#python_test_host.product_variables.platform_sdk_version>product_variables.platform_sdk_version</a>
+				,&nbsp;<a href=python.html#python_test_host.product_variables.product_is_iot>product_variables.product_is_iot</a>
+				,&nbsp;<a href=python.html#python_test_host.product_variables.safestack>product_variables.safestack</a>
+				,&nbsp;<a href=python.html#python_test_host.product_variables.uml>product_variables.uml</a>
+				,&nbsp;<a href=python.html#python_test_host.product_variables.unbundled_build>product_variables.unbundled_build</a>
+				,&nbsp;<a href=python.html#python_test_host.proprietary>proprietary</a>
+				,&nbsp;<a href=python.html#python_test_host.proto>proto</a>
+				,&nbsp;<a href=python.html#python_test_host.recovery>recovery</a>
+				,&nbsp;<a href=python.html#python_test_host.required>required</a>
+				,&nbsp;<a href=python.html#python_test_host.soc_specific>soc_specific</a>
+				,&nbsp;<a href=python.html#python_test_host.stem>stem</a>
+				,&nbsp;<a href=python.html#python_test_host.suffix>suffix</a>
+				,&nbsp;<a href=python.html#python_test_host.target.host>target.host</a>
+				,&nbsp;<a href=python.html#python_test_host.test_config>test_config</a>
+				,&nbsp;<a href=python.html#python_test_host.test_config_template>test_config_template</a>
+				,&nbsp;<a href=python.html#python_test_host.test_suites>test_suites</a>
+				,&nbsp;<a href=python.html#python_test_host.vendor>vendor</a>
+				,&nbsp;<a href=python.html#python_test_host.version>version</a>
+				,&nbsp;<a href=python.html#python_test_host.vintf_fragments>vintf_fragments</a></div>
+    <div class="simple" id="python_test_host.name">
+        <span class="fixed">&nbsp;</span><b>name </b>
+        <i>string</i>, The name of the module.  Must be unique across all modules.
+
+</div>
+    <div class="simple" id="python_test_host.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>, list of source (.py) files compatible both with Python2 and Python3 used to compile the
+Python module.
+srcs may reference the outputs of other modules that produce source files like genrule
+or filegroup using the syntax &#34;:module&#34;.
+Srcs has to be non-empty.
+
+</div>
+    <div class="simple" id="python_test_host.autorun">
+        <span class="fixed">&nbsp;</span><b>autorun </b>
+        <i>bool</i>, whether to use `main` when starting the executable. The default is true, when set to
+false it will act much like the normal `python` executable, but with the sources and
+libraries automatically included in the PYTHONPATH.
+
+</div>
+    <div class="simple" id="python_test_host.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>, control whether this module compiles for 32-bit, 64-bit, or both.  Possible values
+are &#34;32&#34; (compile for 32-bit only), &#34;64&#34; (compile for 64-bit only), &#34;both&#34; (compile for both
+architectures), or &#34;first&#34; (compile for 64-bit on a 64-bit platform, and 32-bit on a 32-bit
+platform
+
+</div>
+    <div class="simple" id="python_test_host.data">
+        <span class="fixed">&nbsp;</span><b>data </b>
+        <i>list of strings</i>, list of files or filegroup modules that provide data that should be installed alongside
+the test. the file extension can be arbitrary except for (.py).
+
+</div>
+    <div class="simple" id="python_test_host.defaults">
+        <span class="fixed">&nbsp;</span><b>defaults </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test_host.device_specific">
+        <span class="fixed">&nbsp;</span><b>device_specific </b>
+        <i>bool</i>, whether this module is specific to a device, not only for SoC, but also for off-chip
+peripherals. When set to true, it is installed into /odm (or /vendor/odm if odm partition
+does not exist, or /system/vendor/odm if both odm and vendor partitions do not exist).
+This implies `soc_specific:true`.
+
+</div>
+    <div class="accordion"  id="python_test_host.dist">
+        <span class="fixed">&#x2295</span><b>dist</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_test_host.targets">
+        <span class="fixed">&nbsp;</span><b>targets </b>
+        <i>list of strings</i>, copy the output of this module to the $DIST_DIR when `dist` is specified on the
+command line and  any of these targets are also on the command line, or otherwise
+built
+
+</div>
+    <div class="simple" id="python_test_host.dest">
+        <span class="fixed">&nbsp;</span><b>dest </b>
+        <i>string</i>, The name of the output artifact. This defaults to the basename of the output of
+the module.
+
+</div>
+    <div class="simple" id="python_test_host.dir">
+        <span class="fixed">&nbsp;</span><b>dir </b>
+        <i>string</i>, The directory within the dist directory to store the artifact. Defaults to the
+top level directory (&#34;&#34;).
+
+</div>
+    <div class="simple" id="python_test_host.suffix">
+        <span class="fixed">&nbsp;</span><b>suffix </b>
+        <i>string</i>, A suffix to add to the artifact file name (before any extension).
+
+</div></div>
+    <div class="simple" id="python_test_host.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>, emit build rules for this module
+
+</div>
+    <div class="simple" id="python_test_host.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>, list of source files that should not be used to build the C/C++ module.
+This is most useful in the arch/multilib variants to remove non-common files
+
+</div>
+    <div class="simple" id="python_test_host.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>, init.rc files to be installed if this module is installed
+
+</div>
+    <div class="simple" id="python_test_host.is_internal">
+        <span class="fixed">&nbsp;</span><b>is_internal </b>
+        <i>bool</i>, true, if the Python module is used internally, eg, Python std libs.
+
+</div>
+    <div class="simple" id="python_test_host.libs">
+        <span class="fixed">&nbsp;</span><b>libs </b>
+        <i>list of strings</i>, list of the Python libraries compatible both with Python2 and Python3.
+
+</div>
+    <div class="simple" id="python_test_host.main">
+        <span class="fixed">&nbsp;</span><b>main </b>
+        <i>string</i>, the name of the source file that is the main entry point of the program.
+this file must also be listed in srcs.
+If left unspecified, module name is used instead.
+If name doesn’t match any filename in srcs, main must be specified.
+
+</div>
+    <div class="simple" id="python_test_host.notice">
+        <span class="fixed">&nbsp;</span><b>notice </b>
+        <i>string</i>, relative path to a file to include in the list of notices for the device
+
+</div>
+    <div class="simple" id="python_test_host.owner">
+        <span class="fixed">&nbsp;</span><b>owner </b>
+        <i>string</i>, vendor who owns this module
+
+</div>
+    <div class="simple" id="python_test_host.pkg_path">
+        <span class="fixed">&nbsp;</span><b>pkg_path </b>
+        <i>string</i>, the package path prefix within the output artifact at which to place the source/data
+files of the current module.
+eg. Pkg_path = &#34;a/b/c&#34;; Other packages can reference this module by using
+(from a.b.c import ...) statement.
+if left unspecified, all the source/data files path is unchanged within zip file.
+
+</div>
+    <div class="simple" id="python_test_host.product_services_specific">
+        <span class="fixed">&nbsp;</span><b>product_services_specific </b>
+        <i>bool</i>, whether this module provides services owned by the OS provider to the core platform. When set
+to true, it is installed into  /product_services (or /system/product_services if
+product_services partition does not exist).
+
+</div>
+    <div class="simple" id="python_test_host.product_specific">
+        <span class="fixed">&nbsp;</span><b>product_specific </b>
+        <i>bool</i>, whether this module is specific to a software configuration of a product (e.g. country,
+network operator, etc). When set to true, it is installed into /product (or
+/system/product if product partition does not exist).
+
+</div>
+    <div class="accordion"  id="python_test_host.product_variables.arc">
+        <span class="fixed">&#x2295</span><b>product_variables.arc</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_test_host.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test_host.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test_host.include_dirs">
+        <span class="fixed">&nbsp;</span><b>include_dirs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test_host.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test_host.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test_host.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_test_host.product_variables.binder32bit">
+        <span class="fixed">&#x2295</span><b>product_variables.binder32bit</b>, product_variables.override_rs_driver, product_variables.treble_linker_namespaces, product_variables.enforce_vintf_manifest, product_variables.use_lmkd_stats_log</div>
+      <div class="collapsible">
+ 
+treble_linker_namespaces is true when the system/vendor linker namespace separation is
+enabled.
+
+enforce_vintf_manifest is true when a device is required to have a vintf manifest.
+
+
+
+        
+    <div class="simple" id="python_test_host.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_test_host.product_variables.debuggable">
+        <span class="fixed">&#x2295</span><b>product_variables.debuggable</b></div>
+      <div class="collapsible">debuggable is true for eng and userdebug builds, and can be used to turn on additional
+debugging features that don&#39;t significantly impact runtime behavior.  userdebug builds
+are used for dogfooding and performance testing, and should be as similar to user builds
+as possible.
+
+ 
+        
+    <div class="simple" id="python_test_host.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test_host.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test_host.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test_host.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_test_host.product_variables.eng">
+        <span class="fixed">&#x2295</span><b>product_variables.eng</b></div>
+      <div class="collapsible">eng is true for -eng builds, and can be used to turn on additionaly heavyweight debugging
+features.
+
+ 
+        
+    <div class="simple" id="python_test_host.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test_host.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="accordion"  id="python_test_host.lto">
+        <span class="fixed">&#x2295</span><b>lto</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_test_host.never">
+        <span class="fixed">&nbsp;</span><b>never </b>
+        <i>bool</i>
+</div></div>
+    <div class="accordion"  id="python_test_host.sanitize">
+        <span class="fixed">&#x2295</span><b>sanitize</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_test_host.address">
+        <span class="fixed">&nbsp;</span><b>address </b>
+        <i>bool</i>
+</div></div></div>
+    <div class="accordion"  id="python_test_host.product_variables.malloc_not_svelte">
+        <span class="fixed">&#x2295</span><b>product_variables.malloc_not_svelte</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_test_host.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test_host.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_test_host.product_variables.platform_sdk_version">
+        <span class="fixed">&#x2295</span><b>product_variables.platform_sdk_version</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_test_host.asflags">
+        <span class="fixed">&nbsp;</span><b>asflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test_host.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_test_host.product_variables.product_is_iot">
+        <span class="fixed">&#x2295</span><b>product_variables.product_is_iot</b></div>
+      <div class="collapsible">Product_is_iot is true for Android Things devices.
+
+ 
+        
+    <div class="simple" id="python_test_host.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test_host.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div>
+    <div class="simple" id="python_test_host.exclude_srcs">
+        <span class="fixed">&nbsp;</span><b>exclude_srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test_host.init_rc">
+        <span class="fixed">&nbsp;</span><b>init_rc </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test_host.shared_libs">
+        <span class="fixed">&nbsp;</span><b>shared_libs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test_host.srcs">
+        <span class="fixed">&nbsp;</span><b>srcs </b>
+        <i>list of strings</i>
+</div>
+    <div class="simple" id="python_test_host.static_libs">
+        <span class="fixed">&nbsp;</span><b>static_libs </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_test_host.product_variables.safestack">
+        <span class="fixed">&#x2295</span><b>product_variables.safestack</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_test_host.cflags">
+        <span class="fixed">&nbsp;</span><b>cflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_test_host.product_variables.uml">
+        <span class="fixed">&#x2295</span><b>product_variables.uml</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_test_host.cppflags">
+        <span class="fixed">&nbsp;</span><b>cppflags </b>
+        <i>list of strings</i>
+</div></div>
+    <div class="accordion"  id="python_test_host.product_variables.unbundled_build">
+        <span class="fixed">&#x2295</span><b>product_variables.unbundled_build</b>, product_variables.pdk</div>
+      <div class="collapsible">unbundled_build is a catch-all property to annotate modules that don&#39;t build in one or
+more unbundled branches, usually due to dependencies missing from the manifest.
+
+ 
+
+        
+    <div class="simple" id="python_test_host.enabled">
+        <span class="fixed">&nbsp;</span><b>enabled </b>
+        <i>bool</i>
+</div></div>
+    <div class="simple" id="python_test_host.proprietary">
+        <span class="fixed">&nbsp;</span><b>proprietary </b>
+        <i>bool</i>, whether this is a proprietary vendor module, and should be installed into /vendor
+
+</div>
+    <div class="accordion"  id="python_test_host.proto">
+        <span class="fixed">&#x2295</span><b>proto</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_test_host.type">
+        <span class="fixed">&nbsp;</span><b>type </b>
+        <i>string</i>, Proto generator type.  C++: full or lite.  Java: micro, nano, stream, or lite.
+
+</div>
+    <div class="simple" id="python_test_host.plugin">
+        <span class="fixed">&nbsp;</span><b>plugin </b>
+        <i>string</i>, Proto plugin to use as the generator.  Must be a cc_binary_host module.
+
+</div>
+    <div class="simple" id="python_test_host.include_dirs">
+        <span class="fixed">&nbsp;</span><b>include_dirs </b>
+        <i>list of strings</i>, list of directories that will be added to the protoc include paths.
+
+</div>
+    <div class="simple" id="python_test_host.local_include_dirs">
+        <span class="fixed">&nbsp;</span><b>local_include_dirs </b>
+        <i>list of strings</i>, list of directories relative to the bp file that will
+be added to the protoc include paths.
+
+</div>
+    <div class="simple" id="python_test_host.canonical_path_from_root">
+        <span class="fixed">&nbsp;</span><b>canonical_path_from_root </b>
+        <i>bool</i>, whether to identify the proto files from the root of the
+source tree (the original method in Android, useful for
+android-specific protos), or relative from where they were
+specified (useful for external/third party protos).
+
+This defaults to true today, but is expected to default to
+false in the future.
+
+</div></div>
+    <div class="simple" id="python_test_host.recovery">
+        <span class="fixed">&nbsp;</span><b>recovery </b>
+        <i>bool</i>, Whether this module is installed to recovery partition
+
+</div>
+    <div class="simple" id="python_test_host.required">
+        <span class="fixed">&nbsp;</span><b>required </b>
+        <i>list of strings</i>, names of other modules to install if this module is installed
+
+</div>
+    <div class="simple" id="python_test_host.soc_specific">
+        <span class="fixed">&nbsp;</span><b>soc_specific </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+
+</div>
+    <div class="simple" id="python_test_host.stem">
+        <span class="fixed">&nbsp;</span><b>stem </b>
+        <i>string</i>, set the name of the output binary.
+
+</div>
+    <div class="simple" id="python_test_host.suffix">
+        <span class="fixed">&nbsp;</span><b>suffix </b>
+        <i>string</i>, append to the name of the output binary.
+
+</div>
+    <div class="accordion"  id="python_test_host.target.host">
+        <span class="fixed">&#x2295</span><b>target.host</b>, target.android</div>
+      <div class="collapsible">
+ 
+
+        
+    <div class="simple" id="python_test_host.compile_multilib">
+        <span class="fixed">&nbsp;</span><b>compile_multilib </b>
+        <i>string</i>
+</div></div>
+    <div class="simple" id="python_test_host.test_config">
+        <span class="fixed">&nbsp;</span><b>test_config </b>
+        <i>string</i>, the name of the test configuration (for example &#34;AndroidTest.xml&#34;) that should be
+installed with the module.
+
+</div>
+    <div class="simple" id="python_test_host.test_config_template">
+        <span class="fixed">&nbsp;</span><b>test_config_template </b>
+        <i>string</i>, the name of the test configuration template (for example &#34;AndroidTestTemplate.xml&#34;) that
+should be installed with the module.
+
+</div>
+    <div class="simple" id="python_test_host.test_suites">
+        <span class="fixed">&nbsp;</span><b>test_suites </b>
+        <i>list of strings</i>, list of compatibility suites (for example &#34;cts&#34;, &#34;vts&#34;) that the module should be
+installed into.
+
+</div>
+    <div class="simple" id="python_test_host.vendor">
+        <span class="fixed">&nbsp;</span><b>vendor </b>
+        <i>bool</i>, whether this module is specific to an SoC (System-On-a-Chip). When set to true,
+it is installed into /vendor (or /system/vendor if vendor partition does not exist).
+Use `soc_specific` instead for better meaning.
+
+</div>
+    <div class="accordion"  id="python_test_host.version">
+        <span class="fixed">&#x2295</span><b>version</b></div>
+      <div class="collapsible">
+ 
+        
+    <div class="simple" id="python_test_host.py2">
+        <span class="fixed">&nbsp;</span><b>py2 </b>
+        <i>VersionProperties</i>, all the &#34;srcs&#34; or Python dependencies that are to be used only for Python2.
+
+</div>
+    <div class="simple" id="python_test_host.py3">
+        <span class="fixed">&nbsp;</span><b>py3 </b>
+        <i>VersionProperties</i>, all the &#34;srcs&#34; or Python dependencies that are to be used only for Python3.
+
+</div></div>
+    <div class="simple" id="python_test_host.vintf_fragments">
+        <span class="fixed">&nbsp;</span><b>vintf_fragments </b>
+        <i>list of strings</i>, VINTF manifest fragments to be installed if this module is installed
+
+</div></div>
+<script>
+  accordions = document.getElementsByClassName('accordion');
+  for (i=0; i < accordions.length; ++i) {
+    accordions[i].addEventListener("click", function() {
+      var panel = this.nextElementSibling;
+      var child = this.firstElementChild;
+      if (panel.style.display === "block") {
+          panel.style.display = "none";
+          child.textContent = '\u2295';
+      } else {
+          panel.style.display = "block";
+          child.textContent = '\u2296';
+      }
+    });
+  }
+</script>
+</body>
